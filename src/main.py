@@ -10,10 +10,19 @@ import pandas
 import requests
 
 from calculate_factors import calculate_factors, save_factors
-from config import FINMIND_API_LIMIT, STOCKS_PATH, make_session, today_in_taiwan
+from config import (
+    FINMIND_API_LIMIT,
+    FUNDAMENTALS_API_BUDGET_PER_RUN,
+    FUNDAMENTALS_UNIVERSE_PATH,
+    MAX_STOCKS_PER_RUN,
+    STOCKS_PATH,
+    make_session,
+    today_in_taiwan,
+)
 from fetch_market import fetch_stocks, save_stocks
 from finmind_client import ApiBudget, BudgetReached, FinMindClient, token_from_environment
 from fundamentals_batch import run_fundamentals_batch
+from fundamentals_universe import build_fundamentals_universe
 from market_history import update_market_history
 from update_financials import update_financials
 from update_prices import fetch_prices, save_prices
@@ -98,14 +107,16 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "factors"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "factors"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
     parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
     parser.add_argument("--stocks", help="Comma-separated stock IDs for fundamentals")
     parser.add_argument("--limit", type=int, help="First N stocks from the local stock list")
-    parser.add_argument("--api-budget", type=int, default=100,
-                        help="Maximum FinMind requests for one fundamentals-batch run (1-100)")
+    parser.add_argument("--api-budget", type=int, default=FUNDAMENTALS_API_BUDGET_PER_RUN,
+                        help="Maximum FinMind requests for one fundamentals-batch run (1-400)")
+    parser.add_argument("--max-stocks", type=int, default=MAX_STOCKS_PER_RUN,
+                        help="Maximum eligible stocks to process in this batch (1-50)")
     args = parser.parse_args()
     if args.mode == "env":
         check_environment()
@@ -135,15 +146,24 @@ def main() -> None:
         update_fundamentals(args.stocks, args.limit)
         return
     if args.mode == "fundamentals-batch":
-        if not token_from_environment():
-            logging.error("FINMIND_TOKEN is not set")
+        if not FUNDAMENTALS_UNIVERSE_PATH.exists():
+            logging.error("Fundamentals universe is missing; run fundamentals-universe first")
             return
-        if not 1 <= args.api_budget <= 100:
-            parser.error("fundamentals-batch --api-budget must be between 1 and 100")
+        if not 1 <= args.api_budget <= FUNDAMENTALS_API_BUDGET_PER_RUN:
+            parser.error(f"--api-budget must be between 1 and {FUNDAMENTALS_API_BUDGET_PER_RUN}")
+        if not 1 <= args.max_stocks <= MAX_STOCKS_PER_RUN:
+            parser.error(f"--max-stocks must be between 1 and {MAX_STOCKS_PER_RUN}")
         try:
-            run_fundamentals_batch(args.api_budget)
+            run_fundamentals_batch(args.api_budget, args.max_stocks)
         except (OSError, RuntimeError, ValueError) as exc:
             logging.error("Fundamentals batch stopped safely: %s", exc)
+        return
+    if args.mode == "fundamentals-universe":
+        with make_session() as session:
+            try:
+                build_fundamentals_universe(session=session)
+            except (OSError, RuntimeError, ValueError) as exc:
+                logging.error("Fundamentals universe build failed: %s", exc)
         return
     requested = args.date or today_in_taiwan()
     with make_session() as session:

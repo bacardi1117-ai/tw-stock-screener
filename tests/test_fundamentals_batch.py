@@ -1,10 +1,13 @@
 import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import fundamentals_batch as batch
 from finmind_client import ApiBudget, FinMindClient
@@ -117,6 +120,29 @@ class FundamentalsBatchTests(unittest.TestCase):
         self.assertIn("1103", self.processed)
         self.assertEqual(state["failure_reasons"]["1101"], "parse_error")
 
+    def test_ineligible_stocks_never_reach_updaters(self):
+        pd.DataFrame([
+            {"stock_id": "1101", "stock_name": "A", "eligible": True},
+            {"stock_id": "1102", "stock_name": "B", "eligible": False},
+        ]).to_csv(self.stocks, index=False, encoding="utf-8-sig")
+        state = self.run_batch()
+        self.assertEqual(self.processed, {"1101"})
+        self.assertEqual(state["eligible_count"], 1)
+        self.assertEqual(state["remaining_count"], 0)
+
+    def test_completed_universe_uses_no_client_or_api_calls(self):
+        state = batch.load_progress(self.progress)
+        state["completed_stock_ids"] = ["1101", "1102", "1103"]
+        batch.save_progress(state, self.progress)
+        with patch.object(batch, "update_revenue", side_effect=AssertionError("must not request")), \
+             patch.object(batch, "update_financials", side_effect=AssertionError("must not request")):
+            result = batch.run_fundamentals_batch(
+                100, 10, stocks_path=self.stocks, progress_path=self.progress,
+                client_factory=lambda: (_ for _ in ()).throw(AssertionError("client must not be created")),
+            )
+        self.assertEqual(result["remaining_count"], 0)
+        self.assertEqual(result["last_run_api_calls"], 0)
+
     def test_failed_progress_replace_preserves_previous_file(self):
         self.progress.parent.mkdir(parents=True)
         original = '{"completed_stock_ids": ["1101"]}'
@@ -126,6 +152,23 @@ class FundamentalsBatchTests(unittest.TestCase):
             with self.assertRaises(OSError):
                 batch.save_progress(state, self.progress)
         self.assertEqual(self.progress.read_text(encoding="utf-8"), original)
+
+    def test_progress_replace_retries_temporary_windows_lock(self):
+        self.progress.parent.mkdir(parents=True)
+        state = batch.load_progress(self.progress)
+        original_replace = Path.replace
+        attempts = {"count": 0}
+
+        def flaky_replace(source, target):
+            attempts["count"] += 1
+            if attempts["count"] == 1:
+                raise PermissionError("temporary lock")
+            return original_replace(source, target)
+
+        with patch.object(Path, "replace", new=flaky_replace), patch.object(batch.time, "sleep"):
+            batch.save_progress(state, self.progress)
+        self.assertEqual(attempts["count"], 2)
+        self.assertTrue(self.progress.exists())
 
     def test_client_logs_never_include_token(self):
         token = "must-not-appear-in-logs"

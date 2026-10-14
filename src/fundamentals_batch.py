@@ -4,10 +4,19 @@ from datetime import datetime
 import json
 import logging
 from pathlib import Path
+import time
 
 import pandas as pd
 
-from config import FINANCIALS_DIR, FINMIND_API_LIMIT, REVENUE_DIR, STOCKS_PATH, TAIWAN_TIME
+from config import (
+    FINANCIALS_DIR,
+    FINMIND_API_LIMIT,
+    FUNDAMENTALS_API_BUDGET_PER_RUN,
+    FUNDAMENTALS_UNIVERSE_PATH,
+    MAX_STOCKS_PER_RUN,
+    REVENUE_DIR,
+    TAIWAN_TIME,
+)
 from finmind_client import ApiBudget, BudgetReached, FinMindClient, token_from_environment
 from update_financials import update_financials
 from update_revenue import update_revenue
@@ -56,7 +65,20 @@ def save_progress(state, path=PROGRESS_PATH):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
-    temporary.replace(path)
+    delays = (0.25, 0.5, 1.0)
+    for attempt, delay in enumerate(delays):
+        if delay:
+            time.sleep(delay)
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError:
+            if attempt == len(delays) - 1:
+                try:
+                    temporary.unlink()
+                except OSError:
+                    pass
+                raise
 
 
 def _read_data(directory):
@@ -119,13 +141,20 @@ def _failure_category(client, stock_id, has_revenue, has_financials, has_any_fin
     return "no_data"
 
 
-def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
+def run_fundamentals_batch(api_budget=FUNDAMENTALS_API_BUDGET_PER_RUN,
+                           max_stocks=MAX_STOCKS_PER_RUN, *,
+                           stocks_path=FUNDAMENTALS_UNIVERSE_PATH,
                            progress_path=PROGRESS_PATH, client_factory=None):
-    if not 1 <= api_budget <= 100:
-        raise ValueError("Stage 1 --api-budget must be between 1 and 100")
+    if not 1 <= api_budget <= FUNDAMENTALS_API_BUDGET_PER_RUN:
+        raise ValueError(f"--api-budget must be between 1 and {FUNDAMENTALS_API_BUDGET_PER_RUN}")
+    if not 1 <= max_stocks <= MAX_STOCKS_PER_RUN:
+        raise ValueError(f"--max-stocks must be between 1 and {MAX_STOCKS_PER_RUN}")
     if not stocks_path.exists():
         raise FileNotFoundError(f"Stock list is missing: {stocks_path}")
     stocks = pd.read_csv(stocks_path, dtype={"stock_id": str}, encoding="utf-8-sig")
+    if "eligible" in stocks.columns:
+        eligible_values = stocks["eligible"].astype(str).str.strip().str.lower().isin(("true", "1", "yes"))
+        stocks = stocks.loc[eligible_values].copy()
     stocks = stocks.dropna(subset=["stock_id"]).drop_duplicates("stock_id")
     stocks["stock_id"] = stocks["stock_id"].astype(str).str.strip()
     stocks = stocks.sort_values("stock_id").reset_index(drop=True)
@@ -138,18 +167,33 @@ def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
     state["completed_count"] = len(completed)
     state["remaining_count"] = len(all_ids) - len(completed)
     state["last_run_api_calls"] = 0
+    state["eligible_count"] = len(all_ids)
+    state["failed_count"] = len(state.get("failure_reasons", {}))
     save_progress(state, progress_path)
 
     candidates = stocks.loc[~stocks["stock_id"].isin(completed)]
     LOGGER.info("Stocks to update: %s", len(candidates))
+    if candidates.empty:
+        LOGGER.info("Fundamentals universe completed")
+        state["last_run"] = {"api_calls": 0, "attempted_stocks": 0,
+                             "completed_stocks": 0, "failed_stocks": 0,
+                             "average_api_calls_per_attempted_stock": None,
+                             "average_api_calls_per_completed_stock": None}
+        save_progress(state, progress_path)
+        return state
     if client_factory is None:
+        token = token_from_environment()
+        if not token:
+            LOGGER.error("FINMIND_TOKEN is not set")
+            return state
+
         def persist_api_call():
             state["total_api_calls_estimated"] = int(state.get("total_api_calls_estimated", 0)) + 1
             state["last_run_api_calls"] = int(state.get("last_run_api_calls", 0)) + 1
             state["updated_at"] = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
             save_progress(state, progress_path)
 
-        client_factory = lambda: FinMindClient(token_from_environment(), ApiBudget(
+        client_factory = lambda: FinMindClient(token, ApiBudget(
             limit=FINMIND_API_LIMIT, run_limit=api_budget, on_consume=persist_api_call
         ))
     client = client_factory()
@@ -160,7 +204,7 @@ def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
     stopped_for_budget = False
     run_started = client.budget.calls_this_run
     try:
-        for row in candidates.itertuples(index=False):
+        for row in candidates.head(max_stocks).itertuples(index=False):
             if client.budget.calls_this_run - run_started >= api_budget:
                 stopped_for_budget = True
                 break
@@ -201,6 +245,8 @@ def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
             state["failed_stock_ids"] = sorted(state["failure_reasons"])
             state["completed_count"] = len(completed)
             state["remaining_count"] = len(all_ids) - len(completed)
+            state["eligible_count"] = len(all_ids)
+            state["failed_count"] = len(state["failure_reasons"])
             state["last_run_api_calls"] = client.budget.calls_this_run - run_started
             if not hasattr(client.budget, "on_consume"):
                 state["total_api_calls_estimated"] = int(state.get("total_api_calls_estimated", 0)) + calls_for_stock
@@ -229,6 +275,8 @@ def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
     state["failed_stock_ids"] = sorted(state["failure_reasons"])
     state["completed_count"] = len(completed)
     state["remaining_count"] = len(all_ids) - len(completed)
+    state["eligible_count"] = len(all_ids)
+    state["failed_count"] = len(state["failure_reasons"])
     state["updated_at"] = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
     save_progress(state, progress_path)
     LOGGER.info("Attempted stocks: %s", attempted)
@@ -240,7 +288,7 @@ def run_fundamentals_batch(api_budget=100, *, stocks_path=STOCKS_PATH,
                 f"{average_completed:.2f}" if average_completed is not None else "N/A")
     LOGGER.info("FinMind API calls: %s / %s", calls, api_budget)
     if stopped_for_budget or client.stop_reason == "rate_limit":
-        LOGGER.warning("Stage 1 API budget reached")
+        LOGGER.warning("Fundamentals API budget reached")
     LOGGER.info("Completed total: %s", state["completed_count"])
     LOGGER.info("Remaining stocks: %s", state["remaining_count"])
     return state

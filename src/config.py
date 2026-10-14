@@ -10,6 +10,7 @@ from urllib3.util.retry import Retry
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STOCKS_PATH = PROJECT_ROOT / "data" / "market" / "stocks.csv"
+FUNDAMENTALS_UNIVERSE_PATH = PROJECT_ROOT / "data" / "state" / "fundamentals_universe.csv"
 PRICES_DIR = PROJECT_ROOT / "data" / "prices"
 REVENUE_DIR = PROJECT_ROOT / "data" / "revenue"
 FINANCIALS_DIR = PROJECT_ROOT / "data" / "financials"
@@ -30,6 +31,10 @@ MAX_ATTEMPTS = 3
 
 FINMIND_API_URL = "https://api.finmindtrade.com/api/v4/data"
 FINMIND_API_LIMIT = 500
+FUNDAMENTALS_API_BUDGET_PER_RUN = 400
+MAX_STOCKS_PER_RUN = 50
+MIN_STOCK_PRICE = 50
+EXCLUDE_FINANCIALS = True
 FINMIND_TIMEOUT = 20
 FINMIND_MAX_ATTEMPTS = 3
 FINMIND_INITIAL_DATE = "2024-01-01"
