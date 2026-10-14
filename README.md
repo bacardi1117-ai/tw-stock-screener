@@ -76,3 +76,18 @@ The first-version QGM schedule totals 100 points. Missing score inputs receive z
 | | Distance to 60-day high | ≥−2: 3; ≥−5: 2; ≥−10: 1 |
 
 All thresholds are initial parameters for later backtesting. No valuation, institutional-investor, or forecast factor is included in this phase.
+
+## Phase 4.1: limited historical market update
+
+Run a bounded, official **all-market daily** backfill:
+
+```powershell
+python src/main.py market-history --start 2026-09-14 --end 2026-10-14
+python src/main.py factors
+```
+
+The history command uses TWSE `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX` and TPEx `https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes`. These are date-specific JSON datasets covering the whole respective market. No verified all-market monthly OHLCV endpoint is used, and the command never requests one stock at a time. It does not call FinMind.
+
+Each HTTP attempt is counted and followed by at least one second of rest. Transient 403, 5xx, timeout, and connection errors back off by 2, 5, then 10 seconds, with at most three retries; 429 immediately stops that source for the run. Repeated failure also stops that source while keeping successfully saved dates. Existing market dates and recorded past no-data dates are skipped on rerun. A single command is capped at 36 calendar days, so longer history requires an explicit later run. Yearly price files are merged by `date + stock_id` and replaced atomically after writing a temporary file. A temporarily busy CSV gets the same delayed write retries without making extra HTTP requests.
+
+The Stage 1 window contains 20 trading days in the local data. That is enough for MA20 and 20-day average volume; `return_20d` needs the latest close **plus** a close 20 trading days earlier (21 observations) and therefore remains empty. The command does not fetch earlier dates automatically.

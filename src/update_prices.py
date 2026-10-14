@@ -2,11 +2,12 @@
 
 from datetime import date
 import logging
+import time
 
 import pandas as pd
 import requests
 
-from config import PRICES_DIR, TPEX_PRICES_URL, TWSE_PRICES_URL, get_json
+from config import HISTORY_BACKOFF_SECONDS, PRICES_DIR, TPEX_PRICES_URL, TWSE_PRICES_URL, get_json
 from fetch_market import is_ordinary_stock
 
 
@@ -31,6 +32,8 @@ def _table_rows(payload: dict, required_fields: set[str], requested: date, marke
     if not isinstance(payload, dict):
         raise ValueError(f"{market} price response is not an object")
     reported = str(payload.get("date", ""))
+    if not reported and str(payload.get("stat", "")).lower() != "ok":
+        return []  # Official no-data response on holidays is not a source error.
     if reported != requested.strftime("%Y%m%d"):
         LOGGER.warning("%s returned date %s for requested %s", market, reported, requested)
         return []
@@ -98,7 +101,7 @@ def fetch_prices(session: requests.Session, requested: date, stocks: pd.DataFram
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=PRICE_COLUMNS)
 
 
-def save_prices(prices: pd.DataFrame, requested: date) -> tuple[int, int]:
+def save_prices(prices: pd.DataFrame, requested: date, sleep=time.sleep) -> tuple[int, int]:
     if prices.empty:
         LOGGER.info("No market data for %s", requested.isoformat())
         LOGGER.info("Saved records: 0")
@@ -113,7 +116,21 @@ def save_prices(prices: pd.DataFrame, requested: date) -> tuple[int, int]:
         combined = pd.concat([existing, new_rows], ignore_index=True)
         combined = combined.drop_duplicates(["date", "stock_id"]).sort_values(["date", "market", "stock_id"])
         path.parent.mkdir(parents=True, exist_ok=True)
-        combined.to_csv(path, index=False, columns=PRICE_COLUMNS, encoding="utf-8-sig")
+        temporary = path.with_suffix(".tmp")
+        try:
+            combined.to_csv(temporary, index=False, columns=PRICE_COLUMNS, encoding="utf-8-sig")
+            for attempt in range(len(HISTORY_BACKOFF_SECONDS) + 1):
+                try:
+                    temporary.replace(path)  # Prior file stays intact if replacement fails.
+                    break
+                except PermissionError:
+                    if attempt == len(HISTORY_BACKOFF_SECONDS):
+                        raise
+                    delay = HISTORY_BACKOFF_SECONDS[attempt]
+                    LOGGER.warning("Price CSV is busy; retrying write after %s seconds", delay)
+                    sleep(delay)
+        finally:
+            temporary.unlink(missing_ok=True)
     LOGGER.info("Saved records: %s", len(new_rows))
     LOGGER.info("Duplicate records skipped: %s", duplicates)
     return len(new_rows), duplicates

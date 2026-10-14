@@ -20,6 +20,10 @@ TWSE_STOCKS_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
 TPEX_STOCKS_URL = "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O"
 TWSE_PRICES_URL = "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX"
 TPEX_PRICES_URL = "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes"
+HISTORY_EMPTY_DATES_PATH = PRICES_DIR / ".history_no_data.json"
+HISTORY_REQUEST_INTERVAL = 1.0
+HISTORY_MAX_RETRIES = 3
+HISTORY_BACKOFF_SECONDS = (2, 5, 10)
 
 REQUEST_TIMEOUT = 20
 MAX_ATTEMPTS = 3

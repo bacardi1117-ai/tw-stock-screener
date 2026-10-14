@@ -13,6 +13,7 @@ from calculate_factors import calculate_factors, save_factors
 from config import FINMIND_API_LIMIT, STOCKS_PATH, make_session, today_in_taiwan
 from fetch_market import fetch_stocks, save_stocks
 from finmind_client import ApiBudget, BudgetReached, FinMindClient, token_from_environment
+from market_history import update_market_history
 from update_financials import update_financials
 from update_prices import fetch_prices, save_prices
 from update_revenue import update_revenue
@@ -96,8 +97,10 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "fundamentals", "factors"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "factors"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
+    parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
+    parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
     parser.add_argument("--stocks", help="Comma-separated stock IDs for fundamentals")
     parser.add_argument("--limit", type=int, help="First N stocks from the local stock list")
     args = parser.parse_args()
@@ -105,6 +108,14 @@ def main() -> None:
         check_environment()
         return
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+    if args.mode == "market-history":
+        if args.start is None or args.end is None:
+            parser.error("market-history requires --start and --end")
+        if args.start > args.end or args.end > today_in_taiwan() or (args.end - args.start).days > 35:
+            parser.error("History range must be ordered, no future dates, and at most 36 days")
+        stocks = pandas.read_csv(STOCKS_PATH, dtype={"stock_id": str}, encoding="utf-8-sig")
+        update_market_history(args.start, args.end, stocks)
+        return
     if args.mode == "factors":
         frame = calculate_factors()
         factors_path, results_csv, results_json = save_factors(frame)
