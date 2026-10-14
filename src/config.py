@@ -11,6 +11,9 @@ from urllib3.util.retry import Retry
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STOCKS_PATH = PROJECT_ROOT / "data" / "market" / "stocks.csv"
 PRICES_DIR = PROJECT_ROOT / "data" / "prices"
+REVENUE_DIR = PROJECT_ROOT / "data" / "revenue"
+FINANCIALS_DIR = PROJECT_ROOT / "data" / "financials"
+FINMIND_BUDGET_PATH = PROJECT_ROOT / "data" / ".finmind_api_budget.json"
 TAIWAN_TIME = timezone(timedelta(hours=8))
 
 TWSE_STOCKS_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap03_L"
@@ -20,6 +23,18 @@ TPEX_PRICES_URL = "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes"
 
 REQUEST_TIMEOUT = 20
 MAX_ATTEMPTS = 3
+
+FINMIND_API_URL = "https://api.finmindtrade.com/api/v4/data"
+FINMIND_API_LIMIT = 500
+FINMIND_TIMEOUT = 20
+FINMIND_MAX_ATTEMPTS = 3
+FINMIND_INITIAL_DATE = "2024-01-01"
+FINMIND_DATASETS = {
+    "revenue": "TaiwanStockMonthRevenue",
+    "income": "TaiwanStockFinancialStatements",
+    "balance": "TaiwanStockBalanceSheet",
+    "cash_flow": "TaiwanStockCashFlowsStatement",
+}
 
 
 def today_in_taiwan():

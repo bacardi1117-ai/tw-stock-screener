@@ -5,3 +5,6 @@ __pycache__/
 *.env*
 *.env.*
 *.log
+data/.finmind_api_budget.*
+data/revenue/
+data/financials/
