@@ -61,6 +61,57 @@ class FundamentalsTests(unittest.TestCase):
         self.assertAlmostEqual(latest.operating_cash_flow, 120.0)
         self.assertAlmostEqual(latest.capital_expenditure, 35.0)
         self.assertAlmostEqual(latest.free_cash_flow, 85.0)
+        self.assertAlmostEqual(latest.eps_single, 10.0)
+        self.assertAlmostEqual(latest.revenue_single, 300.0)
+        self.assertAlmostEqual(latest.gross_margin_single, 45.0)
+        self.assertAlmostEqual(latest.operating_margin_single, 35.0)
+        self.assertAlmostEqual(latest.operating_cash_flow_cumulative, 220.0)
+        self.assertAlmostEqual(latest.operating_cash_flow_single, 120.0)
+        self.assertAlmostEqual(latest.capital_expenditure_cumulative, 55.0)
+        self.assertAlmostEqual(latest.capital_expenditure_single, 35.0)
+        self.assertAlmostEqual(latest.free_cash_flow_cumulative, 165.0)
+        self.assertAlmostEqual(latest.free_cash_flow_single, 85.0)
+        self.assertAlmostEqual(latest.roe_quarterly_approx, 90 / 1050 * 100)
+
+    def test_q3_income_is_single_and_cash_flow_is_derived_from_ytd(self):
+        q1 = _empty_record("2330", "TSMC", "2025-03-31")
+        q2 = _empty_record("2330", "TSMC", "2025-06-30")
+        q3 = _empty_record("2330", "TSMC", "2025-09-30")
+        for row, eps, revenue, ocf, capex in (
+            (q1, 2.0, 100.0, 50.0, -10.0),
+            (q2, 3.0, 120.0, 110.0, -25.0),
+            (q3, 4.0, 140.0, 180.0, -45.0),
+        ):
+            row.update({"eps": eps, "revenue": revenue, "gross_profit": revenue / 2,
+                        "operating_income": revenue / 4, "operating_cash_flow_ytd": ocf,
+                        "capital_expenditure_ytd": capex})
+        rows = _recalculate(pd.DataFrame([q1, q2, q3], columns=FINANCIAL_COLUMNS))
+        self.assertEqual(rows.eps_single.tolist(), [2.0, 3.0, 4.0])
+        self.assertEqual(rows.revenue_single.tolist(), [100.0, 120.0, 140.0])
+        self.assertEqual(rows.operating_cash_flow_single.tolist(), [50.0, 60.0, 70.0])
+        self.assertEqual(rows.capital_expenditure_single.tolist(), [10.0, 15.0, 20.0])
+        self.assertEqual(rows.free_cash_flow_single.tolist(), [40.0, 45.0, 50.0])
+
+    def test_legacy_financial_csv_gains_explicit_period_columns_without_duplicates(self):
+        class EmptyClient:
+            def get(self, *args):
+                return []
+
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as directory:
+            folder = Path(directory)
+            q1 = _empty_record("2330", "TSMC", "2026-03-31")
+            q1.update({"eps": 2.0, "revenue": 100.0, "gross_profit": 40.0,
+                       "operating_income": 20.0, "operating_cash_flow_ytd": 50.0,
+                       "capital_expenditure_ytd": -10.0})
+            pd.DataFrame([q1]).drop(columns=["eps_single", "free_cash_flow_single"]).to_csv(
+                folder / "2026.csv", index=False)
+            with patch.object(update_financials, "FINANCIALS_DIR", folder):
+                self.assertEqual(update_financials.update_financials(EmptyClient(), "2330", "TSMC")[:3],
+                                 (0, 0, False))
+            saved = pd.read_csv(folder / "2026.csv")
+            self.assertEqual(len(saved), 1)
+            self.assertEqual(saved.iloc[0].eps_single, 2.0)
+            self.assertEqual(saved.iloc[0].free_cash_flow_single, 40.0)
 
     def test_missing_comparison_periods_stay_empty(self):
         only = _empty_record("2330", "TSMC", "2026-06-30")

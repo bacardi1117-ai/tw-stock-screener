@@ -14,6 +14,11 @@ from fundamentals_store import changed, read_years, safe_percent, safe_ratio, wr
 LOGGER = logging.getLogger(__name__)
 FINANCIAL_COLUMNS = [
     "report_date", "year", "quarter", "stock_id", "stock_name",
+    "eps_single", "revenue_single", "gross_profit_single", "operating_income_single",
+    "net_income_single", "gross_margin_single", "operating_margin_single",
+    "operating_cash_flow_cumulative", "operating_cash_flow_single",
+    "capital_expenditure_cumulative", "capital_expenditure_single",
+    "free_cash_flow_cumulative", "free_cash_flow_single", "roe_quarterly_approx",
     "eps", "eps_qoq", "eps_yoy",
     "revenue", "gross_profit", "gross_margin", "gross_margin_qoq", "gross_margin_yoy",
     "operating_income", "operating_margin", "operating_margin_qoq", "operating_margin_yoy",
@@ -136,7 +141,28 @@ def _recalculate(frame):
         if not pd.isna(capex) and capex < 0:
             capex = float("nan")  # A declining cumulative outlay needs source review.
         fcf = ocf - capex if not pd.isna(ocf) and not pd.isna(capex) else float("nan")
+        cumulative_fcf = (row.operating_cash_flow_ytd - capex_ytd
+                          if not pd.isna(row.operating_cash_flow_ytd) and not pd.isna(capex_ytd)
+                          else float("nan"))
+        roe = safe_ratio(row.net_income, equity_base)
         calculated.append({
+            # The FinMind income statement already contains standalone quarters.
+            # Do not subtract Q1 from Q2 EPS or profit; EPS also cannot be safely
+            # summed into a reported cumulative EPS after share-count changes.
+            "eps_single": row.eps,
+            "revenue_single": row.revenue,
+            "gross_profit_single": row.gross_profit,
+            "operating_income_single": row.operating_income,
+            "net_income_single": row.net_income,
+            "gross_margin_single": gross_margin,
+            "operating_margin_single": operating_margin,
+            "operating_cash_flow_cumulative": row.operating_cash_flow_ytd,
+            "operating_cash_flow_single": ocf,
+            "capital_expenditure_cumulative": capex_ytd,
+            "capital_expenditure_single": capex,
+            "free_cash_flow_cumulative": cumulative_fcf,
+            "free_cash_flow_single": fcf,
+            "roe_quarterly_approx": roe,
             "eps_qoq": safe_percent(row.eps, previous.eps if previous else float("nan")),
             "eps_yoy": safe_percent(row.eps, year_ago.eps if year_ago else float("nan")),
             "gross_margin": gross_margin,
@@ -147,7 +173,7 @@ def _recalculate(frame):
             "operating_margin_yoy": _difference(operating_margin, prior_operating),
             # First available quarter falls back to ending equity; later quarters
             # use average beginning/ending equity. Ratios are not annualized.
-            "roe": safe_ratio(row.net_income, equity_base),
+            "roe": roe,
             "debt_ratio": safe_ratio(row.total_liabilities, row.total_assets),
             "operating_cash_flow": ocf,
             "capital_expenditure": capex,
@@ -158,8 +184,17 @@ def _recalculate(frame):
     return frame
 
 
+def _needs_schema_migration():
+    """Older local CSVs have unqualified aliases but not the explicit period columns."""
+    for path in FINANCIALS_DIR.glob("[0-9][0-9][0-9][0-9].csv"):
+        if "eps_single" not in pd.read_csv(path, nrows=0).columns:
+            return True
+    return False
+
+
 def update_financials(client, stock_id, stock_name):
     LOGGER.info("Updating financials: %s", stock_id)
+    migrate_schema = _needs_schema_migration()
     existing = read_years(FINANCIALS_DIR, FINANCIAL_COLUMNS)
     start = _start_date(existing, stock_id)
     incoming = {}
@@ -177,8 +212,9 @@ def update_financials(client, stock_id, stock_name):
             for column in RAW_FIELDS:
                 if not pd.isna(values[column]):
                     target[column] = values[column]
-    if not incoming:
-        return 0, 0, budget_reached, None
+    if not incoming and not migrate_schema:
+        latest_existing = existing.loc[existing["stock_id"] == stock_id]
+        return 0, 0, budget_reached, latest_existing.iloc[-1] if not latest_existing.empty else None
     by_key = {(str(row.stock_id), int(row.year), int(row.quarter)): row._asdict() for row in existing.itertuples(index=False)}
     added = updated = 0
     for values in incoming.values():
@@ -196,7 +232,7 @@ def update_financials(client, stock_id, stock_name):
     merged["year"] = pd.to_numeric(merged["year"])
     merged["quarter"] = pd.to_numeric(merged["quarter"])
     merged = merged.sort_values(["stock_id", "year", "quarter"]).reset_index(drop=True)
-    if added or updated:
+    if added or updated or migrate_schema:
         merged = _recalculate(merged)
         write_years(merged, FINANCIALS_DIR, FINANCIAL_COLUMNS)
     latest = merged.loc[merged["stock_id"] == stock_id].iloc[-1] if not merged.empty else None
