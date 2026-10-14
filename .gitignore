@@ -8,3 +8,5 @@ __pycache__/
 data/.finmind_api_budget.*
 data/revenue/
 data/financials/
+data/factors/
+data/results/

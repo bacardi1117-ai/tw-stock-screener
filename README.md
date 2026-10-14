@@ -47,3 +47,32 @@ On the first run, selected stocks are fetched from 2024-01-01 to provide prior p
 FinMind requests have a 20-second timeout and at most three attempts. Every HTTP attempt, including retries, is counted against a local rolling-hour ceiling of **500 requests**. The count is stored in an ignored local budget file under `data/`; no token is stored there. At the ceiling, requests stop and already obtained CSV records remain saved. The local ceiling does not read FinMind's account-wide quota, so other clients using the same token may consume additional allowance.
 
 FinMind data and derived CSVs remain local under `data/revenue/` and `data/financials/`; these directories are ignored by Git. FinMind's data terms do not permit redistributing raw data, so the repository contains the code to regenerate the CSVs rather than the fetched records. Source: [FinMind API and usage reference](https://finmind.github.io/llms-full.txt).
+
+## Phase 4: local factors and QGM
+
+Run `python src/main.py factors` to read existing stock, price, revenue, and financial CSVs. This command makes **no network or FinMind API requests**. It writes one row per stock to `data/factors/latest.csv` and the top 200 ranked rows to `data/results/latest.csv` and `data/results/latest.json`. All three outputs remain local and are ignored by Git because they include FinMind-derived values.
+
+Price windows count **trading rows**, not calendar days. `ma20`, `ma60`, `ma120`, and average volume use the latest 20/60/120 rows; `return_20d`, `return_60d`, and `return_120d` compare the latest close with the close 20/60/120 trading rows earlier. Returns and distance from the 60-day high are percentage numbers. A missing window stays empty. Revenue's three-month average and positive count require three consecutive months with YoY values. `eps_ttm` and the four-quarter EPS counts require four consecutive quarters with the relevant values. TTM sums FinMind **single-quarter** EPS; due to share-count adjustments it may differ from a published cumulative EPS.
+
+The first-version QGM schedule totals 100 points. Missing score inputs receive zero points while remaining empty in the factor columns. `data_completeness` is the percentage of the 21 score inputs with usable numbers; it is not a score multiplier. Ties sort by Growth, Quality, Momentum, then stock ID.
+
+| Category | Factor | Points |
+| --- | --- | --- |
+| Quality (40) | Quarterly approximate ROE | ≥20: 10; ≥15: 8; ≥10: 6; ≥5: 3 |
+| | Single-quarter gross margin | ≥40: 6; ≥25: 4; ≥15: 2 |
+| | Single-quarter operating margin | ≥20: 6; ≥10: 4; ≥5: 2 |
+| | Debt ratio | ≤30: 6; ≤45: 4; ≤60: 2 |
+| | Single-quarter operating cash flow and FCF | 3 each when positive |
+| | Positive EPS in last four quarters | 4 quarters: 6; 3: 4; 2: 2 |
+| Growth (35) | Latest monthly revenue YoY | ≥30: 10; ≥20: 8; ≥10: 6; ≥0: 3 |
+| | Three-month revenue YoY average | ≥20: 5; ≥10: 4; ≥0: 2 |
+| | Single-quarter EPS YoY | ≥50: 10; ≥30: 8; ≥15: 6; ≥0: 3 |
+| | Single-quarter gross-margin YoY change, percentage points | ≥3: 5; ≥1: 4; ≥0: 2 |
+| | Single-quarter operating-margin YoY change, percentage points | ≥3: 5; ≥1: 4; ≥0: 2 |
+| Momentum (25) | Close above MA20, MA60, MA120 | 3, 4, 4 respectively |
+| | 20-trading-day return | ≥10: 4; ≥5: 3; ≥0: 1 |
+| | 60-trading-day return | ≥20: 5; ≥10: 4; ≥0: 2 |
+| | Average volume 20 > average volume 60 | 2 |
+| | Distance to 60-day high | ≥−2: 3; ≥−5: 2; ≥−10: 1 |
+
+All thresholds are initial parameters for later backtesting. No valuation, institutional-investor, or forecast factor is included in this phase.

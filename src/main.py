@@ -9,6 +9,7 @@ import numpy
 import pandas
 import requests
 
+from calculate_factors import calculate_factors, save_factors
 from config import FINMIND_API_LIMIT, STOCKS_PATH, make_session, today_in_taiwan
 from fetch_market import fetch_stocks, save_stocks
 from finmind_client import ApiBudget, BudgetReached, FinMindClient, token_from_environment
@@ -95,7 +96,7 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "fundamentals"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "fundamentals", "factors"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--stocks", help="Comma-separated stock IDs for fundamentals")
     parser.add_argument("--limit", type=int, help="First N stocks from the local stock list")
@@ -104,6 +105,14 @@ def main() -> None:
         check_environment()
         return
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+    if args.mode == "factors":
+        frame = calculate_factors()
+        factors_path, results_csv, results_json = save_factors(frame)
+        logging.info("Factor records: %s", len(frame))
+        logging.info("Complete QGM records: %s", int((frame["data_completeness"] == 100).sum()))
+        logging.info("Saved factors: %s", factors_path)
+        logging.info("Saved results: %s, %s", results_csv, results_json)
+        return
     if args.mode == "fundamentals":
         if args.limit is not None and args.limit <= 0:
             parser.error("--limit must be positive")
