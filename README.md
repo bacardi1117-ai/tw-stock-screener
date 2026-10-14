@@ -91,3 +91,16 @@ The history command uses TWSE `https://www.twse.com.tw/rwd/zh/afterTrading/MI_IN
 Each HTTP attempt is counted and followed by at least one second of rest. Transient 403, 5xx, timeout, and connection errors back off by 2, 5, then 10 seconds, with at most three retries; 429 immediately stops that source for the run. Repeated failure also stops that source while keeping successfully saved dates. Existing market dates and recorded past no-data dates are skipped on rerun. A single command is capped at 36 calendar days, so longer history requires an explicit later run. Yearly price files are merged by `date + stock_id` and replaced atomically after writing a temporary file. A temporarily busy CSV gets the same delayed write retries without making extra HTTP requests.
 
 The Stage 1 window contains 20 trading days in the local data. That is enough for MA20 and 20-day average volume; `return_20d` needs the latest close **plus** a close 20 trading days earlier (21 observations) and therefore remains empty. The command does not fetch earlier dates automatically.
+
+### Stage 2: extend to roughly three months
+
+Run the bounded history command in three non-overlapping chunks, then recalculate factors:
+
+```powershell
+python src/main.py market-history --start 2026-07-01 --end 2026-07-31
+python src/main.py market-history --start 2026-08-01 --end 2026-08-31
+python src/main.py market-history --start 2026-09-01 --end 2026-09-13
+python src/main.py factors
+```
+
+The updater skips dates already present in the yearly CSV and cached past no-data dates. Repeating these three commands after a successful run makes zero HTTP requests. This Stage 2 snapshot spans 2026-07-01 through 2026-10-14 and has 72 trading days for 2330, 2317, and 2454; it supports MA60 and 20/60-trading-day returns. MA120 still requires more history and is left empty. Do not automatically extend the range when a factor lacks enough observations.
