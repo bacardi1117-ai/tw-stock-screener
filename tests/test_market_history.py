@@ -84,6 +84,15 @@ class MarketHistoryTests(unittest.TestCase):
         self.assertEqual(counts["TWSE"], 2)
         self.assertEqual(sleeps, [1.0, 2, 1.0])
 
+    def test_chunked_connection_error_retries_with_backoff(self):
+        sleeps = []
+        session = Session([requests.exceptions.ChunkedEncodingError("truncated"), 200])
+        counts = {"TWSE": 0, "TPEx": 0}
+        rows = _request(session, "TWSE", date(2026, 9, 14), counts, sleeps.append)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(counts["TWSE"], 2)
+        self.assertEqual(sleeps, [1.0, 2, 1.0])
+
     def test_yearly_csv_merge_is_incremental_and_preserves_prior_file_on_failure(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as name:
             folder = Path(name)

@@ -76,7 +76,8 @@ def _request(session, market, day, counts, sleep=time.sleep):
                 return _table_rows(payload, fields, day, market)
         except SourceStopped:
             raise
-        except (requests.Timeout, requests.ConnectionError) as exc:
+        except (requests.Timeout, requests.ConnectionError,
+                requests.exceptions.ChunkedEncodingError) as exc:
             if attempt == HISTORY_MAX_RETRIES:
                 raise SourceStopped(type(exc).__name__) from exc
         except (requests.RequestException, ValueError, TypeError, KeyError) as exc:
