@@ -931,8 +931,8 @@
   "completed_count": 876,
   "remaining_count": 23,
   "last_run_api_calls": 92,
-  "total_api_calls_estimated": 4820,
-  "updated_at": "2026-10-16T04:35:27+08:00",
+  "total_api_calls_estimated": 4912,
+  "updated_at": "2026-10-16T05:29:16+08:00",
   "last_run": {
     "api_calls": 92,
     "attempted_stocks": 23,
