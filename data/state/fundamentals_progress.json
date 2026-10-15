@@ -927,19 +927,19 @@
     "7825": "unsupported_financial_format",
     "7842": "unsupported_financial_format"
   },
-  "last_attempted_stock_id": "9958",
+  "last_attempted_stock_id": "7842",
   "completed_count": 876,
   "remaining_count": 23,
-  "last_run_api_calls": 196,
-  "total_api_calls_estimated": 4636,
-  "updated_at": "2026-10-16T02:31:02+08:00",
+  "last_run_api_calls": 92,
+  "total_api_calls_estimated": 4728,
+  "updated_at": "2026-10-16T03:33:02+08:00",
   "last_run": {
-    "api_calls": 196,
-    "attempted_stocks": 49,
-    "completed_stocks": 26,
+    "api_calls": 92,
+    "attempted_stocks": 23,
+    "completed_stocks": 0,
     "failed_stocks": 23,
     "average_api_calls_per_attempted_stock": 4.0,
-    "average_api_calls_per_completed_stock": 4.0
+    "average_api_calls_per_completed_stock": null
   },
   "eligible_count": 899,
   "failed_count": 23,
