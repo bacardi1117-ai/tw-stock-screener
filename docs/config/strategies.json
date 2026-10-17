@@ -588,13 +588,6 @@
         "op": "lte",
         "value": 80
       },
-      "eps_growth": {
-        "label": "EPS 成長至少 (%)",
-        "enabled": true,
-        "field": "eps_yoy",
-        "op": "gte",
-        "value": 0
-      },
       "free_cash_flow_positive": {
         "label": "自由現金流為正",
         "enabled": true,

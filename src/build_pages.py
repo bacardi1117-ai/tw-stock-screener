@@ -26,7 +26,9 @@ PAGE_FIELDS = (
     "stock_dividend_latest", "total_dividend_latest", "dividend_years_5",
     "dividend_consecutive_years", "payout_ratio", "dividend_growth_3y_cagr",
     "dividend_growth_3y", "dividend_min_change_3y_pct", "dividend_non_decreasing_3y",
-    "strategy_data_completeness",
+    "strategy_a_data_completeness", "strategy_b_data_completeness",
+    "strategy_c_data_completeness", "strategy_d_data_completeness",
+    "strategy_e_data_completeness",
     "return_60d_vs_market", "market_return_60d_equal_weight",
     "data_completeness", "score_quality", "score_growth", "score_momentum", "score_total",
 )

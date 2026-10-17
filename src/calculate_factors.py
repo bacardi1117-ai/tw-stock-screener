@@ -10,7 +10,7 @@ from config import (DIVIDENDS_DIR, FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT,
                     today_in_taiwan)
 from fetch_market import is_financial_industry
 from scoring import score_factors
-from strategy_engine import load_config
+from strategy_engine import load_config, strategy_data_completeness as calculate_strategy_completeness
 from update_dividends import dividend_metrics
 
 
@@ -153,7 +153,8 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         dividend_frame = _read_years(dividends_dir)
     dividends = _groups(dividend_frame, ["year"], ["stock_id", "year"])
     updated_at = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
-    dividend_decline_tolerance = abs(load_config()["strategy_e"]["conditions"]["dividend_non_decreasing"]["value"])
+    strategy_config = load_config()
+    dividend_decline_tolerance = abs(strategy_config["strategy_e"]["conditions"]["dividend_non_decreasing"]["value"])
     records = []
     for stock in stocks.drop_duplicates("stock_id").itertuples(index=False):
         sid = str(stock.stock_id)
@@ -197,10 +198,9 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         row.update(cash_dividend=row["cash_dividend_latest"],
                    stock_dividend=row["stock_dividend_latest"],
                    total_dividend=row["total_dividend_latest"])
-        strategy_data_fields = ("per", "pbr", "dividend_yield", "cash_dividend_latest",
-                                "payout_ratio", "dividend_years_5", "dividend_growth_3y",
-                                "dividend_non_decreasing_3y")
-        row["strategy_data_completeness"] = sum(pd.notna(row.get(field)) for field in strategy_data_fields) / len(strategy_data_fields) * 100
+        for strategy_name in ("strategy_a", "strategy_b", "strategy_c", "strategy_d", "strategy_e"):
+            row[f"{strategy_name}_data_completeness"] = calculate_strategy_completeness(
+                row, strategy_config[strategy_name])
         # Short names in the Top 200 output always mean the latest single quarter.
         row.update(roe=row["roe_quarterly_approx"], gross_margin=row["gross_margin_single"],
                    operating_margin=row["operating_margin_single"],

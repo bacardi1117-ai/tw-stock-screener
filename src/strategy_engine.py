@@ -101,6 +101,26 @@ def evaluate_strategy(row, strategy):
     return "fail" if failed else "pass"
 
 
+def strategy_required_fields(strategy):
+    """Return unique numeric inputs used by enabled conditions and availability gates."""
+    fields = list(strategy.get("availability_fields", []))
+    for condition in strategy.get("conditions", {}).values():
+        if not condition.get("enabled", True):
+            continue
+        fields.append(condition["field"])
+        if "right" in condition:
+            fields.append(condition["right"])
+    return tuple(dict.fromkeys(fields))
+
+
+def strategy_data_completeness(row, strategy):
+    """Measure only the usable inputs required by this one strategy."""
+    fields = strategy_required_fields(strategy)
+    if not fields:
+        return 100.0
+    return sum(number(row.get(field)) is not None for field in fields) / len(fields) * 100
+
+
 def evaluate_all(row, config=None):
     config = config or load_config()
     output = {}

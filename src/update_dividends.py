@@ -28,6 +28,7 @@ def _sum_present(values):
 
 
 def _year(value):
+    # Source input is the official 股利年度 (attribution year), not the payment date.
     raw = str(value or "").strip()
     if not raw:
         return None
@@ -222,9 +223,11 @@ def dividend_metrics(group, latest_dividend_year=None, tolerance_pct=5):
     frame = frame.dropna(subset=["year"]).sort_values("year").drop_duplicates("year", keep="last")
     last = int(latest_dividend_year or frame.year.max())
     recent = frame.loc[frame.year.between(last - 4, last)].set_index("year")
-    result["dividend_history_years_available"] = int(recent.index.nunique())
+    result["dividend_history_years_available"] = int(recent.cash_dividend.notna().sum())
     positive = {int(year) for year, value in recent.cash_dividend.items() if pd.notna(value) and value > 0}
-    full_window = set(recent.index.astype(int)) == set(range(last - 4, last + 1))
+    required_years = set(range(last - 4, last + 1))
+    full_window = (set(recent.index.astype(int)) == required_years and
+                   recent.reindex(sorted(required_years)).cash_dividend.notna().all())
     if full_window:
         result["dividend_years"] = len(positive)
         result["dividend_years_5"] = len(positive)

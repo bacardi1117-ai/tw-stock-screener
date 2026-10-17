@@ -16,7 +16,9 @@ from update_dividends import (dividend_metrics, parse_tpex as parse_tpex_dividen
                               _merge_rows, parse_twse as parse_twse_dividends,
                               save_dividends)
 from update_valuation import parse_tpex as parse_tpex_valuation, parse_twse
-from strategy_engine import evaluate_strategy, load_config
+from strategy_engine import (evaluate_strategy, load_config, strategy_data_completeness,
+                             strategy_required_fields)
+from scoring import score_factors
 import update_valuation
 
 
@@ -94,6 +96,58 @@ class Phase5BTests(unittest.TestCase):
         result = dividend_metrics(pd.DataFrame())
         self.assertTrue(math.isnan(result["dividend_years"]))
         self.assertTrue(math.isnan(result["dividend_growth_3y_cagr"]))
+
+    def test_zero_dividend_is_known_and_missing_cash_is_not_zero(self):
+        zero_frame = pd.DataFrame({"year": [2021, 2022, 2023, 2024, 2025],
+                                   "cash_dividend": [2, 0, 3, 4, 5],
+                                   "payout_ratio": [10, 0, 12, 13, 14]})
+        zero_result = dividend_metrics(zero_frame, 2025)
+        self.assertEqual(zero_result["dividend_history_years_available"], 5)
+        self.assertEqual(zero_result["dividend_years_5"], 4)
+        missing_frame = zero_frame.copy()
+        missing_frame.loc[missing_frame.year == 2022, "cash_dividend"] = float("nan")
+        missing_result = dividend_metrics(missing_frame, 2025)
+        self.assertEqual(missing_result["dividend_history_years_available"], 4)
+        self.assertTrue(math.isnan(missing_result["dividend_years_5"]))
+
+    def test_five_year_coverage_requires_all_five_non_null_annual_values(self):
+        frame = pd.DataFrame({"year": [2021, 2022, 2023, 2024, 2025],
+                              "cash_dividend": [1, 0, 2, 3, 4],
+                              "payout_ratio": [10, 0, 20, 30, 40]})
+        self.assertEqual(dividend_metrics(frame, 2025)["dividend_years_5"], 4)
+        frame.loc[frame.year == 2023, "cash_dividend"] = float("nan")
+        self.assertTrue(math.isnan(dividend_metrics(frame, 2025)["dividend_years_5"]))
+
+    def test_strategy_c_completeness_ignores_dividend_inputs_and_e_requires_them(self):
+        config = load_config()
+        c_fields = {"roe": 20, "eps_positive_years": 3,
+                    "operating_cash_flow_positive_years": 3, "debt_ratio": 30,
+                    "per": 15, "pbr": 2}
+        self.assertEqual(strategy_data_completeness(c_fields, config["strategy_c"]), 100)
+        self.assertEqual(evaluate_strategy(c_fields, config["strategy_c"]), "pass")
+        e_fields = set(strategy_required_fields(config["strategy_e"]))
+        self.assertEqual(len(e_fields), 6)
+        self.assertTrue({"dividend_years_5", "dividend_yield", "payout_ratio",
+                         "dividend_growth_3y", "dividend_min_change_3y_pct",
+                         "free_cash_flow_single"}.issubset(e_fields))
+        self.assertNotIn("eps_yoy", e_fields)
+        self.assertEqual(strategy_data_completeness(c_fields, config["strategy_e"]), 0)
+        self.assertEqual(evaluate_strategy(c_fields, config["strategy_e"]), "missing_data")
+
+    def test_missing_or_zero_dividend_does_not_change_qgm(self):
+        base = {"roe_quarterly_approx": 15, "gross_margin_single": 30,
+                "operating_margin_single": 10, "debt_ratio": 40,
+                "operating_cash_flow_single": 100, "free_cash_flow_single": 50,
+                "eps_positive_quarters_4": 4, "revenue_yoy": 10,
+                "revenue_yoy_3m_avg": 5, "eps_yoy": 10,
+                "gross_margin_yoy": 2, "operating_margin_yoy": 1,
+                "close": 100, "ma20": 95, "ma60": 90, "ma120": 80,
+                "return_20d": 5, "return_60d": 10, "avg_volume_20": 200,
+                "avg_volume_60": 100, "distance_to_60d_high": -2}
+        missing = score_factors(base)
+        known_zero = score_factors(dict(base, dividend_years_5=0, dividend_yield=0,
+                                        payout_ratio=0, dividend_growth_3y=0))
+        self.assertEqual(missing, known_zero)
 
     def test_strategy_c_uses_official_per_pbr_and_keeps_missing_per_missing(self):
         strategy = load_config()["strategy_c"]
