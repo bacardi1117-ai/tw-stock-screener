@@ -104,3 +104,13 @@ python src/main.py factors
 ```
 
 The updater skips dates already present in the yearly CSV and cached past no-data dates. Repeating these three commands after a successful run makes zero HTTP requests. This Stage 2 snapshot spans 2026-07-01 through 2026-10-14 and has 72 trading days for 2330, 2317, and 2454; it supports MA60 and 20/60-trading-day returns. MA120 still requires more history and is left empty. Do not automatically extend the range when a factor lacks enough observations.
+
+## Phase 5A: configurable strategies and GitHub Pages
+
+`config/strategies.json` is the shared source of default selection rules. It contains the data universe, QGM weights and every tier threshold, homepage score filters, and individually enabled conditions for strategies A–E. `src/strategy_engine.py` and `docs/engine.mjs` interpret the same JSON structure. Missing numeric inputs result in `missing_data`; missing institutional or dividend source fields result in `unavailable`. A strategy passes only when every enabled condition has data and passes.
+
+`python src/main.py factors` recalculates factors from existing local files and now also builds `docs/data/latest.json` and copies the strategy defaults to `docs/config/strategies.json`. `python src/main.py pages` rebuilds only the Pages files from an existing `data/factors/latest.csv`. Neither command calls FinMind, TWSE, or TPEx. The Pages JSON contains a selected set of factor values and statuses for all listed stocks; local revenue and financial statement rows are not copied into it. Configure GitHub Pages to publish `/docs` from `main` if it is not already set up.
+
+The browser calculates QGM and all strategy statuses again when a user changes settings. Settings are kept in that browser's `localStorage`; they are never written back to GitHub. Import and export move JSON files only between the browser and the user's computer. Changing the price floor below the downloaded fundamentals universe or including financials triggers a coverage warning. The current local history supports PER from price and TTM EPS, but PBR and three complete financial years are unavailable for strategy C. The 60-day market comparison in strategy B uses the equal-weight average of available local stock returns as a disclosed market proxy. Strategies D and E remain unavailable until institutional and dividend data are supplied.
+
+Run `python -m unittest discover -s tests -p 'test_*.py'` and `node --test tests/test_frontend.mjs` to check both engines, their shared fixture, missing-value behavior, and browser-state helpers. The CI workflow runs both suites.

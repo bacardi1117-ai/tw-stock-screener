@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 from config import FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT, REVENUE_DIR, STOCKS_PATH, TAIWAN_TIME
+from fetch_market import is_financial_industry
 from scoring import score_factors
 
 
@@ -18,7 +19,8 @@ FINANCIAL_FIELDS = ("eps_single", "eps_qoq", "eps_yoy", "gross_margin_single",
                     "gross_margin_qoq", "gross_margin_yoy", "operating_margin_single",
                     "operating_margin_qoq", "operating_margin_yoy", "roe_quarterly_approx",
                     "debt_ratio", "operating_cash_flow_single", "free_cash_flow_single",
-                    "eps_ttm", "eps_positive_quarters_4", "eps_growth_positive_count_4")
+                    "eps_ttm", "eps_positive_quarters_4", "eps_growth_positive_count_4",
+                    "eps_positive_years", "operating_cash_flow_positive_years")
 TOP_FIELDS = ("rank", "stock_id", "stock_name", "market", "close", "score_total",
               "score_quality", "score_growth", "score_momentum", "data_completeness",
               "eps_ttm", "eps_yoy", "revenue_yoy", "revenue_yoy_3m_avg", "roe",
@@ -108,6 +110,20 @@ def financial_factors(group):
                 result["eps_positive_quarters_4"] = int((eps > 0).sum())
             if growth.notna().all():
                 result["eps_growth_positive_count_4"] = int((growth > 0).sum())
+    full_years = []
+    for year, rows in group.groupby("year"):
+        if set(pd.to_numeric(rows["quarter"], errors="coerce")) == {1, 2, 3, 4}:
+            full_years.append((int(year), rows.sort_values("quarter")))
+    full_years.sort(key=lambda item: item[0])
+    if len(full_years) >= 3:
+        recent_years = full_years[-3:]
+        if [year for year, _ in recent_years] == list(range(recent_years[0][0], recent_years[0][0] + 3)):
+            eps_years = [pd.to_numeric(rows["eps_single"], errors="coerce") for _, rows in recent_years]
+            ocf_years = [pd.to_numeric(rows["operating_cash_flow_single"], errors="coerce") for _, rows in recent_years]
+            if all(values.notna().all() for values in eps_years):
+                result["eps_positive_years"] = sum(values.sum() > 0 for values in eps_years)
+            if all(values.notna().all() for values in ocf_years):
+                result["operating_cash_flow_positive_years"] = sum(values.sum() > 0 for values in ocf_years)
     return result
 
 
@@ -127,6 +143,8 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         price_group = prices.get(sid)
         latest = price_group.iloc[-1] if price_group is not None else None
         row = {"stock_id": sid, "stock_name": stock.stock_name, "market": stock.market,
+               "industry": getattr(stock, "industry", pd.NA),
+               "is_financial": is_financial_industry(getattr(stock, "industry", "")),
                "latest_date": latest["date"] if latest is not None else pd.NA,
                "close": _value(latest, "close") if latest is not None else float("nan"),
                "updated_at": updated_at}
@@ -138,8 +156,15 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
                    operating_margin=row["operating_margin_single"],
                    free_cash_flow=row["free_cash_flow_single"])
         row.update(score_factors(row))
+        row["per"] = (row["close"] / row["eps_ttm"]
+                      if pd.notna(row["close"]) and pd.notna(row["eps_ttm"]) and row["eps_ttm"] > 0
+                      else float("nan"))
+        row["pbr"] = float("nan")  # Book value per share is not in the local source files.
         records.append(row)
     result = pd.DataFrame(records)
+    market_return_60d = pd.to_numeric(result["return_60d"], errors="coerce").mean()
+    result["market_return_60d_equal_weight"] = market_return_60d
+    result["return_60d_vs_market"] = result["return_60d"] - market_return_60d
     result = result.sort_values(["score_total", "score_growth", "score_quality",
                                  "score_momentum", "stock_id"],
                                 ascending=[False, False, False, False, True]).reset_index(drop=True)

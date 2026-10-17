@@ -10,6 +10,7 @@ import pandas
 import requests
 
 from calculate_factors import calculate_factors, save_factors
+from build_pages import build_pages
 from config import (
     FINMIND_API_LIMIT,
     FUNDAMENTALS_API_BUDGET_PER_RUN,
@@ -107,7 +108,7 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "factors"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "factors", "pages"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
     parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
@@ -137,6 +138,12 @@ def main() -> None:
         logging.info("Complete QGM records: %s", int((frame["data_completeness"] == 100).sum()))
         logging.info("Saved factors: %s", factors_path)
         logging.info("Saved results: %s, %s", results_csv, results_json)
+        pages_data, pages_config, count = build_pages()
+        logging.info("Saved Pages data: %s (%s stocks), %s", pages_data, count, pages_config)
+        return
+    if args.mode == "pages":
+        pages_data, pages_config, count = build_pages()
+        logging.info("Saved Pages data: %s (%s stocks), %s", pages_data, count, pages_config)
         return
     if args.mode == "fundamentals":
         if args.limit is not None and args.limit <= 0:

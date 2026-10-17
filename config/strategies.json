@@ -1,0 +1,593 @@
+{
+  "schema_version": 1,
+  "universe": {
+    "label": "資料母體設定",
+    "min_price": 50,
+    "exclude_financials": true,
+    "downloaded_min_price": 50,
+    "downloaded_exclude_financials": true,
+    "note": "降低最低股價或納入金融股時，未下載完整基本面，需重新執行資料更新。"
+  },
+  "qgm": {
+    "quality_weight": 40,
+    "growth_weight": 35,
+    "momentum_weight": 25,
+    "quality": [
+      {
+        "id": "roe",
+        "field": "roe_quarterly_approx",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 20,
+            "points": 10
+          },
+          {
+            "value": 15,
+            "points": 8
+          },
+          {
+            "value": 10,
+            "points": 6
+          },
+          {
+            "value": 5,
+            "points": 3
+          }
+        ]
+      },
+      {
+        "id": "gross_margin",
+        "field": "gross_margin_single",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 40,
+            "points": 6
+          },
+          {
+            "value": 25,
+            "points": 4
+          },
+          {
+            "value": 15,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "operating_margin",
+        "field": "operating_margin_single",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 20,
+            "points": 6
+          },
+          {
+            "value": 10,
+            "points": 4
+          },
+          {
+            "value": 5,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "debt",
+        "field": "debt_ratio",
+        "kind": "tiers",
+        "direction": "max",
+        "tiers": [
+          {
+            "value": 30,
+            "points": 6
+          },
+          {
+            "value": 45,
+            "points": 4
+          },
+          {
+            "value": 60,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "ocf",
+        "field": "operating_cash_flow_single",
+        "kind": "compare",
+        "op": "gt",
+        "value": 0,
+        "points": 3
+      },
+      {
+        "id": "fcf",
+        "field": "free_cash_flow_single",
+        "kind": "compare",
+        "op": "gt",
+        "value": 0,
+        "points": 3
+      },
+      {
+        "id": "eps_stability",
+        "field": "eps_positive_quarters_4",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 4,
+            "points": 6
+          },
+          {
+            "value": 3,
+            "points": 4
+          },
+          {
+            "value": 2,
+            "points": 2
+          }
+        ]
+      }
+    ],
+    "growth": [
+      {
+        "id": "revenue_yoy",
+        "field": "revenue_yoy",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 30,
+            "points": 10
+          },
+          {
+            "value": 20,
+            "points": 8
+          },
+          {
+            "value": 10,
+            "points": 6
+          },
+          {
+            "value": 0,
+            "points": 3
+          }
+        ]
+      },
+      {
+        "id": "revenue_3m",
+        "field": "revenue_yoy_3m_avg",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 20,
+            "points": 5
+          },
+          {
+            "value": 10,
+            "points": 4
+          },
+          {
+            "value": 0,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "eps_yoy",
+        "field": "eps_yoy",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 50,
+            "points": 10
+          },
+          {
+            "value": 30,
+            "points": 8
+          },
+          {
+            "value": 15,
+            "points": 6
+          },
+          {
+            "value": 0,
+            "points": 3
+          }
+        ]
+      },
+      {
+        "id": "gross_margin_yoy",
+        "field": "gross_margin_yoy",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 3,
+            "points": 5
+          },
+          {
+            "value": 1,
+            "points": 4
+          },
+          {
+            "value": 0,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "operating_margin_yoy",
+        "field": "operating_margin_yoy",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 3,
+            "points": 5
+          },
+          {
+            "value": 1,
+            "points": 4
+          },
+          {
+            "value": 0,
+            "points": 2
+          }
+        ]
+      }
+    ],
+    "momentum": [
+      {
+        "id": "above_ma20",
+        "left": "close",
+        "right": "ma20",
+        "kind": "fields",
+        "op": "gt",
+        "points": 3
+      },
+      {
+        "id": "above_ma60",
+        "left": "close",
+        "right": "ma60",
+        "kind": "fields",
+        "op": "gt",
+        "points": 4
+      },
+      {
+        "id": "above_ma120",
+        "left": "close",
+        "right": "ma120",
+        "kind": "fields",
+        "op": "gt",
+        "points": 4
+      },
+      {
+        "id": "return_20d",
+        "field": "return_20d",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 10,
+            "points": 4
+          },
+          {
+            "value": 5,
+            "points": 3
+          },
+          {
+            "value": 0,
+            "points": 1
+          }
+        ]
+      },
+      {
+        "id": "return_60d",
+        "field": "return_60d",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": 20,
+            "points": 5
+          },
+          {
+            "value": 10,
+            "points": 4
+          },
+          {
+            "value": 0,
+            "points": 2
+          }
+        ]
+      },
+      {
+        "id": "volume_20_gt_60",
+        "left": "avg_volume_20",
+        "right": "avg_volume_60",
+        "kind": "fields",
+        "op": "gt",
+        "points": 2
+      },
+      {
+        "id": "distance_high",
+        "field": "distance_to_60d_high",
+        "kind": "tiers",
+        "direction": "min",
+        "tiers": [
+          {
+            "value": -2,
+            "points": 3
+          },
+          {
+            "value": -5,
+            "points": 2
+          },
+          {
+            "value": -10,
+            "points": 1
+          }
+        ]
+      }
+    ]
+  },
+  "filters": {
+    "score_total_min": 0,
+    "score_quality_min": 0,
+    "score_growth_min": 0,
+    "score_momentum_min": 0,
+    "data_completeness_min": 80
+  },
+  "strategy_a": {
+    "label": "低估成長股",
+    "enabled": true,
+    "conditions": {
+      "revenue_yoy": {
+        "label": "營收 YoY 至少 (%)",
+        "enabled": true,
+        "field": "revenue_yoy",
+        "op": "gte",
+        "value": 10
+      },
+      "eps_yoy": {
+        "label": "EPS YoY 至少 (%)",
+        "enabled": true,
+        "field": "eps_yoy",
+        "op": "gte",
+        "value": 10
+      },
+      "roe": {
+        "label": "ROE 至少 (%)",
+        "enabled": true,
+        "field": "roe",
+        "op": "gte",
+        "value": 10
+      },
+      "per": {
+        "label": "PER 不高於",
+        "enabled": true,
+        "field": "per",
+        "op": "lte",
+        "value": 18
+      },
+      "operating_cash_flow_positive": {
+        "label": "營業現金流為正",
+        "enabled": true,
+        "field": "operating_cash_flow_single",
+        "op": "gt",
+        "value": 0
+      }
+    }
+  },
+  "strategy_b": {
+    "label": "強勢成長股",
+    "enabled": true,
+    "conditions": {
+      "latest_revenue_yoy": {
+        "label": "最新營收 YoY 至少 (%)",
+        "enabled": true,
+        "field": "revenue_yoy",
+        "op": "gte",
+        "value": 20
+      },
+      "revenue_yoy_3m_avg": {
+        "label": "三月平均營收 YoY 至少 (%)",
+        "enabled": true,
+        "field": "revenue_yoy_3m_avg",
+        "op": "gte",
+        "value": 15
+      },
+      "eps_yoy": {
+        "label": "EPS YoY 至少 (%)",
+        "enabled": true,
+        "field": "eps_yoy",
+        "op": "gte",
+        "value": 20
+      },
+      "price_above_ma60": {
+        "label": "股價高於 MA60",
+        "enabled": true,
+        "field": "close",
+        "op": "gt",
+        "right": "ma60"
+      },
+      "ma60_above_ma120": {
+        "label": "MA60 高於 MA120",
+        "enabled": true,
+        "field": "ma60",
+        "op": "gt",
+        "right": "ma120"
+      },
+      "return_60d_vs_market": {
+        "label": "60 日報酬高於本地等權市場 (%)",
+        "enabled": true,
+        "field": "return_60d_vs_market",
+        "op": "gt",
+        "value": 0
+      }
+    }
+  },
+  "strategy_c": {
+    "label": "高品質便宜股",
+    "enabled": true,
+    "conditions": {
+      "roe": {
+        "label": "ROE 至少 (%)",
+        "enabled": true,
+        "field": "roe",
+        "op": "gte",
+        "value": 15
+      },
+      "eps_positive_years": {
+        "label": "EPS 正數完整年度至少",
+        "enabled": true,
+        "field": "eps_positive_years",
+        "op": "gte",
+        "value": 3
+      },
+      "operating_cash_flow_positive_years": {
+        "label": "營業現金流正數完整年度至少",
+        "enabled": true,
+        "field": "operating_cash_flow_positive_years",
+        "op": "gte",
+        "value": 3
+      },
+      "debt_ratio": {
+        "label": "負債比不高於 (%)",
+        "enabled": true,
+        "field": "debt_ratio",
+        "op": "lte",
+        "value": 50
+      },
+      "per": {
+        "label": "PER 不高於",
+        "enabled": true,
+        "field": "per",
+        "op": "lte",
+        "value": 20
+      },
+      "pbr": {
+        "label": "PBR 不高於",
+        "enabled": true,
+        "field": "pbr",
+        "op": "lte",
+        "value": 3
+      }
+    }
+  },
+  "strategy_d": {
+    "label": "法人＋動能",
+    "enabled": true,
+    "availability_fields": [
+      "foreign_plus_trust_20d",
+      "trust_10d"
+    ],
+    "unavailable_message": "法人資料尚未完成",
+    "conditions": {
+      "foreign_plus_trust_20d": {
+        "label": "外資＋投信 20 日至少",
+        "enabled": true,
+        "field": "foreign_plus_trust_20d",
+        "op": "gte",
+        "value": 0
+      },
+      "trust_10d": {
+        "label": "投信 10 日至少",
+        "enabled": true,
+        "field": "trust_10d",
+        "op": "gte",
+        "value": 0
+      },
+      "price_above_ma20": {
+        "label": "股價高於 MA20",
+        "enabled": true,
+        "field": "close",
+        "op": "gt",
+        "right": "ma20"
+      },
+      "price_above_ma60": {
+        "label": "股價高於 MA60",
+        "enabled": true,
+        "field": "close",
+        "op": "gt",
+        "right": "ma60"
+      },
+      "price_above_ma120": {
+        "label": "股價高於 MA120",
+        "enabled": true,
+        "field": "close",
+        "op": "gt",
+        "right": "ma120"
+      },
+      "avg_volume_20_gt_60": {
+        "label": "20 日均量高於 60 日",
+        "enabled": true,
+        "field": "avg_volume_20",
+        "op": "gt",
+        "right": "avg_volume_60"
+      },
+      "distance_to_60d_high": {
+        "label": "距 60 日高點至少 (%)",
+        "enabled": true,
+        "field": "distance_to_60d_high",
+        "op": "gte",
+        "value": -5
+      }
+    }
+  },
+  "strategy_e": {
+    "label": "股息成長",
+    "enabled": true,
+    "availability_fields": [
+      "dividend_years",
+      "dividend_yield",
+      "payout_ratio"
+    ],
+    "unavailable_message": "股利資料尚未完成",
+    "conditions": {
+      "dividend_years": {
+        "label": "連續配息年度至少",
+        "enabled": true,
+        "field": "dividend_years",
+        "op": "gte",
+        "value": 5
+      },
+      "dividend_yield": {
+        "label": "殖利率至少 (%)",
+        "enabled": true,
+        "field": "dividend_yield",
+        "op": "gte",
+        "value": 3
+      },
+      "payout_ratio": {
+        "label": "配息率不高於 (%)",
+        "enabled": true,
+        "field": "payout_ratio",
+        "op": "lte",
+        "value": 80
+      },
+      "eps_growth": {
+        "label": "EPS 成長至少 (%)",
+        "enabled": true,
+        "field": "eps_yoy",
+        "op": "gte",
+        "value": 0
+      },
+      "free_cash_flow_positive": {
+        "label": "自由現金流為正",
+        "enabled": true,
+        "field": "free_cash_flow_single",
+        "op": "gt",
+        "value": 0
+      }
+    }
+  }
+}
