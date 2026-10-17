@@ -5,9 +5,12 @@ from pathlib import Path
 
 import pandas as pd
 
-from config import FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT, REVENUE_DIR, STOCKS_PATH, TAIWAN_TIME
+from config import (DIVIDENDS_DIR, FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT,
+                    REVENUE_DIR, STOCKS_PATH, TAIWAN_TIME, VALUATION_DIR,
+                    today_in_taiwan)
 from fetch_market import is_financial_industry
 from scoring import score_factors
+from update_dividends import dividend_metrics
 
 
 PRICE_FIELDS = ("ma20", "ma60", "ma120", "avg_volume_20", "avg_volume_60",
@@ -26,7 +29,9 @@ TOP_FIELDS = ("rank", "stock_id", "stock_name", "market", "close", "score_total"
               "eps_ttm", "eps_yoy", "revenue_yoy", "revenue_yoy_3m_avg", "roe",
               "gross_margin", "gross_margin_yoy", "operating_margin",
               "operating_margin_yoy", "debt_ratio", "free_cash_flow", "ma20", "ma60",
-              "ma120", "return_20d", "return_60d", "distance_to_60d_high", "updated_at")
+              "ma120", "return_20d", "return_60d", "distance_to_60d_high", "per", "pbr",
+              "dividend_yield", "dividend_years", "dividend_history_years_available",
+              "payout_ratio", "updated_at")
 
 
 def _read_years(directory):
@@ -128,7 +133,8 @@ def financial_factors(group):
 
 
 def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
-                      revenue_dir=REVENUE_DIR, financials_dir=FINANCIALS_DIR):
+                      revenue_dir=REVENUE_DIR, financials_dir=FINANCIALS_DIR,
+                      valuation_dir=VALUATION_DIR, dividends_dir=DIVIDENDS_DIR):
     """Use only local CSVs; no market or FinMind requests occur in this mode."""
     stocks = pd.read_csv(stocks_path, dtype={"stock_id": str}, encoding="utf-8-sig")
     prices = _groups(_read_years(prices_dir), ["date"], ["stock_id", "date"])
@@ -136,6 +142,8 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
                       ["stock_id", "year", "month"])
     financials = _groups(_read_years(financials_dir), ["year", "quarter"],
                          ["stock_id", "year", "quarter"])
+    valuations = _groups(_read_years(valuation_dir), ["date"], ["stock_id", "date"])
+    dividends = _groups(_read_years(dividends_dir), ["year"], ["stock_id", "year"])
     updated_at = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
     records = []
     for stock in stocks.drop_duplicates("stock_id").itertuples(index=False):
@@ -151,15 +159,21 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         row.update(price_factors(price_group))
         row.update(revenue_factors(revenue.get(sid)))
         row.update(financial_factors(financials.get(sid)))
+        valuation = valuations.get(sid)
+        if valuation is not None and not valuation.empty:
+            snapshot = valuation.iloc[-1]
+            row.update(per=_value(snapshot, "per"), pbr=_value(snapshot, "pbr"),
+                       dividend_yield=_value(snapshot, "dividend_yield"),
+                       valuation_date=snapshot.get("date", pd.NA))
+        else:
+            row.update(per=float("nan"), pbr=float("nan"), dividend_yield=float("nan"),
+                       valuation_date=pd.NA)
+        row.update(dividend_metrics(dividends.get(sid), latest_dividend_year=today_in_taiwan().year - 1))
         # Short names in the Top 200 output always mean the latest single quarter.
         row.update(roe=row["roe_quarterly_approx"], gross_margin=row["gross_margin_single"],
                    operating_margin=row["operating_margin_single"],
                    free_cash_flow=row["free_cash_flow_single"])
         row.update(score_factors(row))
-        row["per"] = (row["close"] / row["eps_ttm"]
-                      if pd.notna(row["close"]) and pd.notna(row["eps_ttm"]) and row["eps_ttm"] > 0
-                      else float("nan"))
-        row["pbr"] = float("nan")  # Book value per share is not in the local source files.
         records.append(row)
     result = pd.DataFrame(records)
     market_return_60d = pd.to_numeric(result["return_60d"], errors="coerce").mean()

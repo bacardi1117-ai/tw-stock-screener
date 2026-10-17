@@ -14,6 +14,8 @@ FUNDAMENTALS_UNIVERSE_PATH = PROJECT_ROOT / "data" / "state" / "fundamentals_uni
 PRICES_DIR = PROJECT_ROOT / "data" / "prices"
 REVENUE_DIR = PROJECT_ROOT / "data" / "revenue"
 FINANCIALS_DIR = PROJECT_ROOT / "data" / "financials"
+VALUATION_DIR = PROJECT_ROOT / "data" / "valuation"
+DIVIDENDS_DIR = PROJECT_ROOT / "data" / "dividends"
 FINMIND_BUDGET_PATH = PROJECT_ROOT / "data" / ".finmind_api_budget.json"
 TAIWAN_TIME = timezone(timedelta(hours=8))
 

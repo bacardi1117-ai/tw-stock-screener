@@ -565,15 +565,10 @@
   "strategy_e": {
     "label": "股息成長",
     "enabled": true,
-    "availability_fields": [
-      "dividend_years",
-      "dividend_yield",
-      "payout_ratio"
-    ],
-    "unavailable_message": "股利資料尚未完成",
+    "unavailable_message": "股利資料尚未更新",
     "conditions": {
       "dividend_years": {
-        "label": "連續配息年度至少",
+        "label": "近五年至少配息年度數",
         "enabled": true,
         "field": "dividend_years",
         "op": "gte",
@@ -606,6 +601,20 @@
         "field": "free_cash_flow_single",
         "op": "gt",
         "value": 0
+      },
+      "dividend_growth_3y": {
+        "label": "三年股利 CAGR 至少 (%)",
+        "enabled": true,
+        "field": "dividend_growth_3y_cagr",
+        "op": "gte",
+        "value": 0
+      },
+      "dividend_non_decreasing": {
+        "label": "近三年股利逐年不下降（允許下滑百分比）",
+        "enabled": true,
+        "field": "dividend_min_change_3y_pct",
+        "op": "gte",
+        "value": -5
       }
     }
   }

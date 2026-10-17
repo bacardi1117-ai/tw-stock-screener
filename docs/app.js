@@ -24,7 +24,7 @@ function applyDisplayLabels() {
 }
 
 function showNotice() {
-  const messages = ['策略 C：估值資料待補（PBR 與完整年度紀錄）','策略 D：法人資料待補','策略 E：股利資料待補'];
+  const messages = ['缺少的估值或股利資料會保留空值，並標示為資料不足','策略 D：法人資料待補'];
   if (config.universe.min_price < config.universe.downloaded_min_price ||
       (!config.universe.exclude_financials && config.universe.downloaded_exclude_financials)) {
     messages.unshift('此設定超出目前已下載的基本面資料母體，需重新執行資料更新才能完整套用。');
@@ -53,7 +53,7 @@ function render() {
   $('stockRows').innerHTML = sorted.slice(0,200).map((row,index) => `<tr>
     <td>${index+1}</td><td class="ticker">${escapeHtml(row.stock_id)}</td><td>${escapeHtml(row.stock_name)}</td>
     <td>${fmt(row.close,2,' 元')}</td><td><strong>${fmt(row.score_total,2,' 分')}</strong></td><td>${fmt(row.score_quality,2,' 分')}</td><td>${fmt(row.score_growth,2,' 分')}</td><td>${fmt(row.score_momentum,2,' 分')}</td>
-    <td>${fmt(row.eps_ttm,2,' 元')}</td><td>${fmt(row.eps_yoy,1,'%')}</td><td>${fmt(row.revenue_yoy,1,'%')}</td><td>${fmt(row.roe,1,'%')}</td><td>${fmt(row.gross_margin,1,'%')}</td><td>${fmt(row.operating_margin,1,'%')}</td>
+    <td>${fmt(row.eps_ttm,2,' 元')}</td><td>${fmt(row.eps_yoy,1,'%')}</td><td>${fmt(row.revenue_yoy,1,'%')}</td><td>${fmt(row.roe,1,'%')}</td><td>${fmt(row.gross_margin,1,'%')}</td><td>${fmt(row.operating_margin,1,'%')}</td><td>${fmt(row.per,1)}</td><td>${fmt(row.pbr,2)}</td><td>${fmt(row.dividend_yield,2,'%')}</td><td>${fmt(row.dividend_years,0)} / ${fmt(row.dividend_history_years_available,0,' 年')}</td>
     <td>${fmt(row.ma20,2,' 元')}</td><td>${fmt(row.ma60,2,' 元')}</td><td>${fmt(row.ma120,2,' 元')}</td><td>${fmt(row.data_completeness,1,'%')}</td>
     ${strategyKeys.map(key => `<td><span class="badge ${row[key]}">${labels[row[key]]}</span></td>`).join('')}</tr>`).join('');
 }

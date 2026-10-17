@@ -1,0 +1,102 @@
+"""Official valuation parsing and annual dividend calculations."""
+
+import math
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+from unittest.mock import patch
+
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from update_dividends import (dividend_metrics, parse_tpex as parse_tpex_dividends,
+                              _merge_rows, parse_twse as parse_twse_dividends)
+from update_valuation import parse_tpex as parse_tpex_valuation, parse_twse
+from strategy_engine import evaluate_strategy, load_config
+import update_valuation
+
+
+class Phase5BTests(unittest.TestCase):
+    def test_twse_valuation_dash_is_missing_not_zero(self):
+        payload = {"stat": "OK", "fields": ["證券代號", "證券名稱", "收盤價", "殖利率(%)", "本益比", "股價淨值比"],
+                   "data": [["2330", "台積電", "1500", "1.2", "-", "5.1"]]}
+        result = parse_twse(payload, pd.Timestamp("2026-10-16").date()).iloc[0]
+        self.assertTrue(math.isnan(result.per))
+        self.assertEqual(result.pbr, 5.1)
+        self.assertEqual(result.dividend_yield, 1.2)
+
+    def test_tpex_valuation_roc_date_and_values(self):
+        row = parse_tpex_valuation([{"Date": "1151016", "SecuritiesCompanyCode": "2454",
+                                     "CompanyName": "聯發科", "PriceEarningRatio": "18.2",
+                                     "YieldRatio": "4.1", "PriceBookRatio": "3.4"}]).iloc[0]
+        self.assertEqual((row.date, row.stock_id, row.market), ("2026-10-16", "2454", "TPEx"))
+        self.assertEqual((row.per, row.pbr, row.dividend_yield), (18.2, 3.4, 4.1))
+
+    def test_tpex_dividend_parsing_sums_cash_components(self):
+        rows = parse_tpex_dividends([{"出表日期": "1150804", "公司代號": "2454", "公司名稱": "聯發科",
+                                      "股利年度": "114", "股東配發內容-盈餘分配之現金股利(元/股)": "25",
+                                      "股東配發內容-法定盈餘公積、資本公積發放之現金(元/股)": "1"}])
+        self.assertEqual(rows[0]["year"], 2025)
+        self.assertEqual(rows[0]["cash_dividend"], 26)
+
+    def test_twse_board_decisions_are_kept_and_period_dividends_sum(self):
+        records = [
+            {"公司代號": "2330", "公司名稱": "台積電", "股利年度": "114", "決議（擬議）進度": "董事會決議",
+             "股利所屬年(季)度": "年度", "股利所屬期間": "1140101~1140630", "出表日期": "1150101",
+             "股東配發-盈餘分配之現金股利(元/股)": "3"},
+            {"公司代號": "2330", "公司名稱": "台積電", "股利年度": "114", "決議（擬議）進度": "董事會決議",
+             "股利所屬年(季)度": "年度", "股利所屬期間": "1140701~1141231", "出表日期": "1150201",
+             "股東配發-盈餘分配之現金股利(元/股)": "4"},
+        ]
+        rows = parse_twse_dividends(records)
+        merged = _merge_rows(rows, "TWSE", {("2330", 2025): 10})
+        self.assertEqual(merged.iloc[0].cash_dividend, 7)
+        self.assertEqual(merged.iloc[0].payout_ratio, 70)
+
+    def test_five_year_count_consecutive_cagr_tolerance_and_nonpositive_eps(self):
+        frame = pd.DataFrame({"year": [2021, 2022, 2023, 2024, 2025],
+                              "cash_dividend": [2, 2.5, 3, 3.5, 4],
+                              "payout_ratio": [50, 51, 52, 53, float("nan")]})
+        result = dividend_metrics(frame, 2025, tolerance_pct=5)
+        self.assertEqual(result["dividend_years"], 5)
+        self.assertEqual(result["dividend_consecutive_years"], 5)
+        self.assertAlmostEqual(result["dividend_growth_3y_cagr"], ((4 / 2.5) ** (1 / 3) - 1) * 100)
+        self.assertTrue(result["dividend_non_decreasing_3y"])
+        self.assertTrue(math.isnan(result["payout_ratio"]))
+
+    def test_missing_dividend_history_stays_missing(self):
+        result = dividend_metrics(pd.DataFrame())
+        self.assertTrue(math.isnan(result["dividend_years"]))
+        self.assertTrue(math.isnan(result["dividend_growth_3y_cagr"]))
+
+    def test_strategy_c_uses_official_per_pbr_and_keeps_missing_per_missing(self):
+        strategy = load_config()["strategy_c"]
+        row = {"roe": 20, "eps_positive_years": 4,
+               "operating_cash_flow_positive_years": 4, "debt_ratio": 30,
+               "per": 15, "pbr": 2}
+        self.assertEqual(evaluate_strategy(row, strategy), "pass")
+        row["per"] = None
+        self.assertEqual(evaluate_strategy(row, strategy), "missing_data")
+
+    def test_complete_latest_valuation_day_is_skipped_without_request(self):
+        class NoRequests:
+            def get(self, *args, **kwargs):
+                raise AssertionError("a complete latest date should not be fetched again")
+
+        today = update_valuation.today_in_taiwan()
+        day = update_valuation.latest_weekday(today).isoformat()
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            root = Path(folder)
+            pd.DataFrame([{"date": day, "stock_id": "2330", "market": "TWSE"},
+                          {"date": day, "stock_id": "6488", "market": "TPEx"}]).to_csv(
+                              root / f"{today.year}.csv", index=False)
+            with patch.object(update_valuation, "VALUATION_DIR", root):
+                result = update_valuation.update_valuation(session=NoRequests())
+        self.assertTrue(result["skipped"])
+
+
+if __name__ == "__main__":
+    unittest.main()

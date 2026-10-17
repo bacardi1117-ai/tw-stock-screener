@@ -26,8 +26,10 @@ from fundamentals_batch import run_fundamentals_batch
 from fundamentals_universe import build_fundamentals_universe
 from market_history import update_market_history
 from update_financials import update_financials
+from update_dividends import update_dividends
 from update_prices import fetch_prices, save_prices
 from update_revenue import update_revenue
+from update_valuation import update_valuation
 
 
 def check_environment() -> None:
@@ -108,7 +110,7 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "factors", "pages"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
     parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
@@ -144,6 +146,34 @@ def main() -> None:
     if args.mode == "pages":
         pages_data, pages_config, count = build_pages()
         logging.info("Saved Pages data: %s (%s stocks), %s", pages_data, count, pages_config)
+        return
+    if args.mode == "valuation":
+        try:
+            result = update_valuation(args.date)
+            logging.info("Valuation date %s; rows saved: %s; already present: %s",
+                         result["date"], result["added"], result["skipped"])
+        except (OSError, RuntimeError, ValueError) as exc:
+            logging.error("Valuation update failed: %s", exc)
+        return
+    if args.mode == "dividends":
+        try:
+            result = update_dividends()
+            logging.info("Annual dividend rows saved/refreshed: %s; years: %s",
+                         result["rows"], ",".join(map(str, result["years"])))
+        except (OSError, RuntimeError, ValueError) as exc:
+            logging.error("Dividend update failed: %s", exc)
+        return
+    if args.mode == "phase5b":
+        for label, operation in (("valuation", lambda: update_valuation(args.date)),
+                                 ("dividends", update_dividends)):
+            try:
+                logging.info("Phase 5B %s: %s", label, operation())
+            except (OSError, RuntimeError, ValueError) as exc:
+                logging.error("Phase 5B %s update failed: %s", label, exc)
+        frame = calculate_factors()
+        factors_path, results_csv, results_json = save_factors(frame)
+        pages_data, pages_config, count = build_pages()
+        logging.info("Phase 5B local factors: %s; Pages rows: %s (%s)", factors_path, count, pages_data)
         return
     if args.mode == "fundamentals":
         if args.limit is not None and args.limit <= 0:

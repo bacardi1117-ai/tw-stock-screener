@@ -20,6 +20,10 @@ PAGE_FIELDS = (
     "free_cash_flow_single", "eps_positive_quarters_4", "eps_ttm",
     "eps_positive_years", "operating_cash_flow_positive_years",
     "roe", "gross_margin", "operating_margin", "per", "pbr",
+    "valuation_date", "dividend_yield", "cash_dividend_latest", "dividend_years",
+    "dividend_history_years_available",
+    "dividend_consecutive_years", "payout_ratio", "dividend_growth_3y_cagr",
+    "dividend_min_change_3y_pct", "dividend_non_decreasing_3y",
     "return_60d_vs_market", "market_return_60d_equal_weight",
     "data_completeness", "score_quality", "score_growth", "score_momentum", "score_total",
 )

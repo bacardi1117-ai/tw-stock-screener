@@ -61,9 +61,19 @@ class StrategyEngineTests(unittest.TestCase):
         self.assertEqual(result["strategy_c"], "missing_data")
         self.assertTrue(result["strategy_c_missing_data"])
 
-    def test_strategy_d_and_e_unavailable(self):
+    def test_strategy_d_unavailable_and_strategy_e_reports_missing_data(self):
         result = evaluate_all(self.rows[0], self.config)
-        self.assertEqual((result["strategy_d"], result["strategy_e"]), ("unavailable", "unavailable"))
+        self.assertEqual((result["strategy_d"], result["strategy_e"]), ("unavailable", "missing_data"))
+
+    def test_strategy_e_accepts_configured_dividend_profile(self):
+        row = dict(self.rows[0], dividend_years=5, dividend_yield=4.2, payout_ratio=65,
+                   dividend_growth_3y_cagr=8, dividend_min_change_3y_pct=-2,
+                   free_cash_flow_single=10)
+        self.assertEqual(evaluate_all(row, self.config)["strategy_e"], "pass")
+        changed = copy.deepcopy(self.config)
+        changed["strategy_e"]["conditions"]["free_cash_flow_positive"]["enabled"] = False
+        row["free_cash_flow_single"] = None
+        self.assertEqual(evaluate_all(row, changed)["strategy_e"], "pass")
 
     def test_qgm_weights_and_tiers_are_configurable(self):
         self.assertEqual(qgm_scores(self.rows[0], self.config)["score_total"], 100)

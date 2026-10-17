@@ -16,7 +16,7 @@ function input(label, path, value, {checkbox=false, step='any', unit='', descrip
 }
 
 function conditionCard(key, condition, path) {
-  const title = fieldLabel(key, fieldLabel(condition.field ?? key, key));
+  const title = fieldLabel(key, condition.label ?? fieldLabel(condition.field ?? key, key));
   const description = fieldDescription(condition.field ?? key);
   const summary = 'right' in condition
     ? `${condition.field==='close'?'最新股價':fieldLabel(condition.field,condition.field)} ${operatorLabel(condition.op)} ${fieldLabel(condition.right, condition.right)}`
@@ -84,7 +84,7 @@ function showWeightTotal() {
 }
 
 function showNotice() {
-  const messages=['策略 C：估值資料待補','策略 D：法人資料待補','策略 E：股利資料待補'];
+  const messages=['缺少的估值或股利資料會保留空值，並標示為資料不足','策略 D：法人資料待補'];
   if (config.universe.min_price < config.universe.downloaded_min_price ||
       (!config.universe.exclude_financials && config.universe.downloaded_exclude_financials))
     messages.unshift('此設定超出目前已下載的基本面資料母體，需重新執行資料更新才能完整套用。');

@@ -33,9 +33,16 @@ export const FIELD_LABELS = {
   trust_10d: { label: '投信 10 日累計買賣超' },
   avg_volume_20: { label: '20 日平均成交量', unit: '股' },
   avg_volume_60: { label: '60 日平均成交量', unit: '股' },
-  dividend_years: { label: '連續配息年度數', unit: '年' },
+  dividend_years: { label: '近五年已確認配息年數', unit: '年' },
+  dividend_history_years_available: { label: '近五年可用股利資料年數', unit: '年' },
   dividend_yield: { label: '現金股利殖利率', unit: '%' },
   payout_ratio: { label: '現金股利配息率', unit: '%' },
+  cash_dividend_latest: { label: '最近年度現金股利', unit: '元' },
+  dividend_consecutive_years: { label: '連續配息年度數', unit: '年' },
+  dividend_growth_3y_cagr: { label: '三年股利 CAGR', unit: '%' },
+  dividend_min_change_3y_pct: { label: '近三年最小年度股利變化', unit: '%' },
+  dividend_non_decreasing_3y: { label: '近三年股利未下降' },
+  valuation_date: { label: '估值資料日期' },
   volume_20_gt_60: { label: '20 日均量高於 60 日均量', description: '20 日平均成交量大於 60 日平均成交量。' },
   avg_volume_20_gt_60: { label: '20 日均量高於 60 日均量', description: '20 日平均成交量大於 60 日平均成交量。' },
   distance_high: { label: '距 60 日高點', unit: '%', description: '0% 代表位於 60 日高點；-5% 代表距高點 5%。' },
@@ -112,6 +119,8 @@ export const RULE_LABELS = {
   dividend_years: '連續配息年度數',
   dividend_yield: '現金股利殖利率',
   payout_ratio: '現金股利配息率',
+  dividend_growth_3y: '三年股利 CAGR',
+  dividend_non_decreasing: '股利逐年未下降',
 };
 
 export const OPERATOR_LABELS = {
