@@ -73,6 +73,14 @@ class StrategyEngineTests(unittest.TestCase):
         changed["qgm"].update(quality_weight=50, growth_weight=25, momentum_weight=25)
         self.assertNotEqual(qgm_scores(self.rows[0], changed)["score_growth"], 35)
 
+    def test_qgm_disabled_factor_defaults_and_maximum_normalization(self):
+        self.assertTrue(all(rule.get("enabled", True) for rule in self.config["qgm"]["quality"]))
+        changed = copy.deepcopy(self.config)
+        changed["qgm"]["quality"][0]["enabled"] = False
+        scores = qgm_scores(self.rows[0], changed)
+        self.assertEqual(scores["quality_roe"], 0)
+        self.assertEqual(scores["score_quality"], 40)
+
     @unittest.skipUnless(shutil.which("node"), "Node.js is required for cross-language parity")
     def test_javascript_parity(self):
         process = subprocess.run(["node", str(ROOT / "tests" / "strategy_fixture.mjs")],

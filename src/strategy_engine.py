@@ -51,6 +51,9 @@ def qgm_scores(row, config=None):
         earned = 0
         maximum = 0
         for rule in rules:
+            if not rule.get("enabled", True):
+                output[f"{category}_{rule['id']}"] = 0
+                continue
             maximum += max([0] + [tier["points"] for tier in rule.get("tiers", [])]) if rule["kind"] == "tiers" else rule["points"]
             points = 0
             if rule["kind"] == "tiers":

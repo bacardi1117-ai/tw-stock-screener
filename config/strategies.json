@@ -15,6 +15,7 @@
     "quality": [
       {
         "id": "roe",
+        "enabled": true,
         "field": "roe_quarterly_approx",
         "kind": "tiers",
         "direction": "min",
@@ -39,6 +40,7 @@
       },
       {
         "id": "gross_margin",
+        "enabled": true,
         "field": "gross_margin_single",
         "kind": "tiers",
         "direction": "min",
@@ -59,6 +61,7 @@
       },
       {
         "id": "operating_margin",
+        "enabled": true,
         "field": "operating_margin_single",
         "kind": "tiers",
         "direction": "min",
@@ -79,6 +82,7 @@
       },
       {
         "id": "debt",
+        "enabled": true,
         "field": "debt_ratio",
         "kind": "tiers",
         "direction": "max",
@@ -99,6 +103,7 @@
       },
       {
         "id": "ocf",
+        "enabled": true,
         "field": "operating_cash_flow_single",
         "kind": "compare",
         "op": "gt",
@@ -107,6 +112,7 @@
       },
       {
         "id": "fcf",
+        "enabled": true,
         "field": "free_cash_flow_single",
         "kind": "compare",
         "op": "gt",
@@ -115,6 +121,7 @@
       },
       {
         "id": "eps_stability",
+        "enabled": true,
         "field": "eps_positive_quarters_4",
         "kind": "tiers",
         "direction": "min",
@@ -137,6 +144,7 @@
     "growth": [
       {
         "id": "revenue_yoy",
+        "enabled": true,
         "field": "revenue_yoy",
         "kind": "tiers",
         "direction": "min",
@@ -161,6 +169,7 @@
       },
       {
         "id": "revenue_3m",
+        "enabled": true,
         "field": "revenue_yoy_3m_avg",
         "kind": "tiers",
         "direction": "min",
@@ -181,6 +190,7 @@
       },
       {
         "id": "eps_yoy",
+        "enabled": true,
         "field": "eps_yoy",
         "kind": "tiers",
         "direction": "min",
@@ -205,6 +215,7 @@
       },
       {
         "id": "gross_margin_yoy",
+        "enabled": true,
         "field": "gross_margin_yoy",
         "kind": "tiers",
         "direction": "min",
@@ -225,6 +236,7 @@
       },
       {
         "id": "operating_margin_yoy",
+        "enabled": true,
         "field": "operating_margin_yoy",
         "kind": "tiers",
         "direction": "min",
@@ -247,6 +259,7 @@
     "momentum": [
       {
         "id": "above_ma20",
+        "enabled": true,
         "left": "close",
         "right": "ma20",
         "kind": "fields",
@@ -255,6 +268,7 @@
       },
       {
         "id": "above_ma60",
+        "enabled": true,
         "left": "close",
         "right": "ma60",
         "kind": "fields",
@@ -263,6 +277,7 @@
       },
       {
         "id": "above_ma120",
+        "enabled": true,
         "left": "close",
         "right": "ma120",
         "kind": "fields",
@@ -271,6 +286,7 @@
       },
       {
         "id": "return_20d",
+        "enabled": true,
         "field": "return_20d",
         "kind": "tiers",
         "direction": "min",
@@ -291,6 +307,7 @@
       },
       {
         "id": "return_60d",
+        "enabled": true,
         "field": "return_60d",
         "kind": "tiers",
         "direction": "min",
@@ -311,6 +328,7 @@
       },
       {
         "id": "volume_20_gt_60",
+        "enabled": true,
         "left": "avg_volume_20",
         "right": "avg_volume_60",
         "kind": "fields",
@@ -319,6 +337,7 @@
       },
       {
         "id": "distance_high",
+        "enabled": true,
         "field": "distance_to_60d_high",
         "kind": "tiers",
         "direction": "min",

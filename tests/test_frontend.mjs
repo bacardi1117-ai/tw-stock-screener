@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {evaluateRows,filterRows,sortRows} from '../docs/engine.mjs';
 import {clone,loadSettings,saveSettings,restoreDefault,exportText,parseImport,STORAGE_KEY,withCoverageMetadata} from '../docs/settings_state.mjs';
+import {FIELD_LABELS,OPERATOR_LABELS,RULE_LABELS,STRATEGY_LABELS} from '../docs/labels.mjs';
+import {qgmMaximumPoints,weightsMatchMaximum} from '../docs/settings_metrics.mjs';
 
 const defaults=JSON.parse(fs.readFileSync(new URL('../config/strategies.json',import.meta.url),'utf8'));
 const rows=JSON.parse(fs.readFileSync(new URL('./strategy_fixture.json',import.meta.url),'utf8'));
@@ -31,6 +33,37 @@ test('restore defaults, localStorage, JSON export and import',()=>{
   const reset=restoreDefault(defaults,memory);
   assert.equal(reset.strategy_a.conditions.roe.value,10);
   assert.equal(memory.getItem(STORAGE_KEY),null);
+});
+test('old localStorage and JSON exports gain default enabled flags without changing keys',()=>{
+  const memory=storage(), legacy=clone(defaults);
+  for (const category of ['quality','growth','momentum']) for (const rule of legacy.qgm[category]) delete rule.enabled;
+  memory.setItem(STORAGE_KEY,JSON.stringify(legacy));
+  const loaded=loadSettings(defaults,memory);
+  assert.ok(['quality','growth','momentum'].every(category=>loaded.qgm[category].every(rule=>rule.enabled===true)));
+  const imported=parseImport(JSON.stringify(legacy),defaults);
+  assert.ok(imported.qgm.quality.every(rule=>rule.enabled===true));
+  for (const category of ['quality','growth','momentum']) {
+    assert.deepEqual(loaded.qgm[category].map(rule=>rule.id),defaults.qgm[category].map(rule=>rule.id));
+    assert.deepEqual(loaded.qgm[category].map(rule=>rule.field),defaults.qgm[category].map(rule=>rule.field));
+  }
+});
+test('Chinese display mapping retains internal field keys and units',()=>{
+  assert.equal(FIELD_LABELS.revenue_yoy.label,'最新月營收年增率');
+  assert.equal(FIELD_LABELS.gross_margin_yoy.unit,'百分點');
+  assert.equal(FIELD_LABELS.eps_ttm.unit,'元');
+  assert.equal(RULE_LABELS.eps_stability,'EPS 穩定度');
+  assert.equal(OPERATOR_LABELS.gte,'至少');
+  assert.equal(STRATEGY_LABELS.strategy_e,'股息成長');
+  assert.ok(defaults.qgm.growth.some(rule=>rule.field==='revenue_yoy'));
+});
+test('QGM factor toggles default on and maximum scores match category weights',()=>{
+  assert.deepEqual(qgmMaximumPoints(defaults.qgm),{quality:40,growth:35,momentum:25});
+  assert.deepEqual(weightsMatchMaximum(defaults.qgm),{quality:true,growth:true,momentum:true});
+  const changed=clone(defaults);
+  changed.qgm.quality[0].enabled=false;
+  assert.equal(qgmMaximumPoints(changed.qgm).quality,30);
+  assert.equal(weightsMatchMaximum(changed.qgm).quality,false);
+  assert.equal(qgmMaximumPoints(defaults.qgm).quality,40);
 });
 test('search, strategy filter and sorting',()=>{
   const scored=evaluateRows(rows,defaults);

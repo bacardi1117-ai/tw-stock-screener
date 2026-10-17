@@ -3,6 +3,12 @@ export const clone = value => JSON.parse(JSON.stringify(value));
 export function withCoverageMetadata(config, defaults) {
   config.universe.downloaded_min_price = defaults.universe.downloaded_min_price;
   config.universe.downloaded_exclude_financials = defaults.universe.downloaded_exclude_financials;
+  for (const category of ['quality', 'growth', 'momentum']) {
+    const defaultById = new Map(defaults.qgm[category].map(rule => [rule.id, rule]));
+    for (const rule of config.qgm[category]) {
+      if (rule.enabled === undefined) rule.enabled = defaultById.get(rule.id)?.enabled ?? true;
+    }
+  }
   return config;
 }
 export function validateConfig(config) {
@@ -26,4 +32,7 @@ export function restoreDefault(defaults, storage = localStorage) {
   return clone(defaults);
 }
 export function exportText(config) { return JSON.stringify(validateConfig(config), null, 2) + '\n' }
-export function parseImport(text) { return validateConfig(JSON.parse(text)) }
+export function parseImport(text, defaults = null) {
+  const imported = JSON.parse(text);
+  return validateConfig(defaults ? withCoverageMetadata(imported, defaults) : imported);
+}

@@ -25,6 +25,10 @@ export function qgmScores(row, config) {
   categories.forEach((category, index) => {
     let earned = 0, maximum = 0;
     for (const rule of qgm[category]) {
+      if (rule.enabled === false) {
+        result[`${category}_${rule.id}`] = 0;
+        continue;
+      }
       maximum += rule.kind === 'tiers' ? Math.max(0, ...rule.tiers.map(tier => tier.points)) : rule.points;
       let points = 0;
       if (rule.kind === 'tiers') {
