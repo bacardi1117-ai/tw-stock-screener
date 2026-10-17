@@ -53,7 +53,7 @@ function render() {
   $('stockRows').innerHTML = sorted.slice(0,200).map((row,index) => `<tr>
     <td>${index+1}</td><td class="ticker">${escapeHtml(row.stock_id)}</td><td>${escapeHtml(row.stock_name)}</td>
     <td>${fmt(row.close,2,' 元')}</td><td><strong>${fmt(row.score_total,2,' 分')}</strong></td><td>${fmt(row.score_quality,2,' 分')}</td><td>${fmt(row.score_growth,2,' 分')}</td><td>${fmt(row.score_momentum,2,' 分')}</td>
-    <td>${fmt(row.eps_ttm,2,' 元')}</td><td>${fmt(row.eps_yoy,1,'%')}</td><td>${fmt(row.revenue_yoy,1,'%')}</td><td>${fmt(row.roe,1,'%')}</td><td>${fmt(row.gross_margin,1,'%')}</td><td>${fmt(row.operating_margin,1,'%')}</td><td>${fmt(row.per,1)}</td><td>${fmt(row.pbr,2)}</td><td>${fmt(row.dividend_yield,2,'%')}</td><td>${fmt(row.dividend_years,0)} / ${fmt(row.dividend_history_years_available,0,' 年')}</td>
+    <td>${fmt(row.eps_ttm,2,' 元')}</td><td>${fmt(row.eps_yoy,1,'%')}</td><td>${fmt(row.revenue_yoy,1,'%')}</td><td>${fmt(row.roe,1,'%')}</td><td>${fmt(row.gross_margin,1,'%')}</td><td>${fmt(row.operating_margin,1,'%')}</td><td>${fmt(row.per,1)}</td><td>${fmt(row.pbr,2)}</td><td>${fmt(row.dividend_yield,2,'%')}</td><td>${fmt(row.cash_dividend_latest,2,' 元')}</td><td>${fmt(row.payout_ratio,1,'%')}</td><td>${fmt(row.dividend_years_5,0)} / ${fmt(row.dividend_history_years_available,0,' 年')}</td>
     <td>${fmt(row.ma20,2,' 元')}</td><td>${fmt(row.ma60,2,' 元')}</td><td>${fmt(row.ma120,2,' 元')}</td><td>${fmt(row.data_completeness,1,'%')}</td>
     ${strategyKeys.map(key => `<td><span class="badge ${row[key]}">${labels[row[key]]}</span></td>`).join('')}</tr>`).join('');
 }

@@ -570,7 +570,7 @@
       "dividend_years": {
         "label": "近五年至少配息年度數",
         "enabled": true,
-        "field": "dividend_years",
+        "field": "dividend_years_5",
         "op": "gte",
         "value": 5
       },
@@ -605,7 +605,7 @@
       "dividend_growth_3y": {
         "label": "三年股利 CAGR 至少 (%)",
         "enabled": true,
-        "field": "dividend_growth_3y_cagr",
+        "field": "dividend_growth_3y",
         "op": "gte",
         "value": 0
       },

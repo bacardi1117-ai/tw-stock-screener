@@ -66,8 +66,10 @@ class StrategyEngineTests(unittest.TestCase):
         self.assertEqual((result["strategy_d"], result["strategy_e"]), ("unavailable", "missing_data"))
 
     def test_strategy_e_accepts_configured_dividend_profile(self):
-        row = dict(self.rows[0], dividend_years=5, dividend_yield=4.2, payout_ratio=65,
-                   dividend_growth_3y_cagr=8, dividend_min_change_3y_pct=-2,
+        row = dict(self.rows[0], dividend_years=5, dividend_years_5=5,
+                   dividend_yield=4.2, payout_ratio=65,
+                   dividend_growth_3y=8, dividend_growth_3y_cagr=8,
+                   dividend_min_change_3y_pct=-2,
                    free_cash_flow_single=10)
         self.assertEqual(evaluate_all(row, self.config)["strategy_e"], "pass")
         changed = copy.deepcopy(self.config)

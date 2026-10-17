@@ -10,6 +10,7 @@ from config import (DIVIDENDS_DIR, FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT,
                     today_in_taiwan)
 from fetch_market import is_financial_industry
 from scoring import score_factors
+from strategy_engine import load_config
 from update_dividends import dividend_metrics
 
 
@@ -30,8 +31,10 @@ TOP_FIELDS = ("rank", "stock_id", "stock_name", "market", "close", "score_total"
               "gross_margin", "gross_margin_yoy", "operating_margin",
               "operating_margin_yoy", "debt_ratio", "free_cash_flow", "ma20", "ma60",
               "ma120", "return_20d", "return_60d", "distance_to_60d_high", "per", "pbr",
-              "dividend_yield", "dividend_years", "dividend_history_years_available",
-              "payout_ratio", "updated_at")
+              "dividend_yield", "cash_dividend", "stock_dividend", "total_dividend",
+              "cash_dividend_latest", "stock_dividend_latest", "total_dividend_latest",
+              "payout_ratio", "dividend_years_5", "dividend_consecutive_years",
+              "dividend_growth_3y", "updated_at")
 
 
 def _read_years(directory):
@@ -143,8 +146,14 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
     financials = _groups(_read_years(financials_dir), ["year", "quarter"],
                          ["stock_id", "year", "quarter"])
     valuations = _groups(_read_years(valuation_dir), ["date"], ["stock_id", "date"])
-    dividends = _groups(_read_years(dividends_dir), ["year"], ["stock_id", "year"])
+    dividend_path = Path(dividends_dir) / "history.csv"
+    if dividend_path.exists():
+        dividend_frame = pd.read_csv(dividend_path, dtype={"stock_id": str}, encoding="utf-8-sig")
+    else:
+        dividend_frame = _read_years(dividends_dir)
+    dividends = _groups(dividend_frame, ["year"], ["stock_id", "year"])
     updated_at = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
+    dividend_decline_tolerance = abs(load_config()["strategy_e"]["conditions"]["dividend_non_decreasing"]["value"])
     records = []
     for stock in stocks.drop_duplicates("stock_id").itertuples(index=False):
         sid = str(stock.stock_id)
@@ -168,7 +177,30 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         else:
             row.update(per=float("nan"), pbr=float("nan"), dividend_yield=float("nan"),
                        valuation_date=pd.NA)
-        row.update(dividend_metrics(dividends.get(sid), latest_dividend_year=today_in_taiwan().year - 1))
+        dividend_summary = dividend_metrics(
+            dividends.get(sid), latest_dividend_year=today_in_taiwan().year - 1,
+            tolerance_pct=dividend_decline_tolerance)
+        row.update(dividend_summary)
+        dividend_rows = dividends.get(sid)
+        if dividend_rows is not None and not dividend_rows.empty:
+            annual_row = dividend_rows.loc[pd.to_numeric(dividend_rows.year, errors="coerce") == today_in_taiwan().year - 1]
+        else:
+            annual_row = pd.DataFrame()
+        if not annual_row.empty:
+            latest_dividend = annual_row.iloc[-1]
+            row.update(cash_dividend_latest=_value(latest_dividend, "cash_dividend"),
+                       stock_dividend_latest=_value(latest_dividend, "stock_dividend"),
+                       total_dividend_latest=_value(latest_dividend, "total_dividend"))
+        else:
+            row.update(cash_dividend_latest=float("nan"), stock_dividend_latest=float("nan"),
+                       total_dividend_latest=float("nan"))
+        row.update(cash_dividend=row["cash_dividend_latest"],
+                   stock_dividend=row["stock_dividend_latest"],
+                   total_dividend=row["total_dividend_latest"])
+        strategy_data_fields = ("per", "pbr", "dividend_yield", "cash_dividend_latest",
+                                "payout_ratio", "dividend_years_5", "dividend_growth_3y",
+                                "dividend_non_decreasing_3y")
+        row["strategy_data_completeness"] = sum(pd.notna(row.get(field)) for field in strategy_data_fields) / len(strategy_data_fields) * 100
         # Short names in the Top 200 output always mean the latest single quarter.
         row.update(roe=row["roe_quarterly_approx"], gross_margin=row["gross_margin_single"],
                    operating_margin=row["operating_margin_single"],

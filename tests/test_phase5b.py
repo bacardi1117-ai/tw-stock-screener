@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from update_dividends import (dividend_metrics, parse_tpex as parse_tpex_dividends,
-                              _merge_rows, parse_twse as parse_twse_dividends)
+                              _merge_rows, parse_twse as parse_twse_dividends,
+                              save_dividends)
 from update_valuation import parse_tpex as parse_tpex_valuation, parse_twse
 from strategy_engine import evaluate_strategy, load_config
 import update_valuation
@@ -38,23 +39,45 @@ class Phase5BTests(unittest.TestCase):
     def test_tpex_dividend_parsing_sums_cash_components(self):
         rows = parse_tpex_dividends([{"出表日期": "1150804", "公司代號": "2454", "公司名稱": "聯發科",
                                       "股利年度": "114", "股東配發內容-盈餘分配之現金股利(元/股)": "25",
-                                      "股東配發內容-法定盈餘公積、資本公積發放之現金(元/股)": "1"}])
+                                      "股東配發內容-法定盈餘公積、資本公積發放之現金(元/股)": "1",
+                                      "股東配發內容-盈餘轉增資配股(元/股)": "0.5"}])
         self.assertEqual(rows[0]["year"], 2025)
         self.assertEqual(rows[0]["cash_dividend"], 26)
+        self.assertEqual(rows[0]["stock_dividend"], 0.5)
 
     def test_twse_board_decisions_are_kept_and_period_dividends_sum(self):
         records = [
             {"公司代號": "2330", "公司名稱": "台積電", "股利年度": "114", "決議（擬議）進度": "董事會決議",
              "股利所屬年(季)度": "年度", "股利所屬期間": "1140101~1140630", "出表日期": "1150101",
-             "股東配發-盈餘分配之現金股利(元/股)": "3"},
+             "股東配發-盈餘分配之現金股利(元/股)": "3",
+             "股東配發-盈餘轉增資配股(元/股)": "0.5"},
             {"公司代號": "2330", "公司名稱": "台積電", "股利年度": "114", "決議（擬議）進度": "董事會決議",
              "股利所屬年(季)度": "年度", "股利所屬期間": "1140701~1141231", "出表日期": "1150201",
-             "股東配發-盈餘分配之現金股利(元/股)": "4"},
+             "股東配發-盈餘分配之現金股利(元/股)": "4",
+             "股東配發-盈餘轉增資配股(元/股)": "0.5"},
         ]
         rows = parse_twse_dividends(records)
         merged = _merge_rows(rows, "TWSE", {("2330", 2025): 10})
         self.assertEqual(merged.iloc[0].cash_dividend, 7)
+        self.assertEqual(merged.iloc[0].stock_dividend, 1)
+        self.assertEqual(merged.iloc[0].total_dividend, 8)
         self.assertEqual(merged.iloc[0].payout_ratio, 70)
+        negative_eps = _merge_rows(rows, "TWSE", {("2330", 2025): -10})
+        self.assertTrue(math.isnan(negative_eps.iloc[0].payout_ratio))
+
+    def test_dividend_rows_consolidate_to_one_incremental_history_file(self):
+        frame = pd.DataFrame([{"stock_id": "2330", "stock_name": "台積電", "market": "TWSE",
+                               "year": 2025, "cash_dividend": 4, "stock_dividend": 1,
+                               "total_dividend": 5, "annual_eps": 10, "payout_ratio": 40,
+                               "source_date": "1150101"}])
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            path = Path(folder) / "2025.csv"
+            frame.to_csv(path, index=False)
+            self.assertEqual(save_dividends(frame, folder), 1)
+            saved = pd.read_csv(Path(folder) / "history.csv", dtype={"stock_id": str})
+            self.assertEqual(len(saved), 1)
+            self.assertEqual(saved.iloc[0].total_dividend, 5)
+            self.assertFalse(path.exists())
 
     def test_five_year_count_consecutive_cagr_tolerance_and_nonpositive_eps(self):
         frame = pd.DataFrame({"year": [2021, 2022, 2023, 2024, 2025],
