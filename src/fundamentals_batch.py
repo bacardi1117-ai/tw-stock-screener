@@ -25,6 +25,7 @@ from update_revenue import update_revenue
 LOGGER = logging.getLogger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PROGRESS_PATH = PROJECT_ROOT / "data" / "state" / "fundamentals_progress.json"
+EXCEPTIONS_PATH = PROJECT_ROOT / "data" / "state" / "fundamentals_exceptions.csv"
 REQUIRED_FINANCIAL_FIELDS = (
     "eps_single", "gross_margin_single", "operating_margin_single",
     "roe_quarterly_approx", "debt_ratio", "operating_cash_flow_single",
@@ -59,6 +60,38 @@ def load_progress(path=PROGRESS_PATH):
     base = _empty_progress()
     base.update(state)
     return base
+
+
+def load_exception_records(path=EXCEPTIONS_PATH):
+    """Load classified stocks that must stay out of the automatic retry queue."""
+    if not path.exists():
+        return {}
+    frame = pd.read_csv(path, dtype={"stock_id": str, "suggested_action": str},
+                        encoding="utf-8-sig")
+    required = {"stock_id", "suggested_action"}
+    if not required.issubset(frame.columns):
+        raise RuntimeError(f"Invalid fundamentals exceptions file: {path}")
+    allowed_actions = {"skip_permanently", "needs_special_parser", "no_data", "manual_review"}
+    invalid = set(frame["suggested_action"].dropna()) - allowed_actions
+    if invalid:
+        raise RuntimeError(f"Invalid exception actions in {path}: {sorted(invalid)}")
+    return {str(row.stock_id).strip(): row.suggested_action
+            for row in frame.itertuples(index=False)}
+
+
+def _update_queue_counts(state, all_ids, completed, exception_records):
+    unresolved_exceptions = set(exception_records).intersection(all_ids) - completed
+    state["completed_count"] = len(completed)
+    state["remaining_count"] = len(all_ids) - len(completed)
+    state["eligible_count"] = len(all_ids)
+    state["exception_stock_ids"] = sorted(unresolved_exceptions)
+    state["exception_count"] = len(unresolved_exceptions)
+    state["retryable_count"] = max(0, state["remaining_count"] - len(unresolved_exceptions))
+    state["permanent_skip_count"] = sum(
+        exception_records[stock_id] == "skip_permanently"
+        for stock_id in unresolved_exceptions
+    )
+    state["failed_count"] = len(state.get("failure_reasons", {}))
 
 
 def save_progress(state, path=PROGRESS_PATH):
@@ -160,21 +193,23 @@ def run_fundamentals_batch(api_budget=FUNDAMENTALS_API_BUDGET_PER_RUN,
     stocks = stocks.sort_values("stock_id").reset_index(drop=True)
     all_ids = stocks["stock_id"].tolist()
     state = load_progress(progress_path)
+    exception_records = load_exception_records()
     completed = set(str(value) for value in state["completed_stock_ids"])
     completed.update(completed_from_local_data())
     completed.intersection_update(all_ids)
     state["completed_stock_ids"] = sorted(completed)
-    state["completed_count"] = len(completed)
-    state["remaining_count"] = len(all_ids) - len(completed)
+    _update_queue_counts(state, all_ids, completed, exception_records)
     state["last_run_api_calls"] = 0
-    state["eligible_count"] = len(all_ids)
-    state["failed_count"] = len(state.get("failure_reasons", {}))
     save_progress(state, progress_path)
 
-    candidates = stocks.loc[~stocks["stock_id"].isin(completed)]
+    suppressed_ids = set(exception_records)
+    candidates = stocks.loc[
+        ~stocks["stock_id"].isin(completed | suppressed_ids)
+    ]
     LOGGER.info("Stocks to update: %s", len(candidates))
     if candidates.empty:
-        LOGGER.info("Fundamentals universe completed")
+        LOGGER.info("No retryable fundamentals stocks; unresolved exceptions: %s",
+                    state["exception_count"])
         state["last_run"] = {"api_calls": 0, "attempted_stocks": 0,
                              "completed_stocks": 0, "failed_stocks": 0,
                              "average_api_calls_per_attempted_stock": None,
@@ -243,10 +278,7 @@ def run_fundamentals_batch(api_budget=FUNDAMENTALS_API_BUDGET_PER_RUN,
                 run_failed += 1
             state["completed_stock_ids"] = sorted(completed)
             state["failed_stock_ids"] = sorted(state["failure_reasons"])
-            state["completed_count"] = len(completed)
-            state["remaining_count"] = len(all_ids) - len(completed)
-            state["eligible_count"] = len(all_ids)
-            state["failed_count"] = len(state["failure_reasons"])
+            _update_queue_counts(state, all_ids, completed, exception_records)
             state["last_run_api_calls"] = client.budget.calls_this_run - run_started
             if not hasattr(client.budget, "on_consume"):
                 state["total_api_calls_estimated"] = int(state.get("total_api_calls_estimated", 0)) + calls_for_stock
@@ -273,10 +305,7 @@ def run_fundamentals_batch(api_budget=FUNDAMENTALS_API_BUDGET_PER_RUN,
     }
     state["completed_stock_ids"] = sorted(completed)
     state["failed_stock_ids"] = sorted(state["failure_reasons"])
-    state["completed_count"] = len(completed)
-    state["remaining_count"] = len(all_ids) - len(completed)
-    state["eligible_count"] = len(all_ids)
-    state["failed_count"] = len(state["failure_reasons"])
+    _update_queue_counts(state, all_ids, completed, exception_records)
     state["updated_at"] = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
     save_progress(state, progress_path)
     LOGGER.info("Attempted stocks: %s", attempted)
