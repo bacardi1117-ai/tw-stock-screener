@@ -42,7 +42,7 @@ def main() -> None:
             reader = csv.DictReader(input_stream)
             if not set(FIELDS).issubset(reader.fieldnames or []):
                 raise ValueError(f"Missing daily fields in {source.name}")
-            writer = csv.DictWriter(output_stream, fieldnames=FIELDS)
+            writer = csv.DictWriter(output_stream, fieldnames=FIELDS, lineterminator="\n")
             writer.writeheader()
             for row in reader:
                 sid = row["stock_id"].strip()
