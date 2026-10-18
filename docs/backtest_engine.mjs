@@ -1,7 +1,7 @@
 // Pure daily-bar simulator. No API, current factor, or strategy snapshot is read here.
 export const LOT_SIZE = 1000;
 export const DEFAULT_BACKTEST = Object.freeze({
-  startDate: '2026-07-15', endDate: '2026-10-14', initialCapital: 5000000,
+  startDate: '', endDate: '', initialCapital: 5000000,
   maxPositions: 5, maShort: 20, maLong: 60,
   useCloseAboveShort: true, useShortAboveLong: true,
   returnDays: 20, minReturnPct: 0, volumeDays: 20, minAvgVolumeShares: 100000,
@@ -20,22 +20,32 @@ export const MISSING_DATA_REASONS = Object.freeze({
 const validBar = bar => bar && ['open','high','low','close','volume'].every(k => Number.isFinite(bar[k])) &&
   bar.open > 0 && bar.high > 0 && bar.low > 0 && bar.close > 0 && bar.volume > 0;
 
-export function parsePricesCsv(csv) {
-  const lines = csv.replace(/^\uFEFF/, '').trim().split(/\r?\n/);
+export function parsePriceFile(csv, {start = '', end = '9999-12-31'} = {}) {
+  const lines = csv.replace(/^\uFEFF/, '').matchAll(/[^\r\n]+/g);
   const expected = 'date,stock_id,open,high,low,close,volume';
-  if (lines.shift() !== expected) throw new Error('回測行情欄位不符');
-  return lines.filter(Boolean).map((line, index) => {
+  if (lines.next().value?.[0] !== expected) throw new Error('回測行情欄位不符');
+  const rows = [], datePool = new Map(), idPool = new Map();
+  let totalRows = 0;
+  for (const [line] of lines) {
+    totalRows++;
     const fields = line.split(',');
-    if (fields.length !== 7) throw new Error(`行情第 ${index + 2} 行格式不符`);
+    if (fields.length !== 7) throw new Error(`行情第 ${totalRows + 1} 行格式不符`);
     const [date, stock_id, ...values] = fields;
+    if (date < start || date > end) continue;
     const [open, high, low, close, volume] = values.map(Number);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^\d{4}$/.test(stock_id) ||
         ![open, high, low, close, volume].every(Number.isFinite) ||
         [open, high, low, close].some(value => value <= 0) || volume < 0) {
-      throw new Error(`行情第 ${index + 2} 行數值不正確`);
+      throw new Error(`行情第 ${totalRows + 1} 行數值不正確`);
     }
-    return {date, stock_id, open, high, low, close, volume};
-  });
+    if (!datePool.has(date)) datePool.set(date, date);
+    if (!idPool.has(stock_id)) idPool.set(stock_id, stock_id);
+    rows.push({date:datePool.get(date), stock_id:idPool.get(stock_id), open, high, low, close, volume});
+  }
+  return {rows, totalRows};
+}
+export function parsePricesCsv(csv) {
+  return parsePriceFile(csv).rows;
 }
 
 export function validateBacktestConfig(input, dates) {
@@ -340,7 +350,7 @@ export function runBacktest(rows, input, stockInfo = {}) {
       market_value:round2(p.shares*p.lastPrice), stale:p.lastPriceDate !== effectiveEnd,
       exit_intent:p.exitIntent})),
     warnings: ['價格未經除權息調整，結果為未含息價格回測，價格跳動可能影響訊號與停損。',
-      '目前只有 133 個交易日；以目前股票清單回推存在存活者偏誤。',
+      '以目前股票清單回推存在存活者偏誤；歷史不足與缺行情不補價。',
       '疑似漲跌停鎖死僅按日線推估；日內先後無法辨別時先算停損。'],
   };
 }

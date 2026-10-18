@@ -52,7 +52,7 @@ def _save_known_empty(cache):
     temporary.replace(HISTORY_EMPTY_DATES_PATH)
 
 
-def _request(session, market, day, counts, sleep=time.sleep):
+def _request(session, market, day, counts, sleep=time.sleep, *, strict_dates=False):
     """Every HTTP attempt is counted and followed by at least one second of rest."""
     url, fields = SOURCES[market]
     for attempt in range(HISTORY_MAX_RETRIES + 1):
@@ -73,6 +73,10 @@ def _request(session, market, day, counts, sleep=time.sleep):
             else:
                 response.raise_for_status()
                 payload = response.json()
+                if strict_dates and not isinstance(payload, dict):
+                    raise ValueError("invalid_payload")
+                if strict_dates and payload.get("date") and str(payload["date"]) != day.strftime("%Y%m%d"):
+                    raise SourceStopped("response_date_mismatch")
                 return _table_rows(payload, fields, day, market)
         except SourceStopped:
             raise

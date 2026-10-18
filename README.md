@@ -199,9 +199,18 @@ the stop is assumed first. A one-price bar about 10% beyond the previous close i
 treated as a possible locked limit, since order-book and official limit flags are not stored.
 The complete rules and skip-reason definitions are in `docs/backtest-spec.md`.
 
-The present price file contains 133 trading sessions from 2026-04-01 through 2026-10-14 and uses
-the current listed-stock universe, so it has survivorship bias. Prices are not adjusted for
+The manifest reports the saved date range, trading sessions, and the earliest backtest date after
+120 warmup sessions. The default period is the most recent complete calendar year ending at the
+last saved trading date. Yearly CSV and gzip files load across year boundaries in the worker.
+The current listed-stock universe has survivorship bias. Prices are not adjusted for
 ex-dividend or other corporate actions. Account returns are price-only and exclude dividends;
 ex-dividend gaps can distort signals and exits. Open positions are marked at the last available
 close. The first result and settings panels state these limits explicitly. CSV export contains
 closed trades and costs, while the page separately lists open positions and their mark dates.
+
+The independent `python src/backtest_history.py --start YYYY-MM-DD --end YYYY-MM-DD` command
+audits/backfills official TWSE/TPEx daily batches with bounded retries, an OS lock, and resumable
+per-date/source progress. It preserves existing valid quotes and does not use FinMind or change
+the financial-history schedule. Local daily download caches are not published. Run
+`node --expose-gc src/validate_backtest_expansion.mjs` for the saved original-period regression
+and recent-year checks; the fixed regression fixture is included in `tests/fixtures`.

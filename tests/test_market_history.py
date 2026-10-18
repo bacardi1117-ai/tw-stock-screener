@@ -66,6 +66,12 @@ class MarketHistoryTests(unittest.TestCase):
         self.assertEqual((session.calls, counts["TWSE"]), (1, 1))
         self.assertEqual(sleeps, [1.0])
 
+    def test_backfill_rejects_wrong_response_date_instead_of_caching_a_holiday(self):
+        counts={"TWSE":0,"TPEx":0}
+        with self.assertRaisesRegex(SourceStopped,"response_date_mismatch"):
+            _request(Session([200]),"TWSE",date(2025,12,31),counts,lambda _:None,strict_dates=True)
+        self.assertEqual(counts["TWSE"],1)
+
     def test_403_retries_with_backoff_then_stops(self):
         sleeps = []
         session = Session([403] * 4)

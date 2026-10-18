@@ -1,0 +1,4018 @@
+{
+  "dates": {
+    "2025-04-01:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-01:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-02:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-02:TPEx": {
+      "status": "saved",
+      "rows": 818,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-03:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-04-03:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-04-04:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-04-04:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-04-07:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-07:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-08:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-08:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-09:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-09:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-10:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-10:TPEx": {
+      "status": "saved",
+      "rows": 838,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-11:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-11:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-14:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-14:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-15:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-15:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-16:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-16:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-17:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-17:TPEx": {
+      "status": "saved",
+      "rows": 811,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-18:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-18:TPEx": {
+      "status": "saved",
+      "rows": 813,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-21:TWSE": {
+      "status": "saved",
+      "rows": 1031,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-21:TPEx": {
+      "status": "saved",
+      "rows": 818,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-22:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-22:TPEx": {
+      "status": "saved",
+      "rows": 805,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-23:TWSE": {
+      "status": "saved",
+      "rows": 1031,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-23:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-24:TWSE": {
+      "status": "saved",
+      "rows": 1030,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-24:TPEx": {
+      "status": "saved",
+      "rows": 810,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-25:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-25:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-28:TWSE": {
+      "status": "saved",
+      "rows": 1029,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-28:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-29:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-29:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-30:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-04-30:TPEx": {
+      "status": "saved",
+      "rows": 819,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-01:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-05-01:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-05-02:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-02:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-05:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-05:TPEx": {
+      "status": "saved",
+      "rows": 826,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-06:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-06:TPEx": {
+      "status": "saved",
+      "rows": 817,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-07:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-07:TPEx": {
+      "status": "saved",
+      "rows": 822,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-08:TWSE": {
+      "status": "saved",
+      "rows": 1031,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-08:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-09:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-09:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-12:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-12:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-13:TWSE": {
+      "status": "saved",
+      "rows": 1029,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-13:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-14:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-14:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-15:TWSE": {
+      "status": "saved",
+      "rows": 1031,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-15:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-16:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-16:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-19:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-19:TPEx": {
+      "status": "saved",
+      "rows": 822,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-20:TWSE": {
+      "status": "saved",
+      "rows": 1035,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-20:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-21:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-21:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-22:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-22:TPEx": {
+      "status": "saved",
+      "rows": 821,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-23:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-23:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-26:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-26:TPEx": {
+      "status": "saved",
+      "rows": 817,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-27:TWSE": {
+      "status": "saved",
+      "rows": 1038,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-27:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-28:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-28:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-29:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-29:TPEx": {
+      "status": "saved",
+      "rows": 821,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-05-30:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-05-30:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-06-02:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-02:TPEx": {
+      "status": "saved",
+      "rows": 815,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-03:TWSE": {
+      "status": "saved",
+      "rows": 1038,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-03:TPEx": {
+      "status": "saved",
+      "rows": 820,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-04:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-04:TPEx": {
+      "status": "saved",
+      "rows": 822,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-05:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-05:TPEx": {
+      "status": "saved",
+      "rows": 820,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-06:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-06:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-09:TWSE": {
+      "status": "saved",
+      "rows": 1028,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-09:TPEx": {
+      "status": "saved",
+      "rows": 822,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-10:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-10:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-11:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-11:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-12:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-12:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-13:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-13:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-16:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-16:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-17:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-17:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-18:TWSE": {
+      "status": "saved",
+      "rows": 1041,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-18:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-19:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-19:TPEx": {
+      "status": "saved",
+      "rows": 826,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-20:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-20:TPEx": {
+      "status": "saved",
+      "rows": 826,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-23:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-23:TPEx": {
+      "status": "saved",
+      "rows": 818,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-24:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-24:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-25:TWSE": {
+      "status": "saved",
+      "rows": 1034,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-25:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-26:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-26:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-27:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-27:TPEx": {
+      "status": "saved",
+      "rows": 819,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-30:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-06-30:TPEx": {
+      "status": "saved",
+      "rows": 816,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-01:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-01:TPEx": {
+      "status": "saved",
+      "rows": 820,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-02:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-02:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-03:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-03:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-04:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-04:TPEx": {
+      "status": "saved",
+      "rows": 821,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-07:TWSE": {
+      "status": "saved",
+      "rows": 1029,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-07:TPEx": {
+      "status": "saved",
+      "rows": 812,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-08:TWSE": {
+      "status": "saved",
+      "rows": 1038,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-08:TPEx": {
+      "status": "saved",
+      "rows": 809,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-09:TWSE": {
+      "status": "saved",
+      "rows": 1031,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-09:TPEx": {
+      "status": "saved",
+      "rows": 816,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-10:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-10:TPEx": {
+      "status": "saved",
+      "rows": 821,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-11:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-11:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-14:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-14:TPEx": {
+      "status": "saved",
+      "rows": 810,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-15:TWSE": {
+      "status": "saved",
+      "rows": 1038,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-15:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-16:TWSE": {
+      "status": "saved",
+      "rows": 1032,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-16:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-17:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-17:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-18:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-18:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-21:TWSE": {
+      "status": "saved",
+      "rows": 1036,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-21:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-22:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-22:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-23:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-23:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-24:TWSE": {
+      "status": "saved",
+      "rows": 1041,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-24:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-25:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-25:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-28:TWSE": {
+      "status": "saved",
+      "rows": 1040,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-28:TPEx": {
+      "status": "saved",
+      "rows": 817,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-29:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-29:TPEx": {
+      "status": "saved",
+      "rows": 817,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-30:TWSE": {
+      "status": "saved",
+      "rows": 1033,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-30:TPEx": {
+      "status": "saved",
+      "rows": 818,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-31:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-07-31:TPEx": {
+      "status": "saved",
+      "rows": 815,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-01:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-01:TPEx": {
+      "status": "saved",
+      "rows": 823,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-04:TWSE": {
+      "status": "saved",
+      "rows": 1037,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-04:TPEx": {
+      "status": "saved",
+      "rows": 821,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-05:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-05:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-06:TWSE": {
+      "status": "saved",
+      "rows": 1046,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-06:TPEx": {
+      "status": "saved",
+      "rows": 826,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-07:TWSE": {
+      "status": "saved",
+      "rows": 1046,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-07:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-08:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-08:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-11:TWSE": {
+      "status": "saved",
+      "rows": 1041,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-11:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-12:TWSE": {
+      "status": "saved",
+      "rows": 1039,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-12:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-13:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-13:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-14:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-14:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-15:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-15:TPEx": {
+      "status": "saved",
+      "rows": 838,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-18:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-18:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-19:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-19:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-20:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-20:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-21:TWSE": {
+      "status": "saved",
+      "rows": 1046,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-21:TPEx": {
+      "status": "saved",
+      "rows": 839,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-22:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-22:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-25:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-25:TPEx": {
+      "status": "saved",
+      "rows": 840,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-26:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-26:TPEx": {
+      "status": "saved",
+      "rows": 839,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-27:TWSE": {
+      "status": "saved",
+      "rows": 1047,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-27:TPEx": {
+      "status": "saved",
+      "rows": 838,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-28:TWSE": {
+      "status": "saved",
+      "rows": 1044,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-28:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-29:TWSE": {
+      "status": "saved",
+      "rows": 1044,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-08-29:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-01:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-01:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-02:TWSE": {
+      "status": "saved",
+      "rows": 1044,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-02:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-03:TWSE": {
+      "status": "saved",
+      "rows": 1046,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-03:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-04:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-04:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-05:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-05:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-08:TWSE": {
+      "status": "saved",
+      "rows": 1044,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-08:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-09:TWSE": {
+      "status": "saved",
+      "rows": 1049,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-09:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-10:TWSE": {
+      "status": "saved",
+      "rows": 1048,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-10:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-11:TWSE": {
+      "status": "saved",
+      "rows": 1048,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-11:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-12:TWSE": {
+      "status": "saved",
+      "rows": 1048,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-12:TPEx": {
+      "status": "saved",
+      "rows": 840,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-15:TWSE": {
+      "status": "saved",
+      "rows": 1048,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-15:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-16:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-16:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-17:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-17:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-18:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-18:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-19:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-19:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-22:TWSE": {
+      "status": "saved",
+      "rows": 1045,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-22:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-23:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-23:TPEx": {
+      "status": "saved",
+      "rows": 839,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-24:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-24:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-25:TWSE": {
+      "status": "saved",
+      "rows": 1042,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-25:TPEx": {
+      "status": "saved",
+      "rows": 825,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-26:TWSE": {
+      "status": "saved",
+      "rows": 1047,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-26:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-29:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-09-29:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-09-30:TWSE": {
+      "status": "saved",
+      "rows": 1043,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-09-30:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-01:TWSE": {
+      "status": "saved",
+      "rows": 1046,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-01:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-02:TWSE": {
+      "status": "saved",
+      "rows": 1044,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-02:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-03:TWSE": {
+      "status": "saved",
+      "rows": 1047,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-03:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-06:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-06:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-07:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-07:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-08:TWSE": {
+      "status": "saved",
+      "rows": 1049,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-08:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-09:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-09:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-10:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-10:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-13:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-13:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-14:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-14:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-15:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-15:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-16:TWSE": {
+      "status": "saved",
+      "rows": 1054,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-16:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-17:TWSE": {
+      "status": "saved",
+      "rows": 1050,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-17:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-20:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-20:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-21:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-21:TPEx": {
+      "status": "saved",
+      "rows": 839,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-22:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-22:TPEx": {
+      "status": "saved",
+      "rows": 829,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-23:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-23:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-24:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-24:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-10-27:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-27:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-28:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-28:TPEx": {
+      "status": "saved",
+      "rows": 839,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-29:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-29:TPEx": {
+      "status": "saved",
+      "rows": 838,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-30:TWSE": {
+      "status": "saved",
+      "rows": 1055,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-30:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-31:TWSE": {
+      "status": "saved",
+      "rows": 1054,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-10-31:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-03:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-03:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-04:TWSE": {
+      "status": "saved",
+      "rows": 1049,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-04:TPEx": {
+      "status": "saved",
+      "rows": 828,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-05:TWSE": {
+      "status": "saved",
+      "rows": 1054,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-05:TPEx": {
+      "status": "saved",
+      "rows": 824,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-06:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-06:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-07:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-07:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-10:TWSE": {
+      "status": "saved",
+      "rows": 1048,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-10:TPEx": {
+      "status": "saved",
+      "rows": 827,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-11:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-11:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-12:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-12:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-13:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-13:TPEx": {
+      "status": "saved",
+      "rows": 837,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-14:TWSE": {
+      "status": "saved",
+      "rows": 1052,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-14:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-17:TWSE": {
+      "status": "saved",
+      "rows": 1054,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-17:TPEx": {
+      "status": "saved",
+      "rows": 840,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-18:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-18:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-19:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-19:TPEx": {
+      "status": "saved",
+      "rows": 831,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-20:TWSE": {
+      "status": "saved",
+      "rows": 1051,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-20:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-21:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-21:TPEx": {
+      "status": "saved",
+      "rows": 826,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-24:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-24:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-25:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-25:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-26:TWSE": {
+      "status": "saved",
+      "rows": 1058,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-26:TPEx": {
+      "status": "saved",
+      "rows": 841,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-27:TWSE": {
+      "status": "saved",
+      "rows": 1053,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-27:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-28:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-11-28:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-01:TWSE": {
+      "status": "saved",
+      "rows": 1055,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-01:TPEx": {
+      "status": "saved",
+      "rows": 832,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-02:TWSE": {
+      "status": "saved",
+      "rows": 1058,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-02:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-03:TWSE": {
+      "status": "saved",
+      "rows": 1058,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-03:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-04:TWSE": {
+      "status": "saved",
+      "rows": 1057,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-04:TPEx": {
+      "status": "saved",
+      "rows": 834,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-05:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-05:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-08:TWSE": {
+      "status": "saved",
+      "rows": 1059,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-08:TPEx": {
+      "status": "saved",
+      "rows": 830,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-09:TWSE": {
+      "status": "saved",
+      "rows": 1055,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-09:TPEx": {
+      "status": "saved",
+      "rows": 833,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-10:TWSE": {
+      "status": "saved",
+      "rows": 1054,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-10:TPEx": {
+      "status": "saved",
+      "rows": 842,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-11:TWSE": {
+      "status": "saved",
+      "rows": 1057,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-11:TPEx": {
+      "status": "saved",
+      "rows": 840,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-12:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-12:TPEx": {
+      "status": "saved",
+      "rows": 838,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-15:TWSE": {
+      "status": "saved",
+      "rows": 1058,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-15:TPEx": {
+      "status": "saved",
+      "rows": 835,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-16:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-16:TPEx": {
+      "status": "saved",
+      "rows": 842,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-17:TWSE": {
+      "status": "saved",
+      "rows": 1056,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-17:TPEx": {
+      "status": "saved",
+      "rows": 842,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-18:TWSE": {
+      "status": "saved",
+      "rows": 1055,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-18:TPEx": {
+      "status": "saved",
+      "rows": 836,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-19:TWSE": {
+      "status": "saved",
+      "rows": 1055,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-19:TPEx": {
+      "status": "saved",
+      "rows": 843,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-22:TWSE": {
+      "status": "saved",
+      "rows": 1057,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-22:TPEx": {
+      "status": "saved",
+      "rows": 844,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-23:TWSE": {
+      "status": "saved",
+      "rows": 1057,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-23:TPEx": {
+      "status": "saved",
+      "rows": 849,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-24:TWSE": {
+      "status": "saved",
+      "rows": 1057,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-24:TPEx": {
+      "status": "saved",
+      "rows": 846,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-25:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-12-25:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2025-12-26:TWSE": {
+      "status": "saved",
+      "rows": 1059,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-26:TPEx": {
+      "status": "saved",
+      "rows": 843,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-29:TWSE": {
+      "status": "saved",
+      "rows": 1060,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-29:TPEx": {
+      "status": "saved",
+      "rows": 851,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-30:TWSE": {
+      "status": "saved",
+      "rows": 1059,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-30:TPEx": {
+      "status": "saved",
+      "rows": 846,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-31:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2025-12-31:TPEx": {
+      "status": "saved",
+      "rows": 854,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-01:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-01-01:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-01-02:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-02:TPEx": {
+      "status": "saved",
+      "rows": 853,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-05:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-05:TPEx": {
+      "status": "saved",
+      "rows": 855,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-06:TWSE": {
+      "status": "saved",
+      "rows": 1060,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-06:TPEx": {
+      "status": "saved",
+      "rows": 856,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-07:TWSE": {
+      "status": "saved",
+      "rows": 1059,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-07:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-08:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-08:TPEx": {
+      "status": "saved",
+      "rows": 850,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-09:TWSE": {
+      "status": "saved",
+      "rows": 1059,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-09:TPEx": {
+      "status": "saved",
+      "rows": 847,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-12:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-12:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-13:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-13:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-14:TWSE": {
+      "status": "saved",
+      "rows": 1061,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-14:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-15:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-15:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-16:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-16:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-19:TWSE": {
+      "status": "saved",
+      "rows": 1065,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-19:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-20:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-20:TPEx": {
+      "status": "saved",
+      "rows": 855,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-21:TWSE": {
+      "status": "saved",
+      "rows": 1066,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-21:TPEx": {
+      "status": "saved",
+      "rows": 846,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-22:TWSE": {
+      "status": "saved",
+      "rows": 1065,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-22:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-23:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-23:TPEx": {
+      "status": "saved",
+      "rows": 853,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-26:TWSE": {
+      "status": "saved",
+      "rows": 1064,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-26:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-27:TWSE": {
+      "status": "saved",
+      "rows": 1065,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-27:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-28:TWSE": {
+      "status": "saved",
+      "rows": 1065,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-28:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-29:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-29:TPEx": {
+      "status": "saved",
+      "rows": 855,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-30:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-01-30:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-02:TWSE": {
+      "status": "saved",
+      "rows": 1066,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-02:TPEx": {
+      "status": "saved",
+      "rows": 854,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-03:TWSE": {
+      "status": "saved",
+      "rows": 1066,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-03:TPEx": {
+      "status": "saved",
+      "rows": 854,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-04:TWSE": {
+      "status": "saved",
+      "rows": 1063,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-04:TPEx": {
+      "status": "saved",
+      "rows": 856,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-05:TWSE": {
+      "status": "saved",
+      "rows": 1066,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-05:TPEx": {
+      "status": "saved",
+      "rows": 855,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-06:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-06:TPEx": {
+      "status": "saved",
+      "rows": 852,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-09:TWSE": {
+      "status": "saved",
+      "rows": 1064,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-09:TPEx": {
+      "status": "saved",
+      "rows": 856,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-10:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-10:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-11:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-11:TPEx": {
+      "status": "saved",
+      "rows": 862,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-12:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-12:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-13:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-13:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-16:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-16:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-17:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-17:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-18:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-18:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-19:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-19:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-20:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-20:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-23:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-23:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-24:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-24:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-25:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-25:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-26:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-26:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-02-27:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-02-27:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-03-02:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-02:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-03:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-03:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-04:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-04:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-05:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-05:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-06:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-06:TPEx": {
+      "status": "saved",
+      "rows": 854,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-09:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-09:TPEx": {
+      "status": "saved",
+      "rows": 854,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-10:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-10:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-11:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-11:TPEx": {
+      "status": "saved",
+      "rows": 862,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-12:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-12:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-13:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-13:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-16:TWSE": {
+      "status": "saved",
+      "rows": 1067,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-16:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-17:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-17:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-18:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-18:TPEx": {
+      "status": "saved",
+      "rows": 862,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-19:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-19:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-20:TWSE": {
+      "status": "saved",
+      "rows": 1067,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-20:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-23:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-23:TPEx": {
+      "status": "saved",
+      "rows": 858,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-24:TWSE": {
+      "status": "saved",
+      "rows": 1065,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-24:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-25:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-25:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-26:TWSE": {
+      "status": "saved",
+      "rows": 1068,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-26:TPEx": {
+      "status": "saved",
+      "rows": 855,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-27:TWSE": {
+      "status": "saved",
+      "rows": 1066,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-27:TPEx": {
+      "status": "saved",
+      "rows": 846,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-30:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-30:TPEx": {
+      "status": "saved",
+      "rows": 852,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-31:TWSE": {
+      "status": "saved",
+      "rows": 1069,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-03-31:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-01:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-01:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-02:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-02:TPEx": {
+      "status": "saved",
+      "rows": 850,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-03:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-04-03:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-04-06:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-04-06:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-04-07:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-07:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-08:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-08:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-09:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-09:TPEx": {
+      "status": "saved",
+      "rows": 856,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-10:TWSE": {
+      "status": "saved",
+      "rows": 1070,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-10:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-13:TWSE": {
+      "status": "saved",
+      "rows": 1067,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-13:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-14:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-14:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-15:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-15:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-16:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-16:TPEx": {
+      "status": "saved",
+      "rows": 866,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-17:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-17:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-20:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-20:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-21:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-21:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-22:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-22:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-23:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-23:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-24:TWSE": {
+      "status": "saved",
+      "rows": 1071,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-24:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-27:TWSE": {
+      "status": "saved",
+      "rows": 1067,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-27:TPEx": {
+      "status": "saved",
+      "rows": 866,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-28:TWSE": {
+      "status": "saved",
+      "rows": 1070,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-28:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-29:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-29:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-30:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-04-30:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-01:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-05-01:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-05-04:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-04:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-05:TWSE": {
+      "status": "saved",
+      "rows": 1072,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-05:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-06:TWSE": {
+      "status": "saved",
+      "rows": 1073,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-06:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-07:TWSE": {
+      "status": "saved",
+      "rows": 1074,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-07:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-08:TWSE": {
+      "status": "saved",
+      "rows": 1073,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-08:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-11:TWSE": {
+      "status": "saved",
+      "rows": 1075,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-11:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-12:TWSE": {
+      "status": "saved",
+      "rows": 1074,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-12:TPEx": {
+      "status": "saved",
+      "rows": 876,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-13:TWSE": {
+      "status": "saved",
+      "rows": 1073,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-13:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-14:TWSE": {
+      "status": "saved",
+      "rows": 1074,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-14:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-15:TWSE": {
+      "status": "saved",
+      "rows": 1073,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-15:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-18:TWSE": {
+      "status": "saved",
+      "rows": 1075,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-18:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-19:TWSE": {
+      "status": "saved",
+      "rows": 1074,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-19:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-20:TWSE": {
+      "status": "saved",
+      "rows": 1074,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-20:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-21:TWSE": {
+      "status": "saved",
+      "rows": 1075,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-21:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-22:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-22:TPEx": {
+      "status": "saved",
+      "rows": 877,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-25:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-25:TPEx": {
+      "status": "saved",
+      "rows": 876,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-26:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-26:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-27:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-27:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-28:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-28:TPEx": {
+      "status": "saved",
+      "rows": 877,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-29:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-05-29:TPEx": {
+      "status": "saved",
+      "rows": 878,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-01:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-01:TPEx": {
+      "status": "saved",
+      "rows": 875,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-02:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-02:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-03:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-03:TPEx": {
+      "status": "saved",
+      "rows": 878,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-04:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-04:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-05:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-05:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-08:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-08:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-09:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-09:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-10:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-10:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-11:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-11:TPEx": {
+      "status": "saved",
+      "rows": 875,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-12:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-12:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-15:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-15:TPEx": {
+      "status": "saved",
+      "rows": 876,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-16:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-16:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-17:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-17:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-18:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-18:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-19:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-06-19:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-06-22:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-22:TPEx": {
+      "status": "saved",
+      "rows": 879,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-23:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-23:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-24:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-24:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-25:TWSE": {
+      "status": "saved",
+      "rows": 1076,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-25:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-26:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-26:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-29:TWSE": {
+      "status": "saved",
+      "rows": 1076,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-29:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-30:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-06-30:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-01:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-01:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-02:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-02:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-03:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-03:TPEx": {
+      "status": "saved",
+      "rows": 880,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-06:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-06:TPEx": {
+      "status": "saved",
+      "rows": 879,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-07:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-07:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-08:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-08:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-09:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-09:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-10:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-07-10:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-07-13:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-13:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-14:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-14:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-15:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-15:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-16:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-16:TPEx": {
+      "status": "saved",
+      "rows": 866,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-17:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-17:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-20:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-20:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-21:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-21:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-22:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-22:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-23:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-23:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-24:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-24:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-27:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-27:TPEx": {
+      "status": "saved",
+      "rows": 851,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-28:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-28:TPEx": {
+      "status": "saved",
+      "rows": 862,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-29:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-29:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-30:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-30:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-31:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-07-31:TPEx": {
+      "status": "saved",
+      "rows": 875,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-03:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-03:TPEx": {
+      "status": "saved",
+      "rows": 857,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-04:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-04:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-05:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-05:TPEx": {
+      "status": "saved",
+      "rows": 869,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-06:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-06:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-07:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-07:TPEx": {
+      "status": "saved",
+      "rows": 862,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-10:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-10:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-11:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-11:TPEx": {
+      "status": "saved",
+      "rows": 872,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-12:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-12:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-13:TWSE": {
+      "status": "saved",
+      "rows": 1085,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-13:TPEx": {
+      "status": "saved",
+      "rows": 875,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-14:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-14:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-17:TWSE": {
+      "status": "saved",
+      "rows": 1086,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-17:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-18:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-18:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-19:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-19:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-20:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-20:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-21:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-21:TPEx": {
+      "status": "saved",
+      "rows": 876,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-24:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-24:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-25:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-25:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-26:TWSE": {
+      "status": "saved",
+      "rows": 1085,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-26:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-27:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-27:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-28:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-28:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-31:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-08-31:TPEx": {
+      "status": "saved",
+      "rows": 858,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-01:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-01:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-02:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-02:TPEx": {
+      "status": "saved",
+      "rows": 856,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-03:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-03:TPEx": {
+      "status": "saved",
+      "rows": 863,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-04:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-04:TPEx": {
+      "status": "saved",
+      "rows": 860,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-07:TWSE": {
+      "status": "saved",
+      "rows": 1087,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-07:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-08:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-08:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-09:TWSE": {
+      "status": "saved",
+      "rows": 1087,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-09:TPEx": {
+      "status": "saved",
+      "rows": 866,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-10:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-10:TPEx": {
+      "status": "saved",
+      "rows": 859,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-11:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-11:TPEx": {
+      "status": "saved",
+      "rows": 861,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-14:TWSE": {
+      "status": "saved",
+      "rows": 1078,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-14:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-15:TWSE": {
+      "status": "saved",
+      "rows": 1080,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-15:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-16:TWSE": {
+      "status": "saved",
+      "rows": 1075,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-16:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-17:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-17:TPEx": {
+      "status": "saved",
+      "rows": 866,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-18:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-18:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-21:TWSE": {
+      "status": "saved",
+      "rows": 1085,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-21:TPEx": {
+      "status": "saved",
+      "rows": 874,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-22:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-22:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-23:TWSE": {
+      "status": "saved",
+      "rows": 1082,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-23:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-24:TWSE": {
+      "status": "saved",
+      "rows": 1079,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-24:TPEx": {
+      "status": "saved",
+      "rows": 870,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-25:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-09-25:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-09-28:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-09-28:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-09-29:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-29:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-30:TWSE": {
+      "status": "saved",
+      "rows": 1087,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-09-30:TPEx": {
+      "status": "saved",
+      "rows": 877,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-01:TWSE": {
+      "status": "saved",
+      "rows": 1085,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-01:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-02:TWSE": {
+      "status": "saved",
+      "rows": 1086,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-02:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-05:TWSE": {
+      "status": "saved",
+      "rows": 1087,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-05:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-06:TWSE": {
+      "status": "saved",
+      "rows": 1087,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-06:TPEx": {
+      "status": "saved",
+      "rows": 865,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-07:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-07:TPEx": {
+      "status": "saved",
+      "rows": 873,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-08:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-08:TPEx": {
+      "status": "saved",
+      "rows": 867,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-09:TWSE": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-10-09:TPEx": {
+      "status": "no_market_rows",
+      "rows": 0
+    },
+    "2026-10-12:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-12:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-13:TWSE": {
+      "status": "saved",
+      "rows": 1085,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-13:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-14:TWSE": {
+      "status": "saved",
+      "rows": 1084,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-14:TPEx": {
+      "status": "saved",
+      "rows": 868,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-15:TWSE": {
+      "status": "saved",
+      "rows": 1083,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-15:TPEx": {
+      "status": "saved",
+      "rows": 871,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-16:TWSE": {
+      "status": "saved",
+      "rows": 1081,
+      "invalid_ohlcv_ids": []
+    },
+    "2026-10-16:TPEx": {
+      "status": "saved",
+      "rows": 864,
+      "invalid_ohlcv_ids": []
+    }
+  },
+  "start": "2025-04-01",
+  "end": "2026-10-16",
+  "volume_unit": "shares",
+  "stock_count": 1982,
+  "current_run_requests": {
+    "TWSE": 404,
+    "TPEx": 404
+  },
+  "stop_reason": "range_completed",
+  "updated_at": "2026-10-18T06:18:21.834096+00:00",
+  "merge": {
+    "2025": {
+      "added": 352169,
+      "repaired": 0,
+      "preserved_conflicts": 0,
+      "conflict_samples": [],
+      "rows": 352169
+    },
+    "2026": {
+      "added": 109766,
+      "repaired": 0,
+      "preserved_conflicts": 0,
+      "conflict_samples": [],
+      "rows": 368649
+    }
+  }
+}

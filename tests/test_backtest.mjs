@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DEFAULT_BACKTEST, MISSING_DATA_REASONS, parsePricesCsv, runBacktest,
-  skippedDetailsToCsv, tradesToCsv} from '../docs/backtest_engine.mjs';
+  skippedDetailsToCsv, tradesToCsv, parsePriceFile} from '../docs/backtest_engine.mjs';
 
 const day = (date, stock_id, open, high = open, low = open, close = open, volume = 1000000) =>
   ({date, stock_id, open, high, low, close, volume});
@@ -12,6 +12,38 @@ const base = overrides => ({...DEFAULT_BACKTEST, startDate:'2026-01-03', endDate
   maxHoldDays:20, feeRatePct:0, feeMinimum:0, sellTaxPct:0, slippagePct:0,
   ...overrides});
 const info = {'1001':{name:'測試股',market:'TWSE'}};
+
+test('cross-year parsing retains only requested warmup interval and counts all file rows',()=>{
+  const header='date,stock_id,open,high,low,close,volume\n';
+  const csv=header+'2025-12-30,1001,10,10,10,10,1000\n'+
+    '2025-12-31,1001,11,11,11,11,1000\n2026-01-02,1001,12,12,12,12,1000\n';
+  const parsed=parsePriceFile(csv,{start:'2025-12-31',end:'2026-01-02'});
+  assert.equal(parsed.totalRows,3);
+  assert.deepEqual(parsed.rows.map(r=>r.date),['2025-12-31','2026-01-02']);
+  assert.deepEqual(parsePriceFile(csv).rows,parsePricesCsv(csv));
+});
+
+test('120 completed warmup sessions permit an opening buy on the first backtest session',()=>{
+  const rows=[];
+  for(let i=0;i<=120;i++) {
+    const date=new Date(Date.UTC(2025,6,1+i)).toISOString().slice(0,10);
+    rows.push(day(date,'1001',100+i));
+  }
+  const result=runBacktest(rows,base({startDate:rows[120].date,endDate:rows[120].date,
+    initialCapital:1000000,maShort:20,maLong:120,useCloseAboveShort:true,useShortAboveLong:true,
+    minReturnPct:0}),info);
+  assert.equal(result.skipped.warmup_insufficient,0);
+  assert.equal(result.openPositions[0].entry_date,rows[120].date);
+  assert.equal(result.openPositions[0].entry_price,rows[120].open);
+});
+
+test('year boundary signals buy on the next stored market session',()=>{
+  const rows=[day('2025-12-30','1001',100),day('2025-12-31','1001',101),
+    day('2026-01-02','1001',102)];
+  const result=runBacktest(rows,base({startDate:'2025-12-31',endDate:'2026-01-02'}),info);
+  assert.equal(result.openPositions[0].entry_date,'2026-01-02');
+  assert.equal(result.openPositions[0].entry_price,102);
+});
 
 test('signal uses only previous close and buys at next opening, with warmup',()=>{
   const rows=[day('2026-01-01','1001',100),day('2026-01-02','1001',100),

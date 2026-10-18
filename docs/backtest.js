@@ -11,6 +11,7 @@ const money = value => Number.isFinite(value) ?
   Number(value).toLocaleString('zh-TW',{maximumFractionDigits:2}) : '—';
 const percent = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : '—';
 let worker = null, result = null, manifest = null, busy = false;
+let dateDefaults = {...DEFAULT_BACKTEST};
 
 function fill(values) {
   for (const [key,value] of Object.entries(values)) {
@@ -142,7 +143,9 @@ function render(data) {
   result = data;
   const s = data.summary;
   $('resultSection').hidden = false;
-  $('resultLimits').textContent = `已保存行情僅 ${manifest.trading_dates.length} 個交易日。價格未經除權息調整，未含股利，並非完整含息總報酬；除權息跳價可能影響訊號與出場。目前股票清單缺少已下市股票，存在存活者偏誤。疑似漲跌停與盤中先後採保守估計。`;
+  $('resultLimits').textContent = `行情涵蓋 ${manifest.start} ～ ${manifest.end}，共 ${manifest.trading_dates.length} 個交易日。預留 120 個交易日暖機後可回測 ${manifest.backtest_start} ～ ${manifest.end}；個股仍可能因缺價或歷史不足而跳過。價格未經除權息調整，未含股利，並非完整含息總報酬；除權息跳價可能影響訊號與出場。目前股票清單缺少已下市股票，存在存活者偏誤。疑似漲跌停與盤中先後採保守估計。`;
+  const p = data.performance;
+  $('loadMetrics').textContent = p ? `本次行情傳輸檔案合計 ${(p.downloadBytes / 1048576).toFixed(2)} MiB（瀏覽器快取可減少實際傳輸）；保留 ${p.retainedRows.toLocaleString('zh-TW')} 筆日線。載入與解析 ${(p.loadMs / 1000).toFixed(2)} 秒，回測計算 ${(p.calculationMs / 1000).toFixed(2)} 秒。` : '';
   $('effectivePeriod').textContent = `${data.effectiveStart} ～ ${data.effectiveEnd}，${data.tradingDays} 個交易日`;
   $('summaryCards').innerHTML = [
     card('已平倉勝率', s.closedTrades ? percent(s.winRatePct) : '無已平倉交易', `${s.closedTrades} 筆已平倉`),
@@ -188,10 +191,18 @@ async function loadManifest() {
     throw new Error('回測資料清單格式不正確');
   }
   for (const key of ['startDate','endDate']) {
-    form.elements.namedItem(key).min = manifest.start;
+    form.elements.namedItem(key).min = manifest.backtest_start ?? manifest.start;
     form.elements.namedItem(key).max = manifest.end;
   }
-  $('coverageNotice').textContent = `已保存 ${manifest.trading_dates.length} 個交易日（${manifest.start} ～ ${manifest.end}）、${manifest.stock_count.toLocaleString('zh-TW')} 支目前清單中的普通股。成交量單位：股。`;
+  dateDefaults = {...DEFAULT_BACKTEST,
+    startDate:manifest.recent_year_start > manifest.backtest_start ? manifest.recent_year_start : manifest.backtest_start,
+    endDate:manifest.end};
+  const current = readConfig();
+  if (!current.startDate || !current.endDate) fill({...current,...{startDate:dateDefaults.startDate,endDate:dateDefaults.endDate}});
+  const totalBytes = manifest.years.reduce((sum,y) => sum + (y.compressed_bytes ?? y.bytes ?? 0), 0);
+  const yearCoverage = manifest.recent_year_complete ? `最近完整一年：${manifest.recent_year_start} ～ ${manifest.end}；起日前已有 ${manifest.recent_year_warmup_sessions} 個交易日。` : '一年回測所需的歷史或暖機資料尚未齊備。';
+  $('coverageNotice').textContent = `行情涵蓋 ${manifest.start} ～ ${manifest.end}，${manifest.trading_dates.length} 個交易日、${manifest.stock_count.toLocaleString('zh-TW')} 支目前清單中的普通股。預留 120 個交易日暖機後可回測 ${manifest.backtest_start ?? '尚不足 120 日'} ～ ${manifest.end}。${yearCoverage}成交量單位：股。`;
+  $('downloadNotice').textContent = `全年度壓縮行情約 ${(totalBytes/1048576).toFixed(2)} MiB。背景程式依期間載入年度檔，只保留所需日期；手機首次載入可能較慢，請保持頁面開啟。個股缺漏不補價，未確認上市日期的歷史不足不標為新上市。`;
 }
 function start() {
   if (busy) return;
@@ -219,7 +230,7 @@ function start() {
 
 form.addEventListener('submit', event => {event.preventDefault();start();});
 $('cancelButton').addEventListener('click',()=>{stopWorker();status('已取消本次回測');});
-$('resetButton').addEventListener('click',()=>{fill(DEFAULT_BACKTEST);status('已恢復首組測試參數');});
+$('resetButton').addEventListener('click',()=>{fill(dateDefaults);status('已恢復首組數值參數，期間設為最近完整一年');});
 $('downloadCsv').addEventListener('click',()=>{
   if (!result) return;
   const blob = new Blob([tradesToCsv(result.trades)], {type:'text/csv;charset=utf-8'});

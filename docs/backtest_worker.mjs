@@ -1,7 +1,6 @@
-import {parsePricesCsv, runBacktest} from './backtest_engine.mjs';
+import {parsePriceFile, runBacktest} from './backtest_engine.mjs';
 
 let manifest = null;
-const yearlyRows = new Map();
 
 async function getManifest() {
   if (manifest) return manifest;
@@ -27,18 +26,29 @@ self.onmessage = async event => {
     const earliest = dates[Math.max(0, first - warmup)] ?? dates[0];
     const years = data.years.filter(item => item.end >= earliest && item.start <= config.endDate);
     if (!years.length) throw new Error('選定期間沒有行情檔');
+    // Keep only this run's warmup/selected interval. HTTP cache handles reuse;
+    // do not retain multiple full-year object arrays across repeated runs.
+    const rows = [];
+    let downloadBytes = 0;
+    const started = performance.now();
     for (const item of years) {
-      if (yearlyRows.has(item.year)) continue;
       self.postMessage({type: 'progress', message: `載入 ${item.year} 年行情…`});
-      const response = await fetch(new URL(`./data/backtest/${item.file}`, import.meta.url));
+      const compressed = item.compressed_file && typeof DecompressionStream === 'function';
+      const file = compressed ? item.compressed_file : item.file;
+      const response = await fetch(new URL(`./data/backtest/${file}`, import.meta.url));
       if (!response.ok) throw new Error(`無法載入 ${item.year} 年行情（HTTP ${response.status}）`);
-      const parsed = parsePricesCsv(await response.text());
-      if (parsed.length !== item.rows) throw new Error(`${item.year} 年行情筆數不符`);
-      yearlyRows.set(item.year, parsed);
+      const text = compressed ? await new Response(response.body.pipeThrough(
+        new DecompressionStream('gzip'))).text() : await response.text();
+      const parsed = parsePriceFile(text, {start:earliest, end:config.endDate});
+      if (parsed.totalRows !== item.rows) throw new Error(`${item.year} 年行情筆數不符`);
+      for (const row of parsed.rows) rows.push(row);
+      downloadBytes += compressed ? item.compressed_bytes : item.bytes;
     }
-    const rows = years.flatMap(item => yearlyRows.get(item.year));
+    const loadMs = performance.now() - started;
     self.postMessage({type: 'progress', message: `計算 ${rows.length.toLocaleString()} 筆日線…`});
     const result = runBacktest(rows, config, data.stocks);
+    result.performance = {downloadBytes, retainedRows:rows.length, loadMs,
+      calculationMs:performance.now() - started - loadMs};
     self.postMessage({type: 'result', result});
   } catch (error) {
     const message = error instanceof TypeError && /fetch/i.test(error.message) ?

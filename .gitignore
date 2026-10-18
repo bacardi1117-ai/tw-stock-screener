@@ -13,5 +13,8 @@ data/factors/
 data/results/
 data/prices/.history_no_data.*
 data/prices/*.tmp
+data/prices/.backtest_history/
+data/state/backtest_expansion_*.json
+data/state/backtest_price_exclusions.json
 
 data/.history_batch_guard.lock
