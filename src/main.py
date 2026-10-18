@@ -110,8 +110,9 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "history-batch", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "history-batch", "finmind-diagnostic", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
+    parser.add_argument("--stock", default="2330", help="Stock ID for finmind-diagnostic (default: 2330)")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
     parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
     parser.add_argument("--stocks", help="Comma-separated stock IDs for fundamentals")
@@ -130,6 +131,10 @@ def main() -> None:
         check_environment()
         return
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+    if args.mode == "finmind-diagnostic":
+        from finmind_diagnostic import run_diagnostic
+        run_diagnostic(args.stock)
+        return
     if args.mode == "history-batch":
         from history_batch import run_history_batch, publish_history
         if not 1 <= args.api_budget <= 360 or not 1 <= args.max_stocks <= 100:
