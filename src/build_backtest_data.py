@@ -108,6 +108,13 @@ def main() -> None:
         "stocks": {sid: names[sid] for sid in sorted(included)},
         "years": years,
     }
+    # Migrate the former release's saved default dates once. Current coverage and
+    # new defaults still come entirely from actual price dates above.
+    baseline_path = ROOT / "tests/fixtures/backtest_expansion_baseline.json"
+    if baseline_path.exists():
+        baseline_config = json.loads(baseline_path.read_text(encoding="utf-8"))["config"]
+        manifest["legacy_default_period"] = {"start": baseline_config["startDate"],
+                                             "end": baseline_config["endDate"]}
     temporary = TARGET / "manifest.tmp"
     temporary.write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")),
                          encoding="utf-8")

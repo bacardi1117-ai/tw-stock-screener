@@ -1,4 +1,5 @@
 import {DEFAULT_BACKTEST, MISSING_DATA_REASONS, skippedDetailsToCsv, tradesToCsv} from './backtest_engine.mjs';
+import {resolveBacktestSettings} from './backtest_settings.mjs';
 
 const $ = id => document.getElementById(id);
 const form = $('backtestForm');
@@ -12,6 +13,7 @@ const money = value => Number.isFinite(value) ?
 const percent = value => Number.isFinite(value) ? `${value.toFixed(2)}%` : '—';
 let worker = null, result = null, manifest = null, busy = false;
 let dateDefaults = {...DEFAULT_BACKTEST};
+let savedSettings = null;
 
 function fill(values) {
   for (const [key,value] of Object.entries(values)) {
@@ -194,11 +196,10 @@ async function loadManifest() {
     form.elements.namedItem(key).min = manifest.backtest_start ?? manifest.start;
     form.elements.namedItem(key).max = manifest.end;
   }
-  dateDefaults = {...DEFAULT_BACKTEST,
-    startDate:manifest.recent_year_start > manifest.backtest_start ? manifest.recent_year_start : manifest.backtest_start,
-    endDate:manifest.end};
-  const current = readConfig();
-  if (!current.startDate || !current.endDate) fill({...current,...{startDate:dateDefaults.startDate,endDate:dateDefaults.endDate}});
+  dateDefaults = resolveBacktestSettings(null, manifest, DEFAULT_BACKTEST);
+  const initial = resolveBacktestSettings(savedSettings, manifest, DEFAULT_BACKTEST);
+  fill(initial);
+  try {localStorage.setItem(storageKey, JSON.stringify(initial));} catch { /* Storage is optional. */ }
   const totalBytes = manifest.years.reduce((sum,y) => sum + (y.compressed_bytes ?? y.bytes ?? 0), 0);
   const yearCoverage = manifest.recent_year_complete ? `最近完整一年：${manifest.recent_year_start} ～ ${manifest.end}；起日前已有 ${manifest.recent_year_warmup_sessions} 個交易日。` : '一年回測所需的歷史或暖機資料尚未齊備。';
   $('coverageNotice').textContent = `行情涵蓋 ${manifest.start} ～ ${manifest.end}，${manifest.trading_dates.length} 個交易日、${manifest.stock_count.toLocaleString('zh-TW')} 支目前清單中的普通股。預留 120 個交易日暖機後可回測 ${manifest.backtest_start ?? '尚不足 120 日'} ～ ${manifest.end}。${yearCoverage}成交量單位：股。`;
@@ -210,7 +211,7 @@ function start() {
   if (!form.reportValidity()) return;
   if (config.startDate > config.endDate) {status('開始日期不得晚於結束日期', true);return;}
   if (config.maShort >= config.maLong) {status('短均線必須短於長均線', true);return;}
-  try {localStorage.setItem(storageKey, JSON.stringify(config));} catch { /* Private browsing can disable storage. */ }
+  try {localStorage.setItem(storageKey, JSON.stringify({...config,_dateDefaultsVersion:2}));} catch { /* Private browsing can disable storage. */ }
   $('resultSection').hidden = true;
   status('準備行情…');
   setBusy(true);
@@ -252,8 +253,8 @@ $('downloadSkipCsv').addEventListener('click',()=>{
   setTimeout(() => URL.revokeObjectURL(url),1000);
 });
 try {
-  const saved = JSON.parse(localStorage.getItem(storageKey));
-  fill(saved && typeof saved === 'object' ? {...DEFAULT_BACKTEST,...saved} : DEFAULT_BACKTEST);
+  savedSettings = JSON.parse(localStorage.getItem(storageKey));
+  fill(savedSettings && typeof savedSettings === 'object' ? {...DEFAULT_BACKTEST,...savedSettings} : DEFAULT_BACKTEST);
 } catch {fill(DEFAULT_BACKTEST);}
 loadManifest().catch(error=>{
   $('coverageNotice').textContent = error.message;
