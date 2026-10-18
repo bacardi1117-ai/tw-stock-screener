@@ -1,0 +1,111 @@
+{
+  "scope": [
+    "2330",
+    "2317",
+    "2454"
+  ],
+  "jobs": {
+    "2330_TaiwanStockFinancialStatements": {
+      "status": "completed",
+      "rows": 238,
+      "start_date": "2023-01-01"
+    },
+    "2330_TaiwanStockCashFlowsStatement": {
+      "status": "completed",
+      "rows": 400,
+      "start_date": "2023-01-01"
+    },
+    "2330_TaiwanStockDividend": {
+      "status": "completed",
+      "rows": 23,
+      "start_date": "2021-01-01"
+    },
+    "2317_TaiwanStockFinancialStatements": {
+      "status": "completed",
+      "rows": 224,
+      "start_date": "2023-01-01"
+    },
+    "2317_TaiwanStockCashFlowsStatement": {
+      "status": "completed",
+      "rows": 402,
+      "start_date": "2023-01-01"
+    },
+    "2317_TaiwanStockDividend": {
+      "status": "completed",
+      "rows": 6,
+      "start_date": "2021-01-01"
+    },
+    "2454_TaiwanStockFinancialStatements": {
+      "status": "completed",
+      "rows": 224,
+      "start_date": "2023-01-01"
+    },
+    "2454_TaiwanStockCashFlowsStatement": {
+      "status": "completed",
+      "rows": 340,
+      "start_date": "2023-01-01"
+    },
+    "2454_TaiwanStockDividend": {
+      "status": "completed",
+      "rows": 9,
+      "start_date": "2021-01-01"
+    }
+  },
+  "http_attempts": [
+    {
+      "stock_id": "2330",
+      "dataset": "TaiwanStockFinancialStatements",
+      "status": 200,
+      "seconds": 0.422
+    },
+    {
+      "stock_id": "2330",
+      "dataset": "TaiwanStockCashFlowsStatement",
+      "status": 200,
+      "seconds": 0.078
+    },
+    {
+      "stock_id": "2330",
+      "dataset": "TaiwanStockDividend",
+      "status": 200,
+      "seconds": 0.094
+    },
+    {
+      "stock_id": "2317",
+      "dataset": "TaiwanStockFinancialStatements",
+      "status": 200,
+      "seconds": 0.078
+    },
+    {
+      "stock_id": "2317",
+      "dataset": "TaiwanStockCashFlowsStatement",
+      "status": 200,
+      "seconds": 0.157
+    },
+    {
+      "stock_id": "2317",
+      "dataset": "TaiwanStockDividend",
+      "status": 200,
+      "seconds": 0.157
+    },
+    {
+      "stock_id": "2454",
+      "dataset": "TaiwanStockFinancialStatements",
+      "status": 200,
+      "seconds": 0.094
+    },
+    {
+      "stock_id": "2454",
+      "dataset": "TaiwanStockCashFlowsStatement",
+      "status": 200,
+      "seconds": 0.078
+    },
+    {
+      "stock_id": "2454",
+      "dataset": "TaiwanStockDividend",
+      "status": 200,
+      "seconds": 0.078
+    }
+  ],
+  "api_calls": 9
+}

@@ -1,0 +1,47 @@
+{
+  "2330:2023": {
+    "annual_eps": 32.34,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://investor.tsmc.com/sites/ir/financial-report/2025/TSMC%202025Q4%20Consolidated%20Financial%20Statements_E_1.pdf"
+  },
+  "2330:2024": {
+    "annual_eps": 45.25,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://investor.tsmc.com/sites/ir/financial-report/2025/TSMC%202025Q4%20Consolidated%20Financial%20Statements_E_1.pdf"
+  },
+  "2330:2025": {
+    "annual_eps": 66.26,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://investor.tsmc.com/sites/ir/financial-report/2025/TSMC%202025Q4%20Consolidated%20Financial%20Statements_E_1.pdf"
+  },
+  "2317:2023": {
+    "annual_eps": 10.25,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.honhai.com/en-us/press-center/press-releases/latest-news"
+  },
+  "2317:2024": {
+    "annual_eps": 11.01,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.honhai.com/en-us/press-center/press-releases/latest-news"
+  },
+  "2317:2025": {
+    "annual_eps": 13.61,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.honhai.com/en-us/press-center/press-releases/latest-news"
+  },
+  "2454:2023": {
+    "annual_eps": 48.51,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.mediatek.com/investor-relations/financial-information"
+  },
+  "2454:2024": {
+    "annual_eps": 66.92,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.mediatek.com/investor-relations/financial-information"
+  },
+  "2454:2025": {
+    "annual_eps": 66.16,
+    "definition": "basic annual EPS",
+    "source": "official_verified:https://www.mediatek.com/investor-relations/financial-information"
+  }
+}

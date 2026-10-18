@@ -69,7 +69,7 @@ class StrategyEngineTests(unittest.TestCase):
         row = dict(self.rows[0], dividend_years=5, dividend_years_5=5,
                    dividend_yield=4.2, payout_ratio=65,
                    dividend_growth_3y=8, dividend_growth_3y_cagr=8,
-                   dividend_min_change_3y_pct=-2,
+                   dividend_min_change_3y_pct=0,
                    free_cash_flow_single=10)
         self.assertEqual(evaluate_all(row, self.config)["strategy_e"], "pass")
         changed = copy.deepcopy(self.config)

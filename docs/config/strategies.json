@@ -468,14 +468,14 @@
       "eps_positive_years": {
         "label": "EPS 正數完整年度至少",
         "enabled": true,
-        "field": "eps_positive_years",
+        "field": "eps_positive_years_3",
         "op": "gte",
         "value": 3
       },
       "operating_cash_flow_positive_years": {
         "label": "營業現金流正數完整年度至少",
         "enabled": true,
-        "field": "operating_cash_flow_positive_years",
+        "field": "ocf_positive_years_3",
         "op": "gte",
         "value": 3
       },
@@ -607,7 +607,7 @@
         "enabled": true,
         "field": "dividend_min_change_3y_pct",
         "op": "gte",
-        "value": -5
+        "value": 0
       }
     }
   }

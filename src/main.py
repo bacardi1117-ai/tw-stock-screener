@@ -110,21 +110,37 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "history-batch", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
     parser.add_argument("--end", type=date.fromisoformat, help="History end: YYYY-MM-DD")
     parser.add_argument("--stocks", help="Comma-separated stock IDs for fundamentals")
     parser.add_argument("--limit", type=int, help="First N stocks from the local stock list")
-    parser.add_argument("--api-budget", type=int, default=FUNDAMENTALS_API_BUDGET_PER_RUN,
+    parser.add_argument("--api-budget", type=int, default=None,
                         help="Maximum FinMind requests for one fundamentals-batch run (1-400)")
-    parser.add_argument("--max-stocks", type=int, default=MAX_STOCKS_PER_RUN,
+    parser.add_argument("--max-stocks", type=int, default=None,
                         help="Maximum eligible stocks to process in this batch (1-50)")
+    parser.add_argument("--no-publish", action="store_true", help="Defer history commit/push for reviewed first-run integration")
     args = parser.parse_args()
+    if args.api_budget is None:
+        args.api_budget = 360 if args.mode == "history-batch" else FUNDAMENTALS_API_BUDGET_PER_RUN
+    if args.max_stocks is None:
+        args.max_stocks = 100 if args.mode == "history-batch" else MAX_STOCKS_PER_RUN
     if args.mode == "env":
         check_environment()
         return
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
+    if args.mode == "history-batch":
+        from history_batch import run_history_batch, publish_history
+        if not 1 <= args.api_budget <= 360 or not 1 <= args.max_stocks <= 100:
+            parser.error("history-batch requires API budget <= 360 and max stocks <= 100")
+        result = run_history_batch(args.api_budget, args.max_stocks)
+        if result["attempted"]:
+            save_factors(calculate_factors())
+            build_pages()
+            if not args.no_publish:
+                publish_history()
+        return
     if args.mode == "market-history":
         if args.start is None or args.end is None:
             parser.error("market-history requires --start and --end")

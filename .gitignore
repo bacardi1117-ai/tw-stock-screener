@@ -6,9 +6,12 @@ __pycache__/
 *.env.*
 *.log
 data/.finmind_api_budget.*
+data/.historical_coverage/
 data/revenue/
 data/financials/
 data/factors/
 data/results/
 data/prices/.history_no_data.*
 data/prices/*.tmp
+
+data/.history_batch_guard.lock

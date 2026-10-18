@@ -120,8 +120,8 @@ class Phase5BTests(unittest.TestCase):
 
     def test_strategy_c_completeness_ignores_dividend_inputs_and_e_requires_them(self):
         config = load_config()
-        c_fields = {"roe": 20, "eps_positive_years": 3,
-                    "operating_cash_flow_positive_years": 3, "debt_ratio": 30,
+        c_fields = {"roe": 20, "eps_positive_years_3": 3,
+                    "ocf_positive_years_3": 3, "debt_ratio": 30,
                     "per": 15, "pbr": 2}
         self.assertEqual(strategy_data_completeness(c_fields, config["strategy_c"]), 100)
         self.assertEqual(evaluate_strategy(c_fields, config["strategy_c"]), "pass")
@@ -151,8 +151,8 @@ class Phase5BTests(unittest.TestCase):
 
     def test_strategy_c_uses_official_per_pbr_and_keeps_missing_per_missing(self):
         strategy = load_config()["strategy_c"]
-        row = {"roe": 20, "eps_positive_years": 4,
-               "operating_cash_flow_positive_years": 4, "debt_ratio": 30,
+        row = {"roe": 20, "eps_positive_years_3": 4,
+               "ocf_positive_years_3": 4, "debt_ratio": 30,
                "per": 15, "pbr": 2}
         self.assertEqual(evaluate_strategy(row, strategy), "pass")
         row["per"] = None

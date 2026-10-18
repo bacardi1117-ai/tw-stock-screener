@@ -125,3 +125,49 @@ Each strategy has its own completeness field (`strategy_a_data_completeness` thr
 Sources: [TWSE daily valuation](https://www.twse.com.tw/zh/trading/historical/bwibbu.html), [TWSE listed-company dividend distribution](https://openapi.twse.com.tw/v1/opendata/t187ap45_L), [TPEx valuation](https://www.tpex.org.tw/zh-tw/market-trade.html), and [TPEx dividend distribution CSV](https://mopsfin.twse.com.tw/opendata/t187ap45_O.csv). The dividend datasets are free government open data. QGM formulas and the 100-point total remain unchanged; these new fields are used only by strategy conditions.
 
 Run `python -m unittest discover -s tests -p 'test_*.py'` and `node --test tests/test_frontend.mjs` to check both engines, their shared fixture, missing-value behavior, and browser-state helpers. The CI workflow runs both suites.
+
+
+## Phase 5B.2 Stage 2: annual history batches
+
+Run one bounded batch with `.venv/Scripts/python.exe src/main.py history-batch --api-budget 360 --max-stocks 100`.
+The command reads only eligible rows in `fundamentals_universe.csv`, writes a separate
+`data/state/history_progress.json`, recalculates local factors/Pages, and commits generated
+history/progress/Pages files with `Update annual financial and dividend history batch`, then
+pushes `origin main`. It never schedules or starts a second batch. Codex Automation can invoke
+this command hourly; this change does not create or alter a schedule. `--no-publish` defers Git
+publication for a reviewed integration run. Unrelated staged files or a branch other than main
+stop automated publishing. Factors and results CSVs remain local ignored outputs.
+
+The per-run and shared rolling-hour history ceiling is 360 requests (retries included), with
+100 stocks at most. Existing FinMind client timeout/retry/token protection is reused. A 429
+stops requests immediately; 403 gets one bounded backoff retry, then stops if still denied.
+Timeouts retain the existing three-attempt maximum. An OS lock serializes history batches.
+Each successfully fetched dataset is cached locally and each stock's outputs/progress saved
+atomically. Completed stocks are skipped. Temporary/network failures remain retryable; missing
+history, unsupported formats and parser failures are recorded for manual review, not retried
+on every hourly run. Remaining count includes these unresolved cases; an ETA based on successful
+completion rate is only an estimate and does not promise these cases will resolve automatically.
+
+Annual history uses exactly 2023–2025, basic EPS consistently. Verified official annual EPS
+in `data/state/annual_eps_verified.json` has precedence. FinMind's generic EPS observations are
+single-quarter values: **only when no verified annual value exists and all four quarters are
+present**, their sum is used, explicitly labeled `quarterly_basic_eps_sum_fallback` in
+`eps_method`. This permitted fallback can differ from reported annual EPS because of rounding
+or share weighting. Year-end December 31 cumulative operating cash flow is the annual OCF;
+Q3 and single-Q4 OCF are not substituted. Missing annual inputs remain NaN.
+
+Dividend `year` means **earnings attribution year**, not payment/ex-dividend calendar year.
+Quarterly Q1–Q4 or half-year H1–H2 coverage is required, or one explicit annual record. Revisions
+of the same period are deduplicated before summation. Cash includes the dataset cash earnings
+and cash surplus components; stock uses the stock earnings and stock surplus components;
+`total_dividend = cash_dividend + stock_dividend` in the existing per-share convention.
+An explicit complete zero distribution is `zero`; absent/partial data is `missing_data`, never
+zero. Verified full-year rows are protected against later partial snapshots. FinMind adjusted
+per-share distributions can differ slightly from initially announced amounts.
+
+C uses independent `eps_positive_years_3` and `ocf_positive_years_3`, each unknown until all three
+years are available. E uses five-year dividend coverage/positive payment years and three-year
+CAGR and minimum annual change; the default minimum change is now 0%, adjustable in settings.
+Payout ratio uses full 2025 cash dividend divided by the corresponding 2025 annual EPS, multiplied
+by 100; EPS <= 0 or missing input yields NaN. Only summary factors go to Pages. QGM remains
+Quality 40 / Growth 35 / Momentum 25; these histories do not add scoring rules.

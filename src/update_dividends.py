@@ -15,7 +15,8 @@ LOGGER = logging.getLogger(__name__)
 TWSE_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap45_L"
 TPEX_URL = "https://mopsfin.twse.com.tw/opendata/t187ap45_O.csv"
 FIELDS = ["stock_id", "stock_name", "market", "year", "cash_dividend", "stock_dividend",
-          "total_dividend", "annual_eps", "payout_ratio", "source_date"]
+          "total_dividend", "annual_eps", "payout_ratio", "source_date",
+          "annual_complete", "dividend_status", "periods", "source", "updated_at"]
 
 
 def _number(value):
@@ -178,6 +179,10 @@ def save_dividends(frame, directory=DIVIDENDS_DIR):
     combined["total_dividend"] = combined.apply(
         lambda row: row.cash_dividend + row.stock_dividend
         if pd.notna(row.cash_dividend) and pd.notna(row.stock_dividend) else float("nan"), axis=1)
+    if "annual_complete" in combined:
+        # A newer partial official snapshot must not replace a validated full year.
+        combined["_complete_rank"] = combined.annual_complete.astype(str).str.lower().eq("true").astype(int)
+        combined = combined.sort_values("_complete_rank", kind="stable")
     combined = combined.drop_duplicates(["stock_id", "year"], keep="last").sort_values(["stock_id", "year"])
     temporary = path.with_suffix(".tmp")
     combined.reindex(columns=FIELDS).to_csv(temporary, index=False, encoding="utf-8-sig")
@@ -220,6 +225,9 @@ def dividend_metrics(group, latest_dividend_year=None, tolerance_pct=5):
     frame["year"] = pd.to_numeric(frame.year, errors="coerce")
     frame["cash_dividend"] = pd.to_numeric(frame.cash_dividend, errors="coerce")
     frame["payout_ratio"] = pd.to_numeric(frame.payout_ratio, errors="coerce")
+    if "annual_complete" in frame:
+        incomplete = ~frame.annual_complete.astype(str).str.lower().eq("true")
+        frame.loc[incomplete, ["cash_dividend", "payout_ratio"]] = float("nan")
     frame = frame.dropna(subset=["year"]).sort_values("year").drop_duplicates("year", keep="last")
     last = int(latest_dividend_year or frame.year.max())
     recent = frame.loc[frame.year.between(last - 4, last)].set_index("year")

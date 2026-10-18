@@ -1,3 +1,4 @@
+from history_batch import annual_metrics
 """Build one local-only factor row per TWSE/TPEx stock."""
 
 from datetime import datetime
@@ -151,6 +152,9 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         dividend_frame = pd.read_csv(dividend_path, dtype={"stock_id": str}, encoding="utf-8-sig")
     else:
         dividend_frame = _read_years(dividends_dir)
+    annual_path = Path(dividends_dir).parent / "annual_financials" / "history.csv"
+    annual_frame = pd.read_csv(annual_path, dtype={"stock_id": str}) if annual_path.exists() else pd.DataFrame()
+    annuals = _groups(annual_frame, ["year"], ["stock_id", "year"])
     dividends = _groups(dividend_frame, ["year"], ["stock_id", "year"])
     updated_at = datetime.now(TAIWAN_TIME).isoformat(timespec="seconds")
     strategy_config = load_config()
@@ -169,6 +173,7 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         row.update(price_factors(price_group))
         row.update(revenue_factors(revenue.get(sid)))
         row.update(financial_factors(financials.get(sid)))
+        row.update(annual_metrics(annuals.get(sid)))
         valuation = valuations.get(sid)
         if valuation is not None and not valuation.empty:
             snapshot = valuation.iloc[-1]
@@ -182,12 +187,14 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
             dividends.get(sid), latest_dividend_year=today_in_taiwan().year - 1,
             tolerance_pct=dividend_decline_tolerance)
         row.update(dividend_summary)
+        eps = row["annual_eps_2025"]
+        row["payout_ratio"] = row["cash_dividend_latest"] / eps * 100 if pd.notna(eps) and eps > 0 else float("nan")
         dividend_rows = dividends.get(sid)
         if dividend_rows is not None and not dividend_rows.empty:
             annual_row = dividend_rows.loc[pd.to_numeric(dividend_rows.year, errors="coerce") == today_in_taiwan().year - 1]
         else:
             annual_row = pd.DataFrame()
-        if not annual_row.empty:
+        if not annual_row.empty and ("annual_complete" not in annual_row or str(annual_row.iloc[-1].get("annual_complete")).lower() == "true"):
             latest_dividend = annual_row.iloc[-1]
             row.update(cash_dividend_latest=_value(latest_dividend, "cash_dividend"),
                        stock_dividend_latest=_value(latest_dividend, "stock_dividend"),
@@ -198,9 +205,6 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
         row.update(cash_dividend=row["cash_dividend_latest"],
                    stock_dividend=row["stock_dividend_latest"],
                    total_dividend=row["total_dividend_latest"])
-        for strategy_name in ("strategy_a", "strategy_b", "strategy_c", "strategy_d", "strategy_e"):
-            row[f"{strategy_name}_data_completeness"] = calculate_strategy_completeness(
-                row, strategy_config[strategy_name])
         # Short names in the Top 200 output always mean the latest single quarter.
         row.update(roe=row["roe_quarterly_approx"], gross_margin=row["gross_margin_single"],
                    operating_margin=row["operating_margin_single"],
@@ -211,6 +215,8 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
     market_return_60d = pd.to_numeric(result["return_60d"], errors="coerce").mean()
     result["market_return_60d_equal_weight"] = market_return_60d
     result["return_60d_vs_market"] = result["return_60d"] - market_return_60d
+    for strategy_name in ("strategy_a", "strategy_b", "strategy_c", "strategy_d", "strategy_e"):
+        result[f"{strategy_name}_data_completeness"] = [calculate_strategy_completeness(r, strategy_config[strategy_name]) for r in result.to_dict("records")]
     result = result.sort_values(["score_total", "score_growth", "score_quality",
                                  "score_momentum", "stock_id"],
                                 ascending=[False, False, False, False, True]).reset_index(drop=True)

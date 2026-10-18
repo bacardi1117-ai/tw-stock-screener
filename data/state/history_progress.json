@@ -1,0 +1,343 @@
+{
+  "stocks": {
+    "1210": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:12+00:00",
+      "failure_reason": "network_error"
+    },
+    "1215": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:13+00:00",
+      "failure_reason": "network_error"
+    },
+    "1216": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:15+00:00",
+      "failure_reason": "network_error"
+    },
+    "1231": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:16+00:00",
+      "failure_reason": "network_error"
+    },
+    "1232": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:18+00:00",
+      "failure_reason": "network_error"
+    },
+    "1240": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:19+00:00",
+      "failure_reason": "network_error"
+    },
+    "1256": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:21+00:00",
+      "failure_reason": "network_error"
+    },
+    "1259": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:23+00:00",
+      "failure_reason": "network_error"
+    },
+    "1264": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:24+00:00",
+      "failure_reason": "network_error"
+    },
+    "1268": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:26+00:00",
+      "failure_reason": "network_error"
+    },
+    "1301": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:27+00:00",
+      "failure_reason": "network_error"
+    },
+    "1303": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:29+00:00",
+      "failure_reason": "network_error"
+    },
+    "1315": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:30+00:00",
+      "failure_reason": "network_error"
+    },
+    "1319": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:32+00:00",
+      "failure_reason": "network_error"
+    },
+    "1326": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:34+00:00",
+      "failure_reason": "network_error"
+    },
+    "1341": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:35+00:00",
+      "failure_reason": "network_error"
+    },
+    "1342": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:37+00:00",
+      "failure_reason": "network_error"
+    },
+    "1419": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:38+00:00",
+      "failure_reason": "network_error"
+    },
+    "1472": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:40+00:00",
+      "failure_reason": "network_error"
+    },
+    "1476": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:41+00:00",
+      "failure_reason": "network_error"
+    },
+    "1477": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:43+00:00",
+      "failure_reason": "network_error"
+    },
+    "1503": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:44+00:00",
+      "failure_reason": "network_error"
+    },
+    "1504": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:46+00:00",
+      "failure_reason": "network_error"
+    },
+    "1513": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:47+00:00",
+      "failure_reason": "network_error"
+    },
+    "1514": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:49+00:00",
+      "failure_reason": "network_error"
+    },
+    "1519": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:50+00:00",
+      "failure_reason": "network_error"
+    },
+    "1525": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:52+00:00",
+      "failure_reason": "network_error"
+    },
+    "1537": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:54+00:00",
+      "failure_reason": "network_error"
+    },
+    "1558": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:55+00:00",
+      "failure_reason": "network_error"
+    },
+    "1560": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:57+00:00",
+      "failure_reason": "network_error"
+    },
+    "1563": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:02:58+00:00",
+      "failure_reason": "network_error"
+    },
+    "1565": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:00+00:00",
+      "failure_reason": "network_error"
+    },
+    "1569": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:01+00:00",
+      "failure_reason": "network_error"
+    },
+    "1580": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:03+00:00",
+      "failure_reason": "network_error"
+    },
+    "1582": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:04+00:00",
+      "failure_reason": "network_error"
+    },
+    "1590": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:06+00:00",
+      "failure_reason": "network_error"
+    },
+    "1595": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:07+00:00",
+      "failure_reason": "network_error"
+    },
+    "1597": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:09+00:00",
+      "failure_reason": "network_error"
+    },
+    "1615": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:11+00:00",
+      "failure_reason": "network_error"
+    },
+    "1623": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:12+00:00",
+      "failure_reason": "network_error"
+    },
+    "1707": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:14+00:00",
+      "failure_reason": "network_error"
+    },
+    "1708": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:15+00:00",
+      "failure_reason": "network_error"
+    },
+    "1709": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:17+00:00",
+      "failure_reason": "network_error"
+    },
+    "1717": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:18+00:00",
+      "failure_reason": "network_error"
+    },
+    "1720": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:20+00:00",
+      "failure_reason": "network_error"
+    },
+    "1723": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:21+00:00",
+      "failure_reason": "network_error"
+    },
+    "1726": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:23+00:00",
+      "failure_reason": "network_error"
+    },
+    "1727": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:25+00:00",
+      "failure_reason": "network_error"
+    },
+    "1730": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:26+00:00",
+      "failure_reason": "network_error"
+    },
+    "1736": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:28+00:00",
+      "failure_reason": "network_error"
+    },
+    "1760": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:29+00:00",
+      "failure_reason": "network_error"
+    },
+    "1773": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:31+00:00",
+      "failure_reason": "network_error"
+    },
+    "1777": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:03:32+00:00"
+    }
+  },
+  "last_run_api_calls": 157,
+  "attempted": 53,
+  "completed": 0,
+  "failed": 0,
+  "http_429": false,
+  "http_403": false,
+  "timeout": false,
+  "completed_stock_ids": [],
+  "retryable_stock_ids": [
+    "1210",
+    "1215",
+    "1216",
+    "1231",
+    "1232",
+    "1240",
+    "1256",
+    "1259",
+    "1264",
+    "1268",
+    "1301",
+    "1303",
+    "1315",
+    "1319",
+    "1326",
+    "1341",
+    "1342",
+    "1419",
+    "1472",
+    "1476",
+    "1477",
+    "1503",
+    "1504",
+    "1513",
+    "1514",
+    "1519",
+    "1525",
+    "1537",
+    "1558",
+    "1560",
+    "1563",
+    "1565",
+    "1569",
+    "1580",
+    "1582",
+    "1590",
+    "1595",
+    "1597",
+    "1615",
+    "1623",
+    "1707",
+    "1708",
+    "1709",
+    "1717",
+    "1720",
+    "1723",
+    "1726",
+    "1727",
+    "1730",
+    "1736",
+    "1760",
+    "1773",
+    "1777"
+  ],
+  "failed_stock_ids": [],
+  "completed_count": 0,
+  "eligible_count": 899,
+  "updated_at": "2026-10-18T01:03:32+00:00",
+  "remaining_count": 899,
+  "last_attempted_stock_id": "1777",
+  "stop_reason": "manual_interrupt_after_repeated_network_errors",
+  "last_http_status": null,
+  "retryable": 53,
+  "failed_count": 0,
+  "retryable_count": 53,
+  "interrupted": true
+}
