@@ -86,3 +86,13 @@ test('download coverage metadata cannot be changed by a browser import',()=>{
   assert.equal(current.universe.min_price,30);
   assert.equal(current.universe.downloaded_min_price,50);
 });
+
+test('strategy D displays shares and distinguishes incomplete official data',()=>{
+  const complete={...rows[0],foreign_plus_trust_20d:0,trust_10d:0,
+    close:101,ma20:100,ma60:90,ma120:80,avg_volume_20:1000,avg_volume_60:900,
+    distance_to_60d_high:-2,institutional_data_date:'2026-10-16',institutional_missing_reason:null};
+  assert.equal(FIELD_LABELS.foreign_plus_trust_20d.unit,'股');
+  assert.equal(evaluateRows([complete],defaults)[0].strategy_d,'pass');
+  assert.equal(evaluateRows([{...complete,trust_10d:-1}],defaults)[0].strategy_d,'fail');
+  assert.equal(evaluateRows([{...complete,trust_10d:null,institutional_missing_reason:'官方個股缺列'}],defaults)[0].strategy_d,'missing_data');
+});

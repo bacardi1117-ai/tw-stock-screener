@@ -13,6 +13,8 @@ from strategy_engine import evaluate_frame
 PAGE_FIELDS = (
     "stock_id", "stock_name", "market", "industry", "is_financial", "latest_date", "close",
     "ma20", "ma60", "ma120", "avg_volume_20", "avg_volume_60",
+    "foreign_plus_trust_20d", "trust_10d", "institutional_data_date", "institutional_missing_reason",
+    "strategy_d_missing_reason",
     "return_20d", "return_60d", "return_120d", "distance_to_60d_high",
     "revenue_yoy", "revenue_yoy_3m_avg", "eps_yoy", "gross_margin_yoy",
     "operating_margin_yoy", "roe_quarterly_approx", "gross_margin_single",

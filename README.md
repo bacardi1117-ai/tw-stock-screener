@@ -107,7 +107,7 @@ The updater skips dates already present in the yearly CSV and cached past no-dat
 
 ## Phase 5A: configurable strategies and GitHub Pages
 
-`config/strategies.json` is the shared source of default selection rules. It contains the data universe, QGM weights and every tier threshold, homepage score filters, and individually enabled conditions for strategies A–E. `src/strategy_engine.py` and `docs/engine.mjs` interpret the same JSON structure. Missing numeric inputs result in `missing_data`; missing institutional or dividend source fields result in `unavailable`. A strategy passes only when every enabled condition has data and passes.
+`config/strategies.json` is the shared source of default selection rules. It contains the data universe, QGM weights and every tier threshold, homepage score filters, and individually enabled conditions for strategies A–E. `src/strategy_engine.py` and `docs/engine.mjs` interpret the same JSON structure. Missing numeric inputs result in `missing_data`; a disabled or unsupported availability gate may result in `unavailable`. Strategy D reports incomplete official institutional data as `missing_data` with its reason. A strategy passes only when every enabled condition has data and passes.
 
 `python src/main.py factors` recalculates factors from existing local files and now also builds `docs/data/latest.json` and copies the strategy defaults to `docs/config/strategies.json`. `python src/main.py pages` rebuilds only the Pages files from an existing `data/factors/latest.csv`. Neither command calls FinMind, TWSE, or TPEx. The Pages JSON contains a selected set of factor values and statuses for all listed stocks; local revenue and financial statement rows are not copied into it. Configure GitHub Pages to publish `/docs` from `main` if it is not already set up.
 
@@ -214,3 +214,13 @@ per-date/source progress. It preserves existing valid quotes and does not use Fi
 the financial-history schedule. Local daily download caches are not published. Run
 `node --expose-gc src/validate_backtest_expansion.mjs` for the saved original-period regression
 and recent-year checks; the fixed regression fixture is included in `tests/fixtures`.
+
+### 策略 D 法人日資料（本機每日增量）
+
+`python src/main.py institutional --days 25` 依現有行情交易日，對最近 25 日逐市場查詢官方日報；完成過的日期會跳過，失敗日期保留重試。可用 `--start YYYY-MM-DD --end YYYY-MM-DD` 限定日期範圍。這個命令不呼叫 FinMind，不修改財報補抓進度。
+
+每日更新使用 `python src/main.py daily-institutional --days 25`：先檢查最近七個日曆日的平日行情，僅重試缺任一市場資料的日期；接著執行法人增量並重建快照。假日及官方尚未發布的日期不造價、不填 0，保留於後續七日檢查中重試；法人市場日期失敗另記在 `data/state/institutional_progress.json`。本機 Codex Automation `d` 於臺北時間每日 19:20 在 `C:\Users\admin\Documents\Codex\choose_stock` 執行這個命令，只有本輪資料或快照變動才提交及推送相關檔案。既有每小時財報排程維持獨立，不由此命令啟動。
+
+上市資料來自 TWSE T86 JSON；上櫃資料來自 TPEx 三大法人日報 CSV。兩者都取「外資及陸資（不含外資自營商）」與「投信」的買賣超**股數**，正值為買超、負值為賣超。TPEx CSV 的完整欄名可區分重複的「買賣超股數」欄。逐日資料存於 `data/institutional/YYYY.csv`，日期／市場狀態存於 `data/state/institutional_progress.json`。官方列明確回傳 0 才記 0；缺列、缺欄位或請求失敗保留空值。
+
+策略 D 以各股票所屬市場最近 20 個行情交易日的外資及陸資加投信買賣超總和，以及最近 10 個交易日的投信總和判斷。任何應有日期缺資料都不向前遞補，並在網站顯示資料截止日及第一個不足原因。門檻仍由原有 `config/strategies.json` 決定。價格與法人檔案合併、因素及網站快照重建使用財報批次的共用鎖。

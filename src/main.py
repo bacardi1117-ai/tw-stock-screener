@@ -4,6 +4,7 @@ import argparse
 from datetime import date
 import logging
 import platform
+from pathlib import Path
 
 import numpy
 import pandas
@@ -15,6 +16,7 @@ from config import (
     FINMIND_API_LIMIT,
     FUNDAMENTALS_API_BUDGET_PER_RUN,
     FUNDAMENTALS_UNIVERSE_PATH,
+    PROJECT_ROOT,
     MAX_STOCKS_PER_RUN,
     STOCKS_PATH,
     make_session,
@@ -30,6 +32,15 @@ from update_dividends import update_dividends
 from update_prices import fetch_prices, save_prices
 from update_revenue import update_revenue
 from update_valuation import update_valuation
+
+
+def rebuild_snapshot():
+    """Read the latest local data and publish one coherent site snapshot."""
+    with ApiBudget(path=Path(PROJECT_ROOT) / "data/.history_batch_guard.json")._lock():
+        frame = calculate_factors()
+        paths = save_factors(frame)
+        pages = build_pages()
+        return frame, paths, pages
 
 
 def check_environment() -> None:
@@ -110,7 +121,7 @@ def update_fundamentals(stock_ids: str | None, limit: int | None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check the environment or update Taiwan market data")
-    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "history-batch", "finmind-diagnostic", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
+    parser.add_argument("mode", nargs="?", choices=("env", "market", "market-history", "fundamentals", "fundamentals-batch", "history-batch", "institutional", "daily-institutional", "finmind-diagnostic", "fundamentals-universe", "valuation", "dividends", "phase5b", "factors", "pages"), default="env")
     parser.add_argument("--date", type=date.fromisoformat, default=None, help="Trading date: YYYY-MM-DD")
     parser.add_argument("--stock", default="2330", help="Stock ID for finmind-diagnostic (default: 2330)")
     parser.add_argument("--start", type=date.fromisoformat, help="History start: YYYY-MM-DD")
@@ -122,6 +133,7 @@ def main() -> None:
     parser.add_argument("--max-stocks", type=int, default=None,
                         help="Maximum eligible stocks to process in this batch (1-50)")
     parser.add_argument("--no-publish", action="store_true", help="Defer history commit/push for reviewed first-run integration")
+    parser.add_argument("--days", type=int, default=25, help="Institutional market trading dates to cover (20-90; default 25)")
     args = parser.parse_args()
     if args.api_budget is None:
         args.api_budget = 360 if args.mode == "history-batch" else FUNDAMENTALS_API_BUDGET_PER_RUN
@@ -141,10 +153,31 @@ def main() -> None:
             parser.error("history-batch requires API budget <= 360 and max stocks <= 100")
         result = run_history_batch(args.api_budget, args.max_stocks)
         if result["attempted"]:
-            save_factors(calculate_factors())
-            build_pages()
+            rebuild_snapshot()
             if not args.no_publish:
                 publish_history()
+        return
+    if args.mode == "institutional":
+        from update_institutional import update_institutional
+        if args.start and args.end and args.start > args.end:
+            parser.error("--start must precede --end")
+        result = update_institutional(days=args.days,
+                                      start=args.start.isoformat() if args.start else None,
+                                      end=args.end.isoformat() if args.end else None)
+        logging.info("Institutional dates: %s", result)
+        # A newly available price date invalidates yesterday's complete D
+        # window even when today's official report is still missing.
+        rebuild_snapshot()
+        return
+    if args.mode == "daily-institutional":
+        from daily_institutional import update_recent_prices
+        from update_institutional import update_institutional
+        with ApiBudget(path=Path(PROJECT_ROOT) / "data/.daily_institutional_guard.json")._lock():
+            prices = update_recent_prices(asof=args.date)
+            institution = update_institutional(days=args.days)
+            rebuild_snapshot()
+        logging.info("Recent prices: %s", prices)
+        logging.info("Institutional dates: %s", institution)
         return
     if args.mode == "market-history":
         if args.start is None or args.end is None:
@@ -155,17 +188,16 @@ def main() -> None:
         update_market_history(args.start, args.end, stocks)
         return
     if args.mode == "factors":
-        frame = calculate_factors()
-        factors_path, results_csv, results_json = save_factors(frame)
+        frame, (factors_path, results_csv, results_json), (pages_data, pages_config, count) = rebuild_snapshot()
         logging.info("Factor records: %s", len(frame))
         logging.info("Complete QGM records: %s", int((frame["data_completeness"] == 100).sum()))
         logging.info("Saved factors: %s", factors_path)
         logging.info("Saved results: %s, %s", results_csv, results_json)
-        pages_data, pages_config, count = build_pages()
         logging.info("Saved Pages data: %s (%s stocks), %s", pages_data, count, pages_config)
         return
     if args.mode == "pages":
-        pages_data, pages_config, count = build_pages()
+        with ApiBudget(path=Path(PROJECT_ROOT) / "data/.history_batch_guard.json")._lock():
+            pages_data, pages_config, count = build_pages()
         logging.info("Saved Pages data: %s (%s stocks), %s", pages_data, count, pages_config)
         return
     if args.mode == "valuation":
@@ -191,9 +223,7 @@ def main() -> None:
                 logging.info("Phase 5B %s: %s", label, operation())
             except (OSError, RuntimeError, ValueError) as exc:
                 logging.error("Phase 5B %s update failed: %s", label, exc)
-        frame = calculate_factors()
-        factors_path, results_csv, results_json = save_factors(frame)
-        pages_data, pages_config, count = build_pages()
+        frame, (factors_path, results_csv, results_json), (pages_data, pages_config, count) = rebuild_snapshot()
         logging.info("Phase 5B local factors: %s; Pages rows: %s (%s)", factors_path, count, pages_data)
         return
     if args.mode == "fundamentals":

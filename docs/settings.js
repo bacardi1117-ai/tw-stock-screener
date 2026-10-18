@@ -84,7 +84,10 @@ function showWeightTotal() {
 }
 
 function showNotice() {
-  const messages=['缺少的估值或股利資料會保留空值，並標示為資料不足','策略 D：法人資料待補'];
+  const dates=rows.map(row=>row.institutional_data_date).filter(Boolean);
+  const latest=dates.length?dates.sort().at(-1):'尚未取得';
+  const messages=['缺少的估值或股利資料會保留空值，並標示為資料不足',
+    `策略 D 法人資料截止日：${latest}；外資含陸資、不含外資自營商，單位為股。資料不足原因可在股票總覽查看。`];
   if (config.universe.min_price < config.universe.downloaded_min_price ||
       (!config.universe.exclude_financials && config.universe.downloaded_exclude_financials))
     messages.unshift('此設定超出目前已下載的基本面資料母體，需重新執行資料更新才能完整套用。');

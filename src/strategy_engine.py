@@ -84,7 +84,7 @@ def evaluate_strategy(row, strategy):
         return "unavailable"
     for field in strategy.get("availability_fields", []):
         if number(row.get(field)) is None:
-            return "unavailable"
+            return "missing_data" if row.get("institutional_missing_reason") else "unavailable"
     missing = False
     failed = False
     for condition in strategy["conditions"].values():

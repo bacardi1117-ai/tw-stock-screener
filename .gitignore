@@ -18,3 +18,5 @@ data/state/backtest_expansion_*.json
 data/state/backtest_price_exclusions.json
 
 data/.history_batch_guard.lock
+data/.institutional_batch_guard.lock
+data/.daily_institutional_guard.lock

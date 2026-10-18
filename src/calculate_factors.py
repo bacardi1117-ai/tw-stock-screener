@@ -10,6 +10,7 @@ from config import (DIVIDENDS_DIR, FINANCIALS_DIR, PRICES_DIR, PROJECT_ROOT,
                     REVENUE_DIR, STOCKS_PATH, TAIWAN_TIME, VALUATION_DIR,
                     today_in_taiwan)
 from fetch_market import is_financial_industry
+from institutional_factors import load_context as load_institutional_context, stock_factors as institutional_stock_factors
 from scoring import score_factors
 from strategy_engine import load_config, strategy_data_completeness as calculate_strategy_completeness
 from update_dividends import dividend_metrics
@@ -141,7 +142,11 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
                       valuation_dir=VALUATION_DIR, dividends_dir=DIVIDENDS_DIR):
     """Use only local CSVs; no market or FinMind requests occur in this mode."""
     stocks = pd.read_csv(stocks_path, dtype={"stock_id": str}, encoding="utf-8-sig")
-    prices = _groups(_read_years(prices_dir), ["date"], ["stock_id", "date"])
+    price_rows = _read_years(prices_dir)
+    if not price_rows.empty and "market" not in price_rows:
+        price_rows["market"] = price_rows.stock_id.map(stocks.drop_duplicates("stock_id").set_index("stock_id").market)
+    prices = _groups(price_rows, ["date"], ["stock_id", "date"])
+    institutional = load_institutional_context(Path(stocks_path).resolve().parents[2], price_rows)
     revenue = _groups(_read_years(revenue_dir), ["year", "month"],
                       ["stock_id", "year", "month"])
     financials = _groups(_read_years(financials_dir), ["year", "quarter"],
@@ -171,6 +176,15 @@ def calculate_factors(stocks_path=STOCKS_PATH, prices_dir=PRICES_DIR,
                "close": _value(latest, "close") if latest is not None else float("nan"),
                "updated_at": updated_at}
         row.update(price_factors(price_group))
+        row.update(institutional_stock_factors(stock.market, sid, row["latest_date"], institutional))
+        reason = row["institutional_missing_reason"]
+        if reason is None:
+            for field in ("close", "ma20", "ma60", "ma120", "avg_volume_20",
+                          "avg_volume_60", "distance_to_60d_high"):
+                if pd.isna(row.get(field)):
+                    reason = f"動能欄位缺值：{field}"
+                    break
+        row["strategy_d_missing_reason"] = reason
         row.update(revenue_factors(revenue.get(sid)))
         row.update(financial_factors(financials.get(sid)))
         row.update(annual_metrics(annuals.get(sid)))

@@ -52,7 +52,8 @@ export function qgmScores(row, config) {
 }
 export function evaluateStrategy(row, strategy) {
   if (!strategy.enabled) return 'unavailable';
-  if ((strategy.availability_fields ?? []).some(field => number(row[field]) === null)) return 'unavailable';
+  if ((strategy.availability_fields ?? []).some(field => number(row[field]) === null))
+    return row.institutional_missing_reason ? 'missing_data' : 'unavailable';
   let missing = false, failed = false;
   for (const condition of Object.values(strategy.conditions)) {
     if (!condition.enabled) continue;
