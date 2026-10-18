@@ -134,6 +134,8 @@ def main() -> None:
                         help="Maximum eligible stocks to process in this batch (1-50)")
     parser.add_argument("--no-publish", action="store_true", help="Defer history commit/push for reviewed first-run integration")
     parser.add_argument("--days", type=int, default=25, help="Institutional market trading dates to cover (20-90; default 25)")
+    parser.add_argument("--defer-snapshot", action="store_true",
+                        help="Actions only: publish from the newest remote snapshot after data merge")
     args = parser.parse_args()
     if args.api_budget is None:
         args.api_budget = 360 if args.mode == "history-batch" else FUNDAMENTALS_API_BUDGET_PER_RUN
@@ -175,7 +177,8 @@ def main() -> None:
         with ApiBudget(path=Path(PROJECT_ROOT) / "data/.daily_institutional_guard.json")._lock():
             prices = update_recent_prices(asof=args.date)
             institution = update_institutional(days=args.days)
-            rebuild_snapshot()
+            if not args.defer_snapshot:
+                rebuild_snapshot()
         logging.info("Recent prices: %s", prices)
         logging.info("Institutional dates: %s", institution)
         return

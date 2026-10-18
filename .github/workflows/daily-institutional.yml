@@ -1,0 +1,56 @@
+name: Daily prices and Strategy D institutional data
+
+on:
+  schedule:
+    - cron: '20 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-institutional-main
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Configure commit identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Verify GitHub runner can read both official sources
+        run: python src/actions_daily.py probe
+      - name: Update recent prices and institutional data
+        run: python src/main.py daily-institutional --days 25 --defer-snapshot
+      - name: Validate parsers and strategy calculations
+        run: |
+          python -m unittest discover -s tests -p 'test_actions_daily.py'
+          python -m unittest discover -s tests -p 'test_daily_institutional.py'
+          python -m unittest discover -s tests -p 'test_institutional.py'
+      - name: Merge onto newest main and publish
+        run: python src/actions_daily.py publish
+      - name: Upload current site as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - name: Deploy current site to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Confirm GitHub Pages actually serves daily fields
+        run: python src/verify_daily_pages.py

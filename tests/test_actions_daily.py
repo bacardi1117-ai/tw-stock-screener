@@ -1,0 +1,68 @@
+"""Publication from a disposable runner must retain newer financial state."""
+
+import json
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+
+import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from actions_daily import merge_csv, merge_progress, refresh_snapshot
+
+
+class ActionsDailyTests(unittest.TestCase):
+    @staticmethod
+    def temporary_directory():
+        return tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1])
+
+    def test_csv_merge_keeps_remote_row_and_adds_new_row(self):
+        with self.temporary_directory() as folder:
+            path = Path(folder) / "prices.csv"
+            pd.DataFrame([{"date": "2026-10-16", "stock_id": "2330", "market": "TWSE",
+                           "close": 100}]).to_csv(path, index=False)
+            incoming = pd.DataFrame([
+                {"date": "2026-10-16", "stock_id": "2330", "market": "TWSE", "close": 0},
+                {"date": "2026-10-19", "stock_id": "2330", "market": "TWSE", "close": 105},
+            ])
+            self.assertTrue(merge_csv(path, incoming, ("date", "stock_id")))
+            actual = pd.read_csv(path, dtype={"stock_id": str})
+            self.assertEqual(actual.close.tolist(), [100, 105])
+
+    def test_progress_merge_does_not_downgrade_saved(self):
+        with self.temporary_directory() as folder:
+            path = Path(folder) / "progress.json"
+            path.write_text(json.dumps({"dates": {"2026-10-16:TWSE": {"status": "saved", "rows": 100}}}))
+            incoming = {"dates": {"2026-10-16:TWSE": {"status": "retryable"},
+                                  "2026-10-19:TWSE": {"status": "saved", "rows": 101}}}
+            self.assertTrue(merge_progress(path, incoming))
+            actual = json.loads(path.read_text())
+            self.assertEqual(actual["dates"]["2026-10-16:TWSE"]["status"], "saved")
+            self.assertEqual(actual["dates"]["2026-10-19:TWSE"]["rows"], 101)
+
+    def test_snapshot_rebuild_retains_published_fundamentals(self):
+        root = Path(__file__).resolve().parents[1]
+        with self.temporary_directory() as folder:
+            temp = Path(folder)
+            for name in ("data/prices/2025.csv", "data/prices/2026.csv",
+                         "data/institutional/2026.csv", "data/state/institutional_progress.json",
+                         "docs/data/latest.json", "config/strategies.json"):
+                target = temp / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((root / name).read_bytes())
+            before = json.loads((temp / "docs/data/latest.json").read_text(encoding="utf-8"))
+            metrics = refresh_snapshot(temp)
+            after = json.loads((temp / "docs/data/latest.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(after), len(before))
+            self.assertEqual(metrics["strategy_d_pass"],
+                             sum(row["strategy_d"] == "pass" for row in before))
+            for old, new in zip(before, after):
+                self.assertEqual(old["stock_id"], new["stock_id"])
+                for key in ("annual_eps_2025", "annual_ocf_2025", "cash_dividend_latest",
+                            "revenue_yoy", "eps_yoy", "payout_ratio"):
+                    self.assertEqual(old[key], new[key])
+
+
+if __name__ == "__main__":
+    unittest.main()
