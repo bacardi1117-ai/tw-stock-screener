@@ -186,7 +186,7 @@ function render(data) {
     '<tr><td colspan="9">無已平倉交易</td></tr>';
 }
 async function loadManifest() {
-  const response = await fetch('./data/backtest/manifest.json');
+  const response = await fetch('./data/backtest/manifest.json', {cache:'no-cache'});
   if (!response.ok) throw new Error('無法載入回測資料清單');
   manifest = await response.json();
   if (manifest.schema_version !== 1 || manifest.volume_unit !== 'shares' || !manifest.trading_dates?.length) {
