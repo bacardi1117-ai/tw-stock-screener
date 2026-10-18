@@ -3860,12 +3860,312 @@
       "status": "completed",
       "last_attempt_at": "2026-10-18T12:43:04+00:00",
       "failure_reason": null
+    },
+    "5471": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:42+00:00",
+      "failure_reason": null
+    },
+    "5474": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:43+00:00",
+      "failure_reason": null
+    },
+    "5475": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:43+00:00",
+      "failure_reason": "no_data"
+    },
+    "5478": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:44+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "5483": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:44+00:00",
+      "failure_reason": null
+    },
+    "5493": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:44+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "5498": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:45+00:00",
+      "failure_reason": "no_data"
+    },
+    "5508": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:45+00:00",
+      "failure_reason": null
+    },
+    "5511": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:46+00:00",
+      "failure_reason": null
+    },
+    "5515": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:46+00:00",
+      "failure_reason": null
+    },
+    "5520": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:46+00:00",
+      "failure_reason": null
+    },
+    "5522": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:47+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "5534": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:47+00:00",
+      "failure_reason": null
+    },
+    "5536": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:48+00:00",
+      "failure_reason": null
+    },
+    "5607": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:48+00:00",
+      "failure_reason": null
+    },
+    "5609": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:49+00:00",
+      "failure_reason": null
+    },
+    "5871": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:49+00:00",
+      "failure_reason": null
+    },
+    "5903": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:50+00:00",
+      "failure_reason": null
+    },
+    "5904": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:50+00:00",
+      "failure_reason": null
+    },
+    "6104": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:50+00:00",
+      "failure_reason": null
+    },
+    "6117": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:51+00:00",
+      "failure_reason": "no_data"
+    },
+    "6121": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:51+00:00",
+      "failure_reason": null
+    },
+    "6122": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:52+00:00",
+      "failure_reason": null
+    },
+    "6127": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:52+00:00",
+      "failure_reason": "no_data"
+    },
+    "6138": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:53+00:00",
+      "failure_reason": null
+    },
+    "6139": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:53+00:00",
+      "failure_reason": null
+    },
+    "6141": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:56+00:00",
+      "failure_reason": "no_data"
+    },
+    "6143": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:57+00:00",
+      "failure_reason": null
+    },
+    "6146": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:57+00:00",
+      "failure_reason": null
+    },
+    "6147": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:57+00:00",
+      "failure_reason": null
+    },
+    "6150": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:36:58+00:00",
+      "failure_reason": "no_data"
+    },
+    "6155": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:58+00:00",
+      "failure_reason": null
+    },
+    "6166": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:59+00:00",
+      "failure_reason": null
+    },
+    "6173": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:59+00:00",
+      "failure_reason": null
+    },
+    "6174": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:36:59+00:00",
+      "failure_reason": null
+    },
+    "6175": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:00+00:00",
+      "failure_reason": null
+    },
+    "6176": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:00+00:00",
+      "failure_reason": null
+    },
+    "6182": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:00+00:00",
+      "failure_reason": "no_data"
+    },
+    "6183": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:01+00:00",
+      "failure_reason": null
+    },
+    "6187": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:01+00:00",
+      "failure_reason": null
+    },
+    "6188": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:02+00:00",
+      "failure_reason": null
+    },
+    "6190": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:02+00:00",
+      "failure_reason": null
+    },
+    "6191": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:02+00:00",
+      "failure_reason": null
+    },
+    "6192": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:03+00:00",
+      "failure_reason": null
+    },
+    "6196": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:03+00:00",
+      "failure_reason": null
+    },
+    "6197": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:04+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "6199": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:04+00:00",
+      "failure_reason": "no_data"
+    },
+    "6202": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:04+00:00",
+      "failure_reason": "no_data"
+    },
+    "6203": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:05+00:00",
+      "failure_reason": null
+    },
+    "6204": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:05+00:00",
+      "failure_reason": null
+    },
+    "6205": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:06+00:00",
+      "failure_reason": null
+    },
+    "6206": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:06+00:00",
+      "failure_reason": null
+    },
+    "6207": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:06+00:00",
+      "failure_reason": null
+    },
+    "6208": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:07+00:00",
+      "failure_reason": "no_data"
+    },
+    "6209": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:07+00:00",
+      "failure_reason": "no_data"
+    },
+    "6213": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:08+00:00",
+      "failure_reason": null
+    },
+    "6214": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:08+00:00",
+      "failure_reason": null
+    },
+    "6215": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T13:37:08+00:00",
+      "failure_reason": null
+    },
+    "6217": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:09+00:00",
+      "failure_reason": "no_data"
+    },
+    "6218": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T13:37:09+00:00",
+      "failure_reason": "no_data"
     }
   },
   "last_run_api_calls": 180,
   "attempted": 60,
-  "completed": 36,
-  "failed": 24,
+  "completed": 43,
+  "failed": 17,
   "http_429": false,
   "http_403": false,
   "timeout": false,
@@ -4158,7 +4458,50 @@
     "5434",
     "5439",
     "5443",
-    "5469"
+    "5469",
+    "5471",
+    "5474",
+    "5483",
+    "5508",
+    "5511",
+    "5515",
+    "5520",
+    "5534",
+    "5536",
+    "5607",
+    "5609",
+    "5871",
+    "5903",
+    "5904",
+    "6104",
+    "6121",
+    "6122",
+    "6138",
+    "6139",
+    "6143",
+    "6146",
+    "6147",
+    "6155",
+    "6166",
+    "6173",
+    "6174",
+    "6175",
+    "6176",
+    "6183",
+    "6187",
+    "6188",
+    "6190",
+    "6191",
+    "6192",
+    "6196",
+    "6203",
+    "6204",
+    "6205",
+    "6206",
+    "6207",
+    "6213",
+    "6214",
+    "6215"
   ],
   "retryable_stock_ids": [
     "1210",
@@ -4361,17 +4704,34 @@
     "5340",
     "5351",
     "5432",
-    "5464"
+    "5464",
+    "5475",
+    "5478",
+    "5493",
+    "5498",
+    "5522",
+    "6117",
+    "6127",
+    "6141",
+    "6150",
+    "6182",
+    "6197",
+    "6199",
+    "6202",
+    "6208",
+    "6209",
+    "6217",
+    "6218"
   ],
-  "completed_count": 289,
+  "completed_count": 332,
   "eligible_count": 899,
-  "updated_at": "2026-10-18T12:43:04+00:00",
-  "remaining_count": 610,
-  "last_attempted_stock_id": "5469",
+  "updated_at": "2026-10-18T13:37:10+00:00",
+  "remaining_count": 567,
+  "last_attempted_stock_id": "6218",
   "stop_reason": "batch_limit",
   "last_http_status": 200,
   "retryable": 0,
-  "failed_count": 131,
+  "failed_count": 148,
   "retryable_count": 68,
   "interrupted": true,
   "last_fetch_finished_at": "2026-10-18T08:18:11+00:00",
