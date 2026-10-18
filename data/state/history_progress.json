@@ -263,10 +263,35 @@
     "1777": {
       "status": "retryable",
       "last_attempt_at": "2026-10-18T01:03:32+00:00"
+    },
+    "1784": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:42:05+00:00",
+      "failure_reason": "network_error"
+    },
+    "1785": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:42:06+00:00",
+      "failure_reason": "network_error"
+    },
+    "1788": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:42:08+00:00",
+      "failure_reason": "network_error"
+    },
+    "1795": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:42:09+00:00",
+      "failure_reason": "network_error"
+    },
+    "1802": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-18T01:42:11+00:00",
+      "failure_reason": "network_error"
     }
   },
-  "last_run_api_calls": 157,
-  "attempted": 53,
+  "last_run_api_calls": 15,
+  "attempted": 5,
   "completed": 0,
   "failed": 0,
   "http_429": false,
@@ -326,18 +351,23 @@
     "1736",
     "1760",
     "1773",
-    "1777"
+    "1777",
+    "1784",
+    "1785",
+    "1788",
+    "1795",
+    "1802"
   ],
   "failed_stock_ids": [],
   "completed_count": 0,
   "eligible_count": 899,
-  "updated_at": "2026-10-18T01:03:32+00:00",
+  "updated_at": "2026-10-18T01:42:13+00:00",
   "remaining_count": 899,
-  "last_attempted_stock_id": "1777",
-  "stop_reason": "manual_interrupt_after_repeated_network_errors",
+  "last_attempted_stock_id": "1802",
+  "stop_reason": "consecutive_network_errors",
   "last_http_status": null,
-  "retryable": 53,
+  "retryable": 5,
   "failed_count": 0,
-  "retryable_count": 53,
+  "retryable_count": 58,
   "interrupted": true
 }
