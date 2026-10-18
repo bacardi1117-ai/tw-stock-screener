@@ -959,12 +959,321 @@
       "last_attempt_at": "2026-10-18T05:45:04+00:00",
       "failure_reason": "parse_error",
       "error_type": "TypeError"
+    },
+    "2754": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:47+00:00",
+      "failure_reason": null
+    },
+    "2755": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:48+00:00",
+      "failure_reason": null
+    },
+    "2756": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:48+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "2762": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:49+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "2912": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:49+00:00",
+      "failure_reason": null
+    },
+    "2915": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:49+00:00",
+      "failure_reason": null
+    },
+    "2947": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:50+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "2949": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:50+00:00",
+      "failure_reason": "no_data"
+    },
+    "3003": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:50+00:00",
+      "failure_reason": null
+    },
+    "3004": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:51+00:00",
+      "failure_reason": "no_data"
+    },
+    "3005": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:51+00:00",
+      "failure_reason": null
+    },
+    "3006": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:52+00:00",
+      "failure_reason": null
+    },
+    "3008": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:52+00:00",
+      "failure_reason": null
+    },
+    "3010": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:52+00:00",
+      "failure_reason": null
+    },
+    "3013": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:53+00:00",
+      "failure_reason": "no_data"
+    },
+    "3014": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:53+00:00",
+      "failure_reason": null
+    },
+    "3015": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:53+00:00",
+      "failure_reason": null
+    },
+    "3016": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:54+00:00",
+      "failure_reason": null
+    },
+    "3017": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:54+00:00",
+      "failure_reason": null
+    },
+    "3019": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:54+00:00",
+      "failure_reason": null
+    },
+    "3022": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:55+00:00",
+      "failure_reason": null
+    },
+    "3023": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:55+00:00",
+      "failure_reason": null
+    },
+    "3025": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:55+00:00",
+      "failure_reason": null
+    },
+    "3026": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:56+00:00",
+      "failure_reason": null
+    },
+    "3028": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:56+00:00",
+      "failure_reason": null
+    },
+    "3029": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:56+00:00",
+      "failure_reason": null
+    },
+    "3030": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:57+00:00",
+      "failure_reason": null
+    },
+    "3032": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:57+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3034": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:58+00:00",
+      "failure_reason": null
+    },
+    "3035": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:58+00:00",
+      "failure_reason": null
+    },
+    "3036": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:58+00:00",
+      "failure_reason": null
+    },
+    "3037": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:59+00:00",
+      "failure_reason": null
+    },
+    "3042": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:17:59+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3044": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:17:59+00:00",
+      "failure_reason": null
+    },
+    "3045": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:00+00:00",
+      "failure_reason": null
+    },
+    "3046": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:00+00:00",
+      "failure_reason": "no_data"
+    },
+    "3048": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:00+00:00",
+      "failure_reason": "no_data"
+    },
+    "3054": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:01+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3055": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:01+00:00",
+      "failure_reason": null
+    },
+    "3081": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:01+00:00",
+      "failure_reason": null
+    },
+    "3088": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:02+00:00",
+      "failure_reason": null
+    },
+    "3090": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:02+00:00",
+      "failure_reason": null
+    },
+    "3094": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:03+00:00",
+      "failure_reason": null
+    },
+    "3105": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:03+00:00",
+      "failure_reason": "no_data"
+    },
+    "3130": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:03+00:00",
+      "failure_reason": null
+    },
+    "3131": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:04+00:00",
+      "failure_reason": null
+    },
+    "3135": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:04+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3138": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:04+00:00",
+      "failure_reason": null
+    },
+    "3141": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:05+00:00",
+      "failure_reason": null
+    },
+    "3147": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:05+00:00",
+      "failure_reason": null
+    },
+    "3149": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:06+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3152": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:06+00:00",
+      "failure_reason": null
+    },
+    "3158": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:07+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3162": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:07+00:00",
+      "failure_reason": "no_data"
+    },
+    "3163": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:08+00:00",
+      "failure_reason": null
+    },
+    "3167": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:08+00:00",
+      "failure_reason": null
+    },
+    "3169": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:08+00:00",
+      "failure_reason": null
+    },
+    "3171": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:09+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3178": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:18:10+00:00",
+      "failure_reason": "parse_error",
+      "error_type": "TypeError"
+    },
+    "3189": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:18:10+00:00",
+      "failure_reason": null
     }
   },
-  "last_run_api_calls": 177,
+  "last_run_api_calls": 180,
   "attempted": 60,
-  "completed": 46,
-  "failed": 14,
+  "completed": 42,
+  "failed": 18,
   "http_429": false,
   "http_403": false,
   "timeout": false,
@@ -1057,7 +1366,49 @@
     "2643",
     "2645",
     "2729",
-    "2752"
+    "2752",
+    "2754",
+    "2755",
+    "2912",
+    "2915",
+    "3003",
+    "3005",
+    "3006",
+    "3008",
+    "3010",
+    "3014",
+    "3015",
+    "3016",
+    "3017",
+    "3019",
+    "3022",
+    "3023",
+    "3025",
+    "3026",
+    "3028",
+    "3029",
+    "3030",
+    "3034",
+    "3035",
+    "3036",
+    "3037",
+    "3044",
+    "3045",
+    "3055",
+    "3081",
+    "3088",
+    "3090",
+    "3094",
+    "3130",
+    "3131",
+    "3138",
+    "3141",
+    "3147",
+    "3152",
+    "3163",
+    "3167",
+    "3169",
+    "3189"
   ],
   "retryable_stock_ids": [
     "1210",
@@ -1160,17 +1511,35 @@
     "2743",
     "2745",
     "2751",
-    "2753"
+    "2753",
+    "2756",
+    "2762",
+    "2947",
+    "2949",
+    "3004",
+    "3013",
+    "3032",
+    "3042",
+    "3046",
+    "3048",
+    "3054",
+    "3105",
+    "3135",
+    "3149",
+    "3158",
+    "3162",
+    "3171",
+    "3178"
   ],
-  "completed_count": 89,
+  "completed_count": 131,
   "eligible_count": 899,
-  "updated_at": "2026-10-18T05:45:05+00:00",
-  "remaining_count": 810,
-  "last_attempted_stock_id": "2753",
+  "updated_at": "2026-10-18T08:18:11+00:00",
+  "remaining_count": 768,
+  "last_attempted_stock_id": "3189",
   "stop_reason": "batch_limit",
   "last_http_status": 200,
   "retryable": 0,
-  "failed_count": 31,
+  "failed_count": 49,
   "retryable_count": 68,
   "interrupted": true
 }
