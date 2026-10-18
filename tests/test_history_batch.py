@@ -96,6 +96,37 @@ class HistoryTests(unittest.TestCase):
         merge_history(path,dividend_rows('1','S',divs(),annual),True)
         merge_history(path,dividend_rows('1','S',[],annual),True)
         f=pd.read_csv(path); self.assertTrue(f.annual_complete.all()); self.assertTrue((f.cash_dividend==1).all())
+    def test_nullable_legacy_dividend_metadata_and_mixed_source_date(self):
+        root=self.root(); path=root/'data/dividends/history.csv'
+        annual=annual_rows('1000','Sample',INCOME,FLOWS)
+        legacy=dict(dividend_rows('1000','Sample',divs(),annual)[-1],
+                    annual_complete=None,dividend_status=None,periods=None,
+                    source_date=1151016.0,source=None)
+        other=dict(legacy,stock_id='1001',cash_dividend=1.2345678901234567)
+        path.parent.mkdir(parents=True)
+        pd.DataFrame([legacy,other]).to_csv(path,index=False,encoding='utf-8-sig')
+        before=pd.read_csv(path,dtype={'stock_id':str},float_precision='round_trip')
+        merge_history(path,dividend_rows('1000','Sample',[],annual),True)
+        after=pd.read_csv(path,dtype={'stock_id':str},float_precision='round_trip')
+        saved=after.loc[(after.stock_id=='1000') & (after.year==2025)].iloc[0]
+        self.assertTrue(pd.isna(saved.annual_complete))
+        self.assertEqual(saved.cash_dividend,1)
+        self.assertEqual(saved.source_date,1151016.0)
+        pd.testing.assert_frame_equal(before.loc[before.stock_id=='1001'].reset_index(drop=True),
+                                      after.loc[after.stock_id=='1001'].reset_index(drop=True),check_dtype=False)
+        missing=after.loc[(after.stock_id=='1000') & (after.year==2021)].iloc[0]
+        self.assertTrue(pd.isna(missing.cash_dividend))
+    def test_annual_merge_preserves_verified_eps_and_missing_amount(self):
+        root=self.root(); path=root/'data/annual_financials/history.csv'
+        old=annual_rows('1000','Sample',INCOME,FLOWS,
+                        {'1000:2025':dict(annual_eps=7.991234567890123,source='verified annual')})
+        merge_history(path,old)
+        merge_history(path,annual_rows('1000','Sample',INCOME,FLOWS[:-1]))
+        frame=pd.read_csv(path,float_precision='round_trip')
+        row=frame.loc[frame.year==2025].iloc[0]
+        self.assertEqual(row.annual_eps,old[-1]['annual_eps'])
+        self.assertEqual(row.annual_operating_cash_flow,100)
+        self.assertEqual(row.eps_method,'verified annual')
     def test_token_not_in_progress_or_stdout(self):
         root=self.root(1); captured=io.StringIO()
         with patch.dict('os.environ',{'FINMIND_TOKEN':'secret-marker-for-test'}), contextlib.redirect_stdout(captured):

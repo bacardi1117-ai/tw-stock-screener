@@ -1,0 +1,1655 @@
+{
+  "mode": "apply",
+  "started_at": "2026-10-18T08:48:06+00:00",
+  "api_calls": 0,
+  "target_count": 30,
+  "repaired_count": 30,
+  "completed_from_cache": 0,
+  "queued_for_api": [],
+  "results": [
+    {
+      "stock_id": "2206",
+      "stock_name": "三陽工業",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 378,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2231",
+      "stock_name": "為升",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 366,
+        "TaiwanStockDividend": 7
+      }
+    },
+    {
+      "stock_id": "2236",
+      "stock_name": "百達-KY",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 350,
+        "TaiwanStockDividend": 8
+      }
+    },
+    {
+      "stock_id": "2243",
+      "stock_name": "宏旭-KY",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 199,
+        "TaiwanStockCashFlowsStatement": 357,
+        "TaiwanStockDividend": 1
+      }
+    },
+    {
+      "stock_id": "2254",
+      "stock_name": "巨鎧精密-創",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 189,
+        "TaiwanStockCashFlowsStatement": 360,
+        "TaiwanStockDividend": 3
+      }
+    },
+    {
+      "stock_id": "2301",
+      "stock_name": "光寶科",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 340,
+        "TaiwanStockDividend": 12
+      }
+    },
+    {
+      "stock_id": "2305",
+      "stock_name": "全友",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 314,
+        "TaiwanStockDividend": 0
+      }
+    },
+    {
+      "stock_id": "2327",
+      "stock_name": "國巨*",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 228,
+        "TaiwanStockCashFlowsStatement": 362,
+        "TaiwanStockDividend": 7
+      }
+    },
+    {
+      "stock_id": "2337",
+      "stock_name": "旺宏",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 357,
+        "TaiwanStockDividend": 4
+      }
+    },
+    {
+      "stock_id": "2340",
+      "stock_name": "台亞",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 220,
+        "TaiwanStockCashFlowsStatement": 347,
+        "TaiwanStockDividend": 4
+      }
+    },
+    {
+      "stock_id": "2344",
+      "stock_name": "華邦電",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 366,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2359",
+      "stock_name": "所羅門",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 341,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2375",
+      "stock_name": "凱美",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 206,
+        "TaiwanStockCashFlowsStatement": 363,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2382",
+      "stock_name": "廣達",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 237,
+        "TaiwanStockCashFlowsStatement": 382,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2434",
+      "stock_name": "統懋",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 192,
+        "TaiwanStockCashFlowsStatement": 327,
+        "TaiwanStockDividend": 0
+      }
+    },
+    {
+      "stock_id": "2465",
+      "stock_name": "麗臺",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 228,
+        "TaiwanStockCashFlowsStatement": 353,
+        "TaiwanStockDividend": 2
+      }
+    },
+    {
+      "stock_id": "2466",
+      "stock_name": "冠西電",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 196,
+        "TaiwanStockCashFlowsStatement": 384,
+        "TaiwanStockDividend": 3
+      }
+    },
+    {
+      "stock_id": "2707",
+      "stock_name": "晶華",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 311,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "2723",
+      "stock_name": "美食-KY",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 226,
+        "TaiwanStockCashFlowsStatement": 353,
+        "TaiwanStockDividend": 5
+      }
+    },
+    {
+      "stock_id": "2732",
+      "stock_name": "六角",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 265,
+        "TaiwanStockCashFlowsStatement": 408,
+        "TaiwanStockDividend": 11
+      }
+    },
+    {
+      "stock_id": "2753",
+      "stock_name": "八方雲集",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "A,H1,H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 358,
+        "TaiwanStockDividend": 12
+      }
+    },
+    {
+      "stock_id": "2756",
+      "stock_name": "聯發國際",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2023,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q4"
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q4"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 198,
+        "TaiwanStockCashFlowsStatement": 349,
+        "TaiwanStockDividend": 11
+      }
+    },
+    {
+      "stock_id": "2762",
+      "stock_name": "世界健身-KY",
+      "failure_reason": "no_data",
+      "missing_eps_years": [
+        2023
+      ],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q3,Q4"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "Q2,Q3,Q4"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 150,
+        "TaiwanStockCashFlowsStatement": 355,
+        "TaiwanStockDividend": 8
+      }
+    },
+    {
+      "stock_id": "2947",
+      "stock_name": "振宇五金",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "A,H1,H2"
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "A,H1,H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 212,
+        "TaiwanStockCashFlowsStatement": 351,
+        "TaiwanStockDividend": 13
+      }
+    },
+    {
+      "stock_id": "3032",
+      "stock_name": "偉訓",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 352,
+        "TaiwanStockDividend": 5
+      }
+    },
+    {
+      "stock_id": "3042",
+      "stock_name": "晶技",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 214,
+        "TaiwanStockCashFlowsStatement": 374,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "3054",
+      "stock_name": "立萬利",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 196,
+        "TaiwanStockCashFlowsStatement": 338,
+        "TaiwanStockDividend": 1
+      }
+    },
+    {
+      "stock_id": "3149",
+      "stock_name": "正達",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 196,
+        "TaiwanStockCashFlowsStatement": 366,
+        "TaiwanStockDividend": 4
+      }
+    },
+    {
+      "stock_id": "3171",
+      "stock_name": "炎洲流通",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2023,
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 204,
+        "TaiwanStockCashFlowsStatement": 340,
+        "TaiwanStockDividend": 6
+      }
+    },
+    {
+      "stock_id": "3178",
+      "stock_name": "公準",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2025
+      ],
+      "dividend_details": [
+        {
+          "year": 2025,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 372,
+        "TaiwanStockDividend": 5
+      }
+    }
+  ],
+  "other_failures": [
+    {
+      "stock_id": "2248",
+      "stock_name": "華勝-KY",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [
+        2023,
+        2024
+      ],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [],
+      "dividend_details": [],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 154,
+        "TaiwanStockCashFlowsStatement": 314,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "unsupported_format"
+    },
+    {
+      "stock_id": "2408",
+      "stock_name": "南亞科",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2023,
+        2024
+      ],
+      "dividend_details": [
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 210,
+        "TaiwanStockCashFlowsStatement": 352,
+        "TaiwanStockDividend": 4
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2413",
+      "stock_name": "環科",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2024
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 368,
+        "TaiwanStockDividend": 3
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2426",
+      "stock_name": "鼎元",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 230,
+        "TaiwanStockCashFlowsStatement": 365,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2474",
+      "stock_name": "可成",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        },
+        {
+          "year": 2022,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 339,
+        "TaiwanStockDividend": 9
+      },
+      "original_failure_reason": "unsupported_format"
+    },
+    {
+      "stock_id": "2727",
+      "stock_name": "王品",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 331,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2731",
+      "stock_name": "雄獅",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 353,
+        "TaiwanStockDividend": 4
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2743",
+      "stock_name": "山富",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 182,
+        "TaiwanStockCashFlowsStatement": 342,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2745",
+      "stock_name": "五福",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 182,
+        "TaiwanStockCashFlowsStatement": 299,
+        "TaiwanStockDividend": 4
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2751",
+      "stock_name": "王座",
+      "failure_reason": "no_data",
+      "missing_eps_years": [
+        2023
+      ],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2024
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2024,
+          "reason": "incomplete_or_mixed_periods",
+          "periods": "H2"
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 189,
+        "TaiwanStockCashFlowsStatement": 355,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "2949",
+      "stock_name": "欣新網",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 338,
+        "TaiwanStockDividend": 6
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3004",
+      "stock_name": "豐達科",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 346,
+        "TaiwanStockDividend": 7
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3013",
+      "stock_name": "晟銘電",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 216,
+        "TaiwanStockCashFlowsStatement": 359,
+        "TaiwanStockDividend": 6
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3046",
+      "stock_name": "建碁",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 352,
+        "TaiwanStockDividend": 4
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3048",
+      "stock_name": "益登",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2024
+      ],
+      "dividend_details": [
+        {
+          "year": 2024,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 211,
+        "TaiwanStockCashFlowsStatement": 350,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3105",
+      "stock_name": "穩懋",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2023
+      ],
+      "dividend_details": [
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 398,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    },
+    {
+      "stock_id": "3135",
+      "stock_name": "凌航",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [
+        2023,
+        2024
+      ],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [],
+      "dividend_details": [],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 126,
+        "TaiwanStockCashFlowsStatement": 299,
+        "TaiwanStockDividend": 6
+      },
+      "original_failure_reason": "unsupported_format"
+    },
+    {
+      "stock_id": "3158",
+      "stock_name": "嘉實",
+      "failure_reason": "unsupported_format",
+      "missing_eps_years": [
+        2023,
+        2024
+      ],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [],
+      "dividend_details": [],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 159,
+        "TaiwanStockCashFlowsStatement": 256,
+        "TaiwanStockDividend": 6
+      },
+      "original_failure_reason": "unsupported_format"
+    },
+    {
+      "stock_id": "3162",
+      "stock_name": "精確",
+      "failure_reason": "no_data",
+      "missing_eps_years": [],
+      "missing_ocf_years": [],
+      "missing_dividend_years": [
+        2021,
+        2022,
+        2023
+      ],
+      "dividend_details": [
+        {
+          "year": 2021,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2022,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        },
+        {
+          "year": 2023,
+          "reason": "no_attribution_year_records",
+          "periods": ""
+        }
+      ],
+      "dataset_rows": {
+        "TaiwanStockFinancialStatements": 224,
+        "TaiwanStockCashFlowsStatement": 365,
+        "TaiwanStockDividend": 5
+      },
+      "original_failure_reason": "no_data"
+    }
+  ],
+  "before": {
+    "completed_count": 131,
+    "remaining_count": 768,
+    "failed_count": 49,
+    "retryable_count": 68
+  },
+  "backup_directory": "data/.historical_coverage/repair_backups/2026-10-18T08-48-06+00-00",
+  "finished_at": "2026-10-18T08:48:08+00:00",
+  "after": {
+    "completed_count": 131,
+    "remaining_count": 768,
+    "failed_count": 49,
+    "retryable_count": 68
+  },
+  "validation": {
+    "api_budget_unchanged": true,
+    "non_target_progress_unchanged": true,
+    "files": [
+      {
+        "path": "data/annual_financials/history.csv",
+        "rows_before": 540,
+        "rows_after": 540,
+        "protected_rows": 450,
+        "protected_rows_unchanged": true,
+        "duplicate_keys": 0
+      },
+      {
+        "path": "data/dividends/history.csv",
+        "rows_before": 5088,
+        "rows_after": 5207,
+        "protected_rows": 5035,
+        "protected_rows_unchanged": true,
+        "duplicate_keys": 0,
+        "existing_known_dividends_unchanged": true,
+        "complete_dividend_year_rows_before": 723,
+        "complete_dividend_year_rows_after": 768
+      }
+    ],
+    "repeat_apply_changes_nothing": true
+  }
+}

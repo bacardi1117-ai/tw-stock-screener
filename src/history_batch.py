@@ -82,8 +82,12 @@ def dividend_rows(sid, name, records, annual, market=""):
 
 def merge_history(path, rows, dividend=False):
     path.parent.mkdir(parents=True, exist_ok=True)
-    incoming = pd.DataFrame(rows)
-    old = pd.read_csv(path, dtype={"stock_id": str}) if path.exists() else pd.DataFrame()
+    # Retaining an older row can copy nullable legacy metadata (notably
+    # annual_complete) into a newly inferred bool column. Pandas 3 rejects
+    # that scalar assignment. Merge as objects, preserving None/NaN instead
+    # of coercing missing metadata or financial amounts to False/zero.
+    incoming = pd.DataFrame(rows, dtype=object)
+    old = pd.read_csv(path, dtype={"stock_id": str}, float_precision="round_trip") if path.exists() else pd.DataFrame()
     if not old.empty:
         # Incomplete fetches never destroy previously available amounts.
         prior = old.set_index(["stock_id", "year"])
