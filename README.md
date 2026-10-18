@@ -171,3 +171,37 @@ CAGR and minimum annual change; the default minimum change is now 0%, adjustable
 Payout ratio uses full 2025 cash dividend divided by the corresponding 2025 annual EPS, multiplied
 by 100; EPS <= 0 or missing input yields NaN. Only summary factors go to Pages. QGM remains
 Quality 40 / Growth 35 / Momentum 25; these histories do not add scoring rules.
+
+## Technical daily-price backtest (version 1)
+
+The standalone `docs/backtest.html` page uses a browser Web Worker and the existing GitHub Pages
+static site. It does not use current A–E statuses, QGM scores, financial statements, FinMind,
+or a server. To publish the already stored daily OHLCV in a smaller, price-only format, run:
+
+```powershell
+python src/build_backtest_data.py
+```
+
+This command reads only `data/prices/YYYY.csv` and `data/market/stocks.csv`, makes no HTTP requests,
+and writes `docs/data/backtest/YYYY.csv` plus a manifest. Published rows contain only date, stock
+ID, open, high, low, close and volume. Volume is in **shares** (`成交股數`); orders are whole board
+lots of 1,000 shares. The form allows adjustment of the date interval, cash and holdings limit,
+moving averages, N-day return, N-day average share volume, exit rules, fees, tax, slippage and
+candidate ordering. Fee defaults are simulation assumptions, not a broker quote. Parameters are
+stored under a separate browser `localStorage` key.
+
+The signal uses each day's close and older data; the buy order lasts only through the next market
+opening. A buy is reduced to affordable whole lots after actual opening price, adverse slippage
+and commission are included. Same-opening sales cannot finance those buys. Stop and take-profit
+exits remain active while held; a max-holding exit, once triggered, persists through missing or
+untradable days. Gap fills use the opening price. When the same daily bar touches both thresholds,
+the stop is assumed first. A one-price bar about 10% beyond the previous close is conservatively
+treated as a possible locked limit, since order-book and official limit flags are not stored.
+The complete rules and skip-reason definitions are in `docs/backtest-spec.md`.
+
+The present price file contains 133 trading sessions from 2026-04-01 through 2026-10-14 and uses
+the current listed-stock universe, so it has survivorship bias. Prices are not adjusted for
+ex-dividend or other corporate actions. Account returns are price-only and exclude dividends;
+ex-dividend gaps can distort signals and exits. Open positions are marked at the last available
+close. The first result and settings panels state these limits explicitly. CSV export contains
+closed trades and costs, while the page separately lists open positions and their mark dates.
