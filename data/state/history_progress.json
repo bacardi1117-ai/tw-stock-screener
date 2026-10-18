@@ -566,9 +566,16 @@
       "failure_reason": null
     },
     "2248": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T04:38:28+00:00",
-      "failure_reason": "unsupported_format"
+      "failure_reason": null,
+      "official_repaired_at": "2026-10-18T09:11:07+00:00",
+      "previous_failure_reason": "unsupported_format",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
     },
     "2250": {
       "status": "completed",
@@ -621,7 +628,7 @@
       "status": "failed",
       "last_attempt_at": "2026-10-18T04:38:29+00:00",
       "failure_reason": "unsupported_format",
-      "previous_failure_reason": "parse_error",
+      "previous_failure_reason": "unsupported_format",
       "previous_error_type": "TypeError",
       "cache_repaired_at": "2026-10-18T08:48:07+00:00",
       "unresolved_details": {
@@ -669,6 +676,65 @@
           "TaiwanStockCashFlowsStatement": 340,
           "TaiwanStockDividend": 12
         }
+      },
+      "official_repaired_at": "2026-10-18T09:11:07+00:00",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2023,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
       }
     },
     "2303": {
@@ -1213,7 +1279,24 @@
     "2408": {
       "status": "failed",
       "last_attempt_at": "2026-10-18T04:38:44+00:00",
-      "failure_reason": "no_data"
+      "failure_reason": "unsupported_format",
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "no_data",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2025,
+            "periods": "A",
+            "reason": "source_conflict",
+            "missing_components": [],
+            "unverified_components": [
+              "cash_dividend"
+            ]
+          }
+        ]
+      }
     },
     "2412": {
       "status": "completed",
@@ -1246,9 +1329,16 @@
       "failure_reason": null
     },
     "2426": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T05:44:37+00:00",
-      "failure_reason": "no_data"
+      "failure_reason": null,
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "no_data",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
     },
     "2428": {
       "status": "completed",
@@ -1470,9 +1560,16 @@
       "failure_reason": null
     },
     "2474": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T05:44:49+00:00",
-      "failure_reason": "unsupported_format"
+      "failure_reason": null,
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "unsupported_format",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
     },
     "2476": {
       "status": "completed",
@@ -1775,7 +1872,54 @@
     "2751": {
       "status": "failed",
       "last_attempt_at": "2026-10-18T05:45:04+00:00",
-      "failure_reason": "no_data"
+      "failure_reason": "no_data",
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "no_data",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "H2",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
+      }
     },
     "2752": {
       "status": "completed",
@@ -1783,10 +1927,10 @@
       "failure_reason": null
     },
     "2753": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T05:45:04+00:00",
-      "failure_reason": "unsupported_format",
-      "previous_failure_reason": "parse_error",
+      "failure_reason": null,
+      "previous_failure_reason": "unsupported_format",
       "previous_error_type": "TypeError",
       "cache_repaired_at": "2026-10-18T08:48:08+00:00",
       "unresolved_details": {
@@ -1810,6 +1954,12 @@
           "TaiwanStockCashFlowsStatement": 358,
           "TaiwanStockDividend": 12
         }
+      },
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
       }
     },
     "2754": {
@@ -1880,7 +2030,7 @@
       "status": "failed",
       "last_attempt_at": "2026-10-18T08:17:49+00:00",
       "failure_reason": "no_data",
-      "previous_failure_reason": "parse_error",
+      "previous_failure_reason": "no_data",
       "previous_error_type": "TypeError",
       "cache_repaired_at": "2026-10-18T08:48:08+00:00",
       "unresolved_details": {
@@ -1924,6 +2074,62 @@
           "TaiwanStockCashFlowsStatement": 355,
           "TaiwanStockDividend": 8
         }
+      },
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "Q3,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2025,
+            "periods": "Q2,Q3,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
       }
     },
     "2912": {
@@ -2267,9 +2473,16 @@
       "failure_reason": null
     },
     "3135": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T08:18:04+00:00",
-      "failure_reason": "unsupported_format"
+      "failure_reason": null,
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "unsupported_format",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
     },
     "3138": {
       "status": "completed",
@@ -2346,9 +2559,16 @@
       "failure_reason": null
     },
     "3158": {
-      "status": "failed",
+      "status": "completed",
       "last_attempt_at": "2026-10-18T08:18:07+00:00",
-      "failure_reason": "unsupported_format"
+      "failure_reason": null,
+      "official_repaired_at": "2026-10-18T09:11:08+00:00",
+      "previous_failure_reason": "unsupported_format",
+      "official_repair_details": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
     },
     "3162": {
       "status": "failed",
@@ -2441,9 +2661,309 @@
       "last_attempt_at": "2026-10-18T08:18:10+00:00",
       "failure_reason": null
     },
-    "3714": {
+    "3211": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:30+00:00",
+      "failure_reason": null
+    },
+    "3213": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:31+00:00",
+      "failure_reason": null
+    },
+    "3217": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:32+00:00",
+      "failure_reason": null
+    },
+    "3218": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:32+00:00",
+      "failure_reason": null
+    },
+    "3219": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:33+00:00",
+      "failure_reason": null
+    },
+    "3221": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:33+00:00",
+      "failure_reason": null
+    },
+    "3226": {
       "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:12+00:00",
+      "last_attempt_at": "2026-10-18T08:50:34+00:00",
+      "failure_reason": "no_data"
+    },
+    "3227": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:34+00:00",
+      "failure_reason": null
+    },
+    "3228": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:35+00:00",
+      "failure_reason": "no_data"
+    },
+    "3229": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:35+00:00",
+      "failure_reason": "no_data"
+    },
+    "3231": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:36+00:00",
+      "failure_reason": null
+    },
+    "3234": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:36+00:00",
+      "failure_reason": "no_data"
+    },
+    "3236": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:37+00:00",
+      "failure_reason": null
+    },
+    "3260": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:37+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3264": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:38+00:00",
+      "failure_reason": null
+    },
+    "3265": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:38+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3287": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:38+00:00",
+      "failure_reason": "no_data"
+    },
+    "3289": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:39+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3290": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:39+00:00",
+      "failure_reason": "no_data"
+    },
+    "3293": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:40+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3303": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:40+00:00",
+      "failure_reason": null
+    },
+    "3305": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:40+00:00",
+      "failure_reason": null
+    },
+    "3310": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:41+00:00",
+      "failure_reason": null
+    },
+    "3311": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:42+00:00",
+      "failure_reason": null
+    },
+    "3312": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:42+00:00",
+      "failure_reason": null
+    },
+    "3317": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:42+00:00",
+      "failure_reason": null
+    },
+    "3324": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:43+00:00",
+      "failure_reason": null
+    },
+    "3332": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:43+00:00",
+      "failure_reason": null
+    },
+    "3338": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:44+00:00",
+      "failure_reason": null
+    },
+    "3356": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:44+00:00",
+      "failure_reason": null
+    },
+    "3357": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:44+00:00",
+      "failure_reason": null
+    },
+    "3362": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:45+00:00",
+      "failure_reason": "no_data"
+    },
+    "3363": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:45+00:00",
+      "failure_reason": "no_data"
+    },
+    "3374": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:46+00:00",
+      "failure_reason": null
+    },
+    "3376": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:46+00:00",
+      "failure_reason": null
+    },
+    "3388": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:46+00:00",
+      "failure_reason": null
+    },
+    "3402": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:47+00:00",
+      "failure_reason": null
+    },
+    "3406": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:47+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3413": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:48+00:00",
+      "failure_reason": null
+    },
+    "3416": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:48+00:00",
+      "failure_reason": null
+    },
+    "3430": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:48+00:00",
+      "failure_reason": null
+    },
+    "3438": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:49+00:00",
+      "failure_reason": null
+    },
+    "3441": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:49+00:00",
+      "failure_reason": null
+    },
+    "3443": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:50+00:00",
+      "failure_reason": null
+    },
+    "3444": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:50+00:00",
+      "failure_reason": "no_data"
+    },
+    "3450": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:50+00:00",
+      "failure_reason": "no_data"
+    },
+    "3455": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:51+00:00",
+      "failure_reason": null
+    },
+    "3467": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:51+00:00",
+      "failure_reason": "no_data"
+    },
+    "3479": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:51+00:00",
+      "failure_reason": null
+    },
+    "3481": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:52+00:00",
+      "failure_reason": "no_data"
+    },
+    "3483": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:52+00:00",
+      "failure_reason": null
+    },
+    "3484": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:53+00:00",
+      "failure_reason": null
+    },
+    "3485": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:53+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3491": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:53+00:00",
+      "failure_reason": null
+    },
+    "3498": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:54+00:00",
+      "failure_reason": "no_data"
+    },
+    "3504": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T08:50:54+00:00",
+      "failure_reason": "no_data"
+    },
+    "3515": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:55+00:00",
+      "failure_reason": null
+    },
+    "3526": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:55+00:00",
+      "failure_reason": null
+    },
+    "3528": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:55+00:00",
+      "failure_reason": null
+    },
+    "3529": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T08:50:56+00:00",
+      "failure_reason": null
+    },
+    "3530": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:43:49+00:00",
       "failure_reason": "no_data"
     },
     "3532": {
@@ -2451,94 +2971,9 @@
       "last_attempt_at": "2026-10-18T09:43:50+00:00",
       "failure_reason": null
     },
-    "3556": {
+    "3533": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:54+00:00",
-      "failure_reason": null
-    },
-    "3605": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:01+00:00",
-      "failure_reason": "no_data"
-    },
-    "3680": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:06+00:00",
-      "failure_reason": null
-    },
-    "3718": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:13+00:00",
-      "failure_reason": "no_data"
-    },
-    "3673": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:05+00:00",
-      "failure_reason": "no_data"
-    },
-    "3624": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:02+00:00",
-      "failure_reason": null
-    },
-    "3687": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:07+00:00",
-      "failure_reason": null
-    },
-    "3705": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:10+00:00",
-      "failure_reason": null
-    },
-    "4107": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:15+00:00",
-      "failure_reason": null
-    },
-    "3675": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:05+00:00",
-      "failure_reason": null
-    },
-    "3653": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:03+00:00",
-      "failure_reason": null
-    },
-    "3663": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:04+00:00",
-      "failure_reason": "no_data"
-    },
-    "3617": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:01+00:00",
-      "failure_reason": "unsupported_format"
-    },
-    "3701": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:09+00:00",
-      "failure_reason": "no_data"
-    },
-    "3543": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:52+00:00",
-      "failure_reason": null
-    },
-    "3583": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:58+00:00",
-      "failure_reason": null
-    },
-    "3645": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:03+00:00",
-      "failure_reason": null
-    },
-    "3689": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:07+00:00",
+      "last_attempt_at": "2026-10-18T09:43:50+00:00",
       "failure_reason": null
     },
     "3535": {
@@ -2551,24 +2986,9 @@
       "last_attempt_at": "2026-10-18T09:43:51+00:00",
       "failure_reason": null
     },
-    "4104": {
+    "3543": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:13+00:00",
-      "failure_reason": null
-    },
-    "3555": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:43:54+00:00",
-      "failure_reason": "no_data"
-    },
-    "3702": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:09+00:00",
-      "failure_reason": null
-    },
-    "3693": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:08+00:00",
+      "last_attempt_at": "2026-10-18T09:43:52+00:00",
       "failure_reason": null
     },
     "3545": {
@@ -2576,24 +2996,34 @@
       "last_attempt_at": "2026-10-18T09:43:52+00:00",
       "failure_reason": null
     },
+    "3546": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:53+00:00",
+      "failure_reason": null
+    },
     "3548": {
       "status": "completed",
       "last_attempt_at": "2026-10-18T09:43:53+00:00",
       "failure_reason": null
     },
-    "3709": {
+    "3551": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:12+00:00",
+      "last_attempt_at": "2026-10-18T09:43:53+00:00",
       "failure_reason": null
     },
-    "3592": {
+    "3555": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:43:54+00:00",
+      "failure_reason": "no_data"
+    },
+    "3556": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:59+00:00",
+      "last_attempt_at": "2026-10-18T09:43:54+00:00",
       "failure_reason": null
     },
-    "4105": {
+    "3558": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:14+00:00",
+      "last_attempt_at": "2026-10-18T09:43:55+00:00",
       "failure_reason": null
     },
     "3563": {
@@ -2601,84 +3031,14 @@
       "last_attempt_at": "2026-10-18T09:43:55+00:00",
       "failure_reason": "unsupported_format"
     },
-    "3596": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:00+00:00",
-      "failure_reason": null
-    },
     "3564": {
       "status": "completed",
       "last_attempt_at": "2026-10-18T09:43:56+00:00",
       "failure_reason": null
     },
-    "3597": {
+    "3570": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:00+00:00",
-      "failure_reason": null
-    },
-    "3581": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:57+00:00",
-      "failure_reason": null
-    },
-    "3679": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:06+00:00",
-      "failure_reason": null
-    },
-    "3691": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:08+00:00",
-      "failure_reason": "no_data"
-    },
-    "3661": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:04+00:00",
-      "failure_reason": null
-    },
-    "3708": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:11+00:00",
-      "failure_reason": "unsupported_format"
-    },
-    "3665": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:04+00:00",
-      "failure_reason": null
-    },
-    "3546": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:53+00:00",
-      "failure_reason": null
-    },
-    "3711": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:12+00:00",
-      "failure_reason": null
-    },
-    "3588": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:59+00:00",
-      "failure_reason": null
-    },
-    "3684": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:07+00:00",
-      "failure_reason": null
-    },
-    "3611": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:01+00:00",
-      "failure_reason": null
-    },
-    "3628": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:02+00:00",
-      "failure_reason": null
-    },
-    "3706": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:10+00:00",
+      "last_attempt_at": "2026-10-18T09:43:56+00:00",
       "failure_reason": null
     },
     "3577": {
@@ -2691,34 +3051,204 @@
       "last_attempt_at": "2026-10-18T09:43:57+00:00",
       "failure_reason": null
     },
-    "3530": {
+    "3581": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:57+00:00",
+      "failure_reason": null
+    },
+    "3583": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:58+00:00",
+      "failure_reason": null
+    },
+    "3587": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:58+00:00",
+      "failure_reason": null
+    },
+    "3588": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:59+00:00",
+      "failure_reason": null
+    },
+    "3592": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:43:59+00:00",
+      "failure_reason": null
+    },
+    "3596": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:00+00:00",
+      "failure_reason": null
+    },
+    "3597": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:00+00:00",
+      "failure_reason": null
+    },
+    "3605": {
       "status": "failed",
-      "last_attempt_at": "2026-10-18T09:43:49+00:00",
+      "last_attempt_at": "2026-10-18T09:44:01+00:00",
       "failure_reason": "no_data"
     },
-    "3533": {
+    "3611": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:50+00:00",
+      "last_attempt_at": "2026-10-18T09:44:01+00:00",
       "failure_reason": null
     },
-    "3558": {
+    "3617": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:01+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3624": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:55+00:00",
+      "last_attempt_at": "2026-10-18T09:44:02+00:00",
       "failure_reason": null
     },
-    "3570": {
+    "3628": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:56+00:00",
+      "last_attempt_at": "2026-10-18T09:44:02+00:00",
       "failure_reason": null
+    },
+    "3645": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:03+00:00",
+      "failure_reason": null
+    },
+    "3653": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:03+00:00",
+      "failure_reason": null
+    },
+    "3661": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:04+00:00",
+      "failure_reason": null
+    },
+    "3663": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:04+00:00",
+      "failure_reason": "no_data"
+    },
+    "3665": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:04+00:00",
+      "failure_reason": null
+    },
+    "3673": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:05+00:00",
+      "failure_reason": "no_data"
+    },
+    "3675": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:05+00:00",
+      "failure_reason": null
+    },
+    "3679": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:06+00:00",
+      "failure_reason": null
+    },
+    "3680": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:06+00:00",
+      "failure_reason": null
+    },
+    "3684": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:07+00:00",
+      "failure_reason": null
+    },
+    "3687": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:07+00:00",
+      "failure_reason": null
+    },
+    "3689": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:07+00:00",
+      "failure_reason": null
+    },
+    "3691": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:08+00:00",
+      "failure_reason": "no_data"
+    },
+    "3693": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:08+00:00",
+      "failure_reason": null
+    },
+    "3701": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:09+00:00",
+      "failure_reason": "no_data"
+    },
+    "3702": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:09+00:00",
+      "failure_reason": null
+    },
+    "3705": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:10+00:00",
+      "failure_reason": null
+    },
+    "3706": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:10+00:00",
+      "failure_reason": null
+    },
+    "3707": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:10+00:00",
+      "failure_reason": "no_data"
+    },
+    "3708": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:11+00:00",
+      "failure_reason": "unsupported_format"
+    },
+    "3709": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:12+00:00",
+      "failure_reason": null
+    },
+    "3711": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:12+00:00",
+      "failure_reason": null
+    },
+    "3714": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:12+00:00",
+      "failure_reason": "no_data"
     },
     "3715": {
       "status": "failed",
       "last_attempt_at": "2026-10-18T09:44:13+00:00",
       "failure_reason": "no_data"
     },
-    "4126": {
+    "3718": {
+      "status": "failed",
+      "last_attempt_at": "2026-10-18T09:44:13+00:00",
+      "failure_reason": "no_data"
+    },
+    "4104": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:44:16+00:00",
+      "last_attempt_at": "2026-10-18T09:44:13+00:00",
+      "failure_reason": null
+    },
+    "4105": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:14+00:00",
+      "failure_reason": null
+    },
+    "4107": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-18T09:44:15+00:00",
       "failure_reason": null
     },
     "4119": {
@@ -2726,20 +3256,10 @@
       "last_attempt_at": "2026-10-18T09:44:15+00:00",
       "failure_reason": "no_data"
     },
-    "3587": {
+    "4126": {
       "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:58+00:00",
+      "last_attempt_at": "2026-10-18T09:44:16+00:00",
       "failure_reason": null
-    },
-    "3551": {
-      "status": "completed",
-      "last_attempt_at": "2026-10-18T09:43:53+00:00",
-      "failure_reason": null
-    },
-    "3707": {
-      "status": "failed",
-      "last_attempt_at": "2026-10-18T09:44:10+00:00",
-      "failure_reason": "no_data"
     }
   },
   "last_run_api_calls": 180,
@@ -2758,6 +3278,7 @@
     "2228",
     "2233",
     "2247",
+    "2248",
     "2250",
     "2303",
     "2308",
@@ -2795,6 +3316,7 @@
     "2420",
     "2421",
     "2423",
+    "2426",
     "2428",
     "2436",
     "2439",
@@ -2810,6 +3332,7 @@
     "2467",
     "2471",
     "2472",
+    "2474",
     "2476",
     "2478",
     "2480",
@@ -2839,6 +3362,7 @@
     "2645",
     "2729",
     "2752",
+    "2753",
     "2754",
     "2755",
     "2912",
@@ -2873,14 +3397,56 @@
     "3094",
     "3130",
     "3131",
+    "3135",
     "3138",
     "3141",
     "3147",
     "3152",
+    "3158",
     "3163",
     "3167",
     "3169",
     "3189",
+    "3211",
+    "3213",
+    "3217",
+    "3218",
+    "3219",
+    "3221",
+    "3227",
+    "3231",
+    "3236",
+    "3264",
+    "3303",
+    "3305",
+    "3310",
+    "3311",
+    "3312",
+    "3317",
+    "3324",
+    "3332",
+    "3338",
+    "3356",
+    "3357",
+    "3374",
+    "3376",
+    "3388",
+    "3402",
+    "3413",
+    "3416",
+    "3430",
+    "3438",
+    "3441",
+    "3443",
+    "3455",
+    "3479",
+    "3483",
+    "3484",
+    "3491",
+    "3515",
+    "3526",
+    "3528",
+    "3529",
     "3532",
     "3533",
     "3537",
@@ -3001,7 +3567,6 @@
     "2231",
     "2236",
     "2243",
-    "2248",
     "2254",
     "2301",
     "2305",
@@ -3014,11 +3579,9 @@
     "2382",
     "2408",
     "2413",
-    "2426",
     "2434",
     "2465",
     "2466",
-    "2474",
     "2707",
     "2723",
     "2727",
@@ -3027,7 +3590,6 @@
     "2743",
     "2745",
     "2751",
-    "2753",
     "2756",
     "2762",
     "2947",
@@ -3040,12 +3602,30 @@
     "3048",
     "3054",
     "3105",
-    "3135",
     "3149",
-    "3158",
     "3162",
     "3171",
     "3178",
+    "3226",
+    "3228",
+    "3229",
+    "3234",
+    "3260",
+    "3265",
+    "3287",
+    "3289",
+    "3290",
+    "3293",
+    "3362",
+    "3363",
+    "3406",
+    "3444",
+    "3450",
+    "3467",
+    "3481",
+    "3485",
+    "3498",
+    "3504",
     "3530",
     "3535",
     "3555",
@@ -3063,17 +3643,18 @@
     "3718",
     "4119"
   ],
-  "completed_count": 175,
+  "completed_count": 221,
   "eligible_count": 899,
   "updated_at": "2026-10-18T09:44:16+00:00",
-  "remaining_count": 724,
+  "remaining_count": 678,
   "last_attempted_stock_id": "4126",
   "stop_reason": "batch_limit",
   "last_http_status": 200,
   "retryable": 0,
-  "failed_count": 65,
+  "failed_count": 79,
   "retryable_count": 68,
   "interrupted": true,
+  "last_fetch_finished_at": "2026-10-18T08:18:11+00:00",
   "last_cache_repair": {
     "started_at": "2026-10-18T08:48:06+00:00",
     "finished_at": "2026-10-18T08:48:08+00:00",
@@ -3083,5 +3664,22 @@
     "completed_from_cache": 0,
     "queued_for_api": []
   },
-  "last_fetch_finished_at": "2026-10-18T08:18:11+00:00"
+  "last_official_repair": {
+    "started_at": "2026-10-18T09:10:57+00:00",
+    "finished_at": "2026-10-18T09:15:33+00:00",
+    "api_calls": 0,
+    "completed_from_cache": 6,
+    "targets": [
+      "2248",
+      "2301",
+      "2408",
+      "2426",
+      "2474",
+      "2751",
+      "2753",
+      "2762",
+      "3135",
+      "3158"
+    ]
+  }
 }

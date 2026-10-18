@@ -16,7 +16,9 @@ TWSE_URL = "https://openapi.twse.com.tw/v1/opendata/t187ap45_L"
 TPEX_URL = "https://mopsfin.twse.com.tw/opendata/t187ap45_O.csv"
 FIELDS = ["stock_id", "stock_name", "market", "year", "cash_dividend", "stock_dividend",
           "total_dividend", "annual_eps", "payout_ratio", "source_date",
-          "annual_complete", "dividend_status", "periods", "source", "updated_at"]
+          "annual_complete", "dividend_status", "periods", "source", "updated_at",
+          "cash_complete", "stock_complete", "cash_coverage_method", "stock_coverage_method",
+          "year_basis", "coverage_evidence", "source_review_required", "source_review_note"]
 
 
 def _number(value):
@@ -182,6 +184,8 @@ def save_dividends(frame, directory=DIVIDENDS_DIR):
     if "annual_complete" in combined:
         # A newer partial official snapshot must not replace a validated full year.
         combined["_complete_rank"] = combined.annual_complete.astype(str).str.lower().eq("true").astype(int)
+        if "source_review_required" in combined:
+            combined.loc[combined.source_review_required.astype(str).str.lower().eq("true"), "_complete_rank"] = 2
         combined = combined.sort_values("_complete_rank", kind="stable")
     combined = combined.drop_duplicates(["stock_id", "year"], keep="last").sort_values(["stock_id", "year"])
     temporary = path.with_suffix(".tmp")

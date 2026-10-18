@@ -1,0 +1,3218 @@
+{
+  "started_at": "2026-10-18T09:10:57+00:00",
+  "api_calls": 0,
+  "applied": true,
+  "targets": [
+    "2248",
+    "2301",
+    "2408",
+    "2426",
+    "2474",
+    "2751",
+    "2753",
+    "2762",
+    "3135",
+    "3158"
+  ],
+  "results": [
+    {
+      "stock_id": "2248",
+      "stock_name": "華勝-KY",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    },
+    {
+      "stock_id": "2301",
+      "stock_name": "光寶科",
+      "completed": false,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2023,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "Q2,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stock_id": "2408",
+      "stock_name": "南亞科",
+      "completed": false,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2025,
+            "periods": "A",
+            "reason": "source_conflict",
+            "missing_components": [],
+            "unverified_components": [
+              "cash_dividend"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stock_id": "2426",
+      "stock_name": "鼎元",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    },
+    {
+      "stock_id": "2474",
+      "stock_name": "可成",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    },
+    {
+      "stock_id": "2751",
+      "stock_name": "王座",
+      "completed": false,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "H2",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stock_id": "2753",
+      "stock_name": "八方雲集",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    },
+    {
+      "stock_id": "2762",
+      "stock_name": "世界健身-KY",
+      "completed": false,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": [
+          {
+            "year": 2021,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2022,
+            "periods": "",
+            "reason": "source_not_returned",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2024,
+            "periods": "Q3,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          },
+          {
+            "year": 2025,
+            "periods": "Q2,Q3,Q4",
+            "reason": "incomplete_or_overlapping_periods",
+            "missing_components": [],
+            "unverified_components": [
+              "cash_dividend",
+              "stock_dividend"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stock_id": "3135",
+      "stock_name": "凌航",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    },
+    {
+      "stock_id": "3158",
+      "stock_name": "嘉實",
+      "completed": true,
+      "missing": {
+        "annual_eps": [],
+        "annual_operating_cash_flow": [],
+        "dividends": []
+      }
+    }
+  ],
+  "before": {
+    "completed_count": 171,
+    "remaining_count": 728,
+    "failed_count": 69,
+    "retryable_count": 68
+  },
+  "metrics_before": {
+    "annual_eps_3y": 233,
+    "annual_ocf_3y": 240,
+    "dividend_5y": 175,
+    "strategy_c": {
+      "pass": 1,
+      "fail": 218,
+      "missing_data": 680
+    },
+    "strategy_e": {
+      "pass": 5,
+      "fail": 159,
+      "missing_data": 735
+    }
+  },
+  "backup_directory": "data/.historical_coverage/repair_backups/official-2026-10-18T09-11-07+00-00",
+  "unrelated_entries_preserved": true,
+  "completed_from_cache": 6,
+  "after": {
+    "completed_count": 177,
+    "remaining_count": 722,
+    "failed_count": 63,
+    "retryable_count": 68
+  },
+  "remaining_failures": [
+    {
+      "stock_id": "2206",
+      "stock_name": "三陽工業",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2231",
+      "stock_name": "為升",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2236",
+      "stock_name": "百達-KY",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2243",
+      "stock_name": "宏旭-KY",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2254",
+      "stock_name": "巨鎧精密-創",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2301",
+      "stock_name": "光寶科",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2305",
+      "stock_name": "全友",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2327",
+      "stock_name": "國巨*",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2337",
+      "stock_name": "旺宏",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2340",
+      "stock_name": "台亞",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2344",
+      "stock_name": "華邦電",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2359",
+      "stock_name": "所羅門",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2375",
+      "stock_name": "凱美",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2382",
+      "stock_name": "廣達",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2408",
+      "stock_name": "南亞科",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "A",
+          "reason": "source_conflict",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2413",
+      "stock_name": "環科",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2434",
+      "stock_name": "統懋",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2465",
+      "stock_name": "麗臺",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2466",
+      "stock_name": "冠西電",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2707",
+      "stock_name": "晶華",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2723",
+      "stock_name": "美食-KY",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2727",
+      "stock_name": "王品",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2731",
+      "stock_name": "雄獅",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2732",
+      "stock_name": "六角",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2743",
+      "stock_name": "山富",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2745",
+      "stock_name": "五福",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2751",
+      "stock_name": "王座",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2756",
+      "stock_name": "聯發國際",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "Q2,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2762",
+      "stock_name": "世界健身-KY",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "Q3,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "Q2,Q3,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2947",
+      "stock_name": "振宇五金",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "A,H1,H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "A,H1,H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "2949",
+      "stock_name": "欣新網",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3004",
+      "stock_name": "豐達科",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3013",
+      "stock_name": "晟銘電",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3032",
+      "stock_name": "偉訓",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3042",
+      "stock_name": "晶技",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3046",
+      "stock_name": "建碁",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3048",
+      "stock_name": "益登",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3054",
+      "stock_name": "立萬利",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3105",
+      "stock_name": "穩懋",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3149",
+      "stock_name": "正達",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3162",
+      "stock_name": "精確",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3171",
+      "stock_name": "炎洲流通",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3178",
+      "stock_name": "公準",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3226",
+      "stock_name": "龍鋒",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3228",
+      "stock_name": "金麗科",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3229",
+      "stock_name": "晟鈦",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3234",
+      "stock_name": "光環",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3260",
+      "stock_name": "威剛",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3265",
+      "stock_name": "台星科",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3287",
+      "stock_name": "廣寰科",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3289",
+      "stock_name": "宜特",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "Q1,Q2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "Q3,Q4",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3290",
+      "stock_name": "東浦",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3293",
+      "stock_name": "鈊象",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3362",
+      "stock_name": "先進光",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3363",
+      "stock_name": "上詮",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3406",
+      "stock_name": "玉晶光",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "H2",
+          "reason": "incomplete_or_overlapping_periods",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3444",
+      "stock_name": "利機",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3450",
+      "stock_name": "聯鈞",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3467",
+      "stock_name": "台灣精材",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [
+        2023,
+        2024
+      ],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3481",
+      "stock_name": "群創",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3485",
+      "stock_name": "敘豐",
+      "failure_reason": "unsupported_format",
+      "missing_cache": [],
+      "annual_eps": [
+        2023,
+        2024,
+        2025
+      ],
+      "annual_operating_cash_flow": [],
+      "dividends": []
+    },
+    {
+      "stock_id": "3498",
+      "stock_name": "陽程",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    },
+    {
+      "stock_id": "3504",
+      "stock_name": "揚明光",
+      "failure_reason": "no_data",
+      "missing_cache": [],
+      "annual_eps": [],
+      "annual_operating_cash_flow": [],
+      "dividends": [
+        {
+          "year": 2021,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2022,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2023,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2024,
+          "periods": "",
+          "reason": "source_not_returned",
+          "missing_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        },
+        {
+          "year": 2025,
+          "periods": "",
+          "reason": "unverified_annual_coverage",
+          "missing_components": [],
+          "unverified_components": [
+            "cash_dividend",
+            "stock_dividend"
+          ]
+        }
+      ]
+    }
+  ],
+  "failure_counts": {
+    "unsupported_format": 18,
+    "no_data": 45
+  },
+  "qgm_unchanged": true,
+  "metrics_after": {
+    "annual_eps_3y": 238,
+    "annual_ocf_3y": 240,
+    "dividend_5y": 178,
+    "strategy_c": {
+      "pass": 1,
+      "fail": 223,
+      "missing_data": 675
+    },
+    "strategy_e": {
+      "pass": 5,
+      "fail": 161,
+      "missing_data": 733
+    }
+  },
+  "finished_at": "2026-10-18T09:15:44+00:00",
+  "remaining_reason_stock_counts": {
+    "annual_fields_incomplete": 2,
+    "incomplete_or_overlapping_periods": 21,
+    "source_conflict": 1,
+    "source_not_returned": 39,
+    "unverified_annual_coverage": 23
+  },
+  "remaining_reason_stock_year_counts": {
+    "incomplete_or_overlapping_periods": 70,
+    "unverified_annual_coverage": 23,
+    "source_not_returned": 83,
+    "source_conflict": 1,
+    "annual_fields_incomplete": 5
+  },
+  "success_regression": {
+    "original_success_stocks_unchanged": 171,
+    "missing_cache": []
+  },
+  "filled_missing_counts": {
+    "annual_eps": 8,
+    "cash_dividend": 6,
+    "stock_dividend": 6,
+    "total_dividend": 6
+  },
+  "corrected_known_counts": {
+    "annual_eps": 4,
+    "cash_dividend": 2,
+    "total_dividend": 2
+  },
+  "local_factors_command": "python src/main.py factors",
+  "strategy_config_sha256": "5b02bee4e3844595e66a2e6bdea2b477427b177c0e100fffec842fc1ad50fba6",
+  "local_snapshot_rebuilt": true,
+  "source_conflicts": [
+    {
+      "stock_id": "2408",
+      "year": 2025,
+      "cached_cash": 1.34714912,
+      "official_cash": 1.5,
+      "action": "preserve_observation;annual_completeness_blocked"
+    }
+  ],
+  "unrelated_amounts_and_progress_preserved": true,
+  "queue_breakdown": {
+    "completed": 177,
+    "failed_pending_review": 63,
+    "retryable": 68,
+    "unattempted": 591
+  },
+  "tests": {
+    "python_unittest_discover": {
+      "passed": 101,
+      "failed": 0
+    },
+    "original_success_stock_cache_regression": {
+      "passed": 171,
+      "failed": 0
+    }
+  },
+  "publication_preparation": {
+    "prepared_at": "2026-10-18T10:03:41+00:00",
+    "progress_updated_at": "2026-10-18T09:44:16+00:00",
+    "completed_count": 221,
+    "remaining_count": 678,
+    "failed_count": 79,
+    "retryable_count": 68,
+    "metrics": {
+      "annual_eps_3y": 297,
+      "annual_ocf_3y": 299,
+      "dividend_5y": 222,
+      "strategy_c": {
+        "pass": 1,
+        "fail": 276,
+        "missing_data": 622
+      },
+      "strategy_e": {
+        "pass": 7,
+        "fail": 195,
+        "missing_data": 697
+      }
+    },
+    "progress_preserved_byte_for_byte": true,
+    "finmind_calls_this_publication": 0,
+    "nanya_2025_pending_review": true,
+    "snapshot_sha256": "8f88028af5c87092821c4d084156a02608dfcaeef9ee9364c4605ba298094eaa",
+    "snapshot_bytes": 4656787
+  }
+}

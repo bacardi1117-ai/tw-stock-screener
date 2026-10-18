@@ -12,6 +12,7 @@ import requests
 from config import PROJECT_ROOT
 from finmind_client import ApiBudget, BudgetReached, FinMindClient, token_from_environment
 from historical_coverage import atomic_json, DATASETS
+from dividend_coverage import resolve_components
 
 YEARS = (2023, 2024, 2025)
 DIV_YEARS = (2021, 2022, 2023, 2024, 2025)
@@ -29,11 +30,18 @@ def number(value):
 
 def annual_rows(sid, name, income, flows, overrides=None):
     rows = []
+    scoped = [v for k, v in (overrides or {}).items() if k.startswith(f"{sid}:") and v.get("statement_scope")]
+    if len({v["statement_scope"] for v in scoped}) > 1:
+        raise ValueError("Annual EPS statement scopes cannot be mixed")
     for year in YEARS:
         eps, method = NAN, "missing"
         # Explicit vetted annual inputs take precedence; generic EPS is single-quarter.
         official = (overrides or {}).get(f"{sid}:{year}")
         if official:
+            if official.get("statement_scope") and (
+                    official.get("eps_basis") != "basic" or official.get("period_start") != f"{year}-01-01" or
+                    official.get("period_end") != f"{year}-12-31" or official.get("currency") != "TWD"):
+                raise ValueError("Verified EPS must be basic, annual and in TWD")
             eps, method = number(official["annual_eps"]), official["source"]
         else:
             quarters = {r["date"]: number(r.get("value")) for r in income
@@ -45,10 +53,12 @@ def annual_rows(sid, name, income, flows, overrides=None):
                and r.get("date") == f"{year}-12-31"]
         rows.append(dict(stock_id=sid, stock_name=name, year=year, annual_eps=eps,
                          annual_operating_cash_flow=ocf[-1] if ocf else NAN,
-                         eps_method=method, source="FinMind; " + method, updated_at=now()))
+                         eps_method=method, source="FinMind; " + method, updated_at=now(),
+                         eps_statement_scope=official.get("statement_scope", "") if official else "",
+                         eps_basis="basic", eps_period_start=f"{year}-01-01", eps_period_end=f"{year}-12-31"))
     return rows
 
-def dividend_rows(sid, name, records, annual, market=""):
+def dividend_rows(sid, name, records, annual, market="", verified=None):
     result = []
     for year in DIV_YEARS:
         periods = {}
@@ -62,21 +72,26 @@ def dividend_rows(sid, name, records, annual, market=""):
                 continue
             period = "Q" + match[2] if match[2] else ("H1" if match[3] == "前" else "H2") if match[3] else "A"
             periods[period] = r
-        keys = set(periods)
-        complete = keys in ({"A"}, {"H1", "H2"}, {"Q1", "Q2", "Q3", "Q4"})
-        amounts = {}
-        for kind, fields in {"cash_dividend": ("CashEarningsDistribution", "CashStatutorySurplus"),
-                             "stock_dividend": ("StockEarningsDistribution", "StockStatutorySurplus")}.items():
-            values = [number(r.get(f)) for r in periods.values() for f in fields]
-            amounts[kind] = sum(values) if complete and values and all(math.isfinite(v) for v in values) else NAN
+        evidence = (verified or {}).get(f"{sid}:{year}", {})
+        if evidence.get("year", year) != year or evidence.get("stock_id", sid) != sid:
+            raise ValueError("Dividend evidence stock/year mismatch")
+        keys = set(periods) | set(evidence.get("periods", {}))
+        amounts, methods = resolve_components(periods, evidence)
         cash, stock = amounts["cash_dividend"], amounts["stock_dividend"]
-        complete = complete and math.isfinite(cash) and math.isfinite(stock)
+        review = bool(evidence.get("review_required_components"))
+        complete = math.isfinite(cash) and math.isfinite(stock) and not review
         eps = next((r["annual_eps"] for r in annual if r["year"] == year), NAN)
         result.append(dict(stock_id=sid, stock_name=name, market=market, year=year, **amounts,
                            total_dividend=cash + stock, annual_eps=eps,
                            payout_ratio=cash / eps * 100 if eps > 0 and complete else NAN,
                            annual_complete=complete, dividend_status=("paid" if cash + stock > 0 else "zero") if complete else "missing_data",
-                           periods=",".join(sorted(keys)), source="FinMind:earnings_attribution_year",
+                           periods=",".join(sorted(keys)), source="FinMind:earnings_attribution_year" + (
+                               "; official_verified:" + evidence["source"] if evidence else ""),
+                           cash_complete=math.isfinite(cash) and "cash_dividend" not in evidence.get("review_required_components", []),
+                           stock_complete=math.isfinite(stock) and "stock_dividend" not in evidence.get("review_required_components", []),
+                           source_review_required=review, source_review_note=evidence.get("review_note", ""),
+                           cash_coverage_method=methods["cash_dividend"], stock_coverage_method=methods["stock_dividend"],
+                           year_basis="earnings_attribution", coverage_evidence=json.dumps(evidence, ensure_ascii=False, sort_keys=True) if evidence else "",
                            source_date=max((str(r.get("date", "")) for r in periods.values()), default=""), updated_at=now()))
     return result
 
@@ -96,19 +111,73 @@ def merge_history(path, rows, dividend=False):
             if key not in prior.index:
                 continue
             before = prior.loc[key]
-            if dividend and not row.annual_complete:
-                for field in before.index:
-                    incoming.loc[i, field] = before[field]
+            if dividend and row.get("source_review_required") is True:
+                # Preserve observed amounts, but an explicit official conflict
+                # overrides an older completeness flag until reconciled.
+                for field in ("cash_dividend", "stock_dividend", "total_dividend"):
+                    if pd.isna(row[field]): incoming.loc[i, field] = before.get(field, NAN)
+                incoming.loc[i, "annual_complete"] = False
+                incoming.loc[i, "payout_ratio"] = NAN
+                incoming.loc[i, "dividend_status"] = "missing_data"
+            elif dividend and not row.annual_complete:
+                new_known = any(str(row.get(f"{kind}_complete", "")).lower() == "true" for kind in ("cash", "stock"))
+                if str(before.get("annual_complete", "")).lower() == "true" or not new_known:
+                    for field in before.index:
+                        incoming.loc[i, field] = before[field]
+                else:
+                    for kind in ("cash", "stock"):
+                        field = f"{kind}_dividend"
+                        if pd.isna(row[field]):
+                            incoming.loc[i, field] = before.get(field, NAN)
+                            for metadata in (f"{kind}_complete", f"{kind}_coverage_method"):
+                                if metadata in before: incoming.loc[i, metadata] = before[metadata]
+                    for metadata in ("coverage_evidence", "source"):
+                        previous = before.get(metadata)
+                        if pd.notna(previous) and str(previous):
+                            incoming.loc[i, metadata] = str(previous) + "; " + str(row.get(metadata, ""))
+                    both = all(str(incoming.loc[i].get(f"{kind}_complete", "")).lower() == "true" for kind in ("cash", "stock"))
+                    cash, stock = (number(incoming.loc[i, f]) for f in ("cash_dividend", "stock_dividend"))
+                    incoming.loc[i, "annual_complete"] = both
+                    incoming.loc[i, "total_dividend"] = cash + stock if both else NAN
+                    incoming.loc[i, "dividend_status"] = ("paid" if cash + stock > 0 else "zero") if both else "missing_data"
+                    eps = number(incoming.loc[i, "annual_eps"])
+                    incoming.loc[i, "payout_ratio"] = cash / eps * 100 if both and eps > 0 else NAN
+            elif dividend:
+                # Re-reading the same distribution can differ by one float ULP
+                # from legacy CSVs. Preserve valid amounts at that precision;
+                # real official corrections still replace different amounts.
+                for field in ("cash_dividend", "stock_dividend", "total_dividend"):
+                    prior_value, value = number(before.get(field)), number(row.get(field))
+                    if math.isfinite(prior_value) and math.isfinite(value) and math.isclose(
+                            prior_value, value, rel_tol=0, abs_tol=1e-10):
+                        incoming.loc[i, field] = before[field]
+                eps = number(incoming.loc[i, "annual_eps"])
+                incoming.loc[i, "payout_ratio"] = number(incoming.loc[i, "cash_dividend"]) / eps * 100 if eps > 0 else NAN
             elif not dividend:
                 for field in ("annual_eps", "annual_operating_cash_flow"):
-                    if pd.isna(row[field]): incoming.loc[i, field] = before[field]
+                    if pd.isna(row[field]):
+                        incoming.loc[i, field] = before[field]
+                        if field == "annual_eps": incoming.loc[i, "eps_method"] = before.get("eps_method", "missing")
                 if "quarterly_basic_eps_sum_fallback" in str(row.eps_method) and "fallback" not in str(before.get("eps_method", "missing")) and pd.notna(before.annual_eps):
                     incoming.loc[i, "annual_eps"] = before.annual_eps
                     incoming.loc[i, "eps_method"] = before.get("eps_method", "existing_annual")
+                if pd.isna(row.annual_eps) or incoming.loc[i, "eps_method"] != row.eps_method:
+                    for field in ("source", "eps_statement_scope", "eps_basis", "eps_period_start", "eps_period_end"):
+                        if field in before: incoming.loc[i, field] = before[field]
     combined = pd.concat([old, incoming], ignore_index=True).drop_duplicates(["stock_id", "year"], keep="last").sort_values(["stock_id", "year"])
     temporary = path.with_suffix(".tmp")
     combined.to_csv(temporary, index=False, encoding="utf-8-sig")
     temporary.replace(path)
+    return combined
+
+def stored_complete(annual, dividends, sid):
+    annual = annual.loc[(annual.stock_id == sid) & annual.year.isin(YEARS)]
+    dividends = dividends.loc[(dividends.stock_id == sid) & dividends.year.isin(DIV_YEARS)]
+    return (set(annual.year) == set(YEARS) and set(dividends.year) == set(DIV_YEARS) and
+            annual[["annual_eps", "annual_operating_cash_flow"]].apply(pd.to_numeric, errors="coerce").replace(
+                [math.inf, -math.inf], NAN).notna().all().all() and
+            dividends.annual_complete.astype(str).str.lower().eq("true").all())
+
 
 def annual_metrics(group):
     result = {}
@@ -179,6 +248,8 @@ def _run_history_batch(api_budget=360, max_stocks=100, root=PROJECT_ROOT, client
         client = FinMindClient(token, budget, AuditSession(state))
     overrides_path = root / "data/state/annual_eps_verified.json"
     overrides = json.loads(overrides_path.read_text(encoding="utf8")) if overrides_path.exists() else {}
+    verified_path = root / "data/state/dividend_verified.json"
+    verified = json.loads(verified_path.read_text(encoding="utf8")) if verified_path.exists() else {}
     state["stop_reason"] = "batch_limit"
     consecutive_network_errors = 0
     try:
@@ -204,10 +275,10 @@ def _run_history_batch(api_budget=360, max_stocks=100, root=PROJECT_ROOT, client
                     atomic_json(cache, data); payloads[dataset] = data
                 if error is None:
                     annual = annual_rows(sid, stock.stock_name, payloads["TaiwanStockFinancialStatements"], payloads["TaiwanStockCashFlowsStatement"], overrides)
-                    dividends = dividend_rows(sid, stock.stock_name, payloads["TaiwanStockDividend"], annual, stock.get("market", ""))
-                    merge_history(root / "data/annual_financials/history.csv", annual)
-                    merge_history(root / "data/dividends/history.csv", dividends, dividend=True)
-                    complete = all(math.isfinite(r[f]) for r in annual for f in ("annual_eps", "annual_operating_cash_flow")) and all(r["annual_complete"] for r in dividends)
+                    dividends = dividend_rows(sid, stock.stock_name, payloads["TaiwanStockDividend"], annual, stock.get("market", ""), verified)
+                    saved_annual = merge_history(root / "data/annual_financials/history.csv", annual)
+                    saved_dividends = merge_history(root / "data/dividends/history.csv", dividends, dividend=True)
+                    complete = stored_complete(saved_annual, saved_dividends, sid)
                     if not complete:
                         error = "no_data" if any(not p for p in payloads.values()) or any(not r["periods"] for r in dividends) else "unsupported_format"
                 status = "completed" if error is None else "retryable" if error in ("temporary_error", "network_error") else "failed"
@@ -239,16 +310,10 @@ def _run_history_batch(api_budget=360, max_stocks=100, root=PROJECT_ROOT, client
 def publish_history(root=PROJECT_ROOT):
     """Commit only generated batch files; refuse unrelated staged changes."""
     root = Path(root)
-    paths = [
-        ".gitignore", "README.md", "config/strategies.json", "docs/labels.mjs",
-        "docs/data/latest.json", "docs/config/strategies.json", "docs/phase5b2-source-validation.md",
-        "src/build_pages.py", "src/calculate_factors.py", "src/main.py", "src/update_dividends.py",
-        "src/history_batch.py", "src/historical_coverage.py",
-        "tests/test_phase5b.py", "tests/test_strategy_engine.py", "tests/test_history_batch.py",
-        "data/state/annual_eps_verified.json", "data/state/history_progress.json",
-        "data/state/historical_coverage_progress.json", "data/annual_financials/history.csv",
-        "data/dividends/history.csv",
-    ]
+    # Hourly publication is data-only. Unreviewed local parser changes and
+    # evidence registries must be committed explicitly by the operator.
+    paths = ["docs/data/latest.json", "data/state/history_progress.json",
+             "data/annual_financials/history.csv", "data/dividends/history.csv"]
     def git(*args):
         return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
     if git("branch", "--show-current") != "main": raise RuntimeError("History publish requires main")

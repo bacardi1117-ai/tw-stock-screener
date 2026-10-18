@@ -1,0 +1,181 @@
+{
+  "2408:2023": {
+    "stock_id": "2408",
+    "year": 2023,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2408_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Official attribution year 112; explicit zero, not inferred from absent FinMind records.",
+    "source_sha256": "3793bbb711694609b5816912107e64f3af7e4c45cb2365d9f749536312f37978",
+    "page": 5,
+    "periods": {
+      "A": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      }
+    }
+  },
+  "2408:2024": {
+    "stock_id": "2408",
+    "year": 2024,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2408_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Official attribution year 113; explicit zero.",
+    "source_sha256": "3793bbb711694609b5816912107e64f3af7e4c45cb2365d9f749536312f37978",
+    "page": 5,
+    "periods": {
+      "A": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      }
+    }
+  },
+  "2426:2021": {
+    "stock_id": "2426",
+    "year": 2021,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2426_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "H1 explicit zero; H2 cash 1.0. Complete annual cash candidate 1.0.",
+    "source_sha256": "c2780a8237846e612dddb1c9cf92979ddca1eeca98f3892c03c3e22b4396d43c",
+    "page": 5,
+    "periods": {
+      "H1": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      }
+    }
+  },
+  "2426:2022": {
+    "stock_id": "2426",
+    "year": 2022,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2426_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Official attribution year 111; annual cash and stock both zero.",
+    "source_sha256": "c2780a8237846e612dddb1c9cf92979ddca1eeca98f3892c03c3e22b4396d43c",
+    "page": 5,
+    "periods": {
+      "A": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      }
+    }
+  },
+  "2474:2021": {
+    "stock_id": "2474",
+    "year": 2021,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.catcher-group.com/tw/investor_shareholders_di.aspx",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Issuer annual table; payment in 2022. FinMind H2 amount 10.21394967; displayed official precision differs. Do not force H1=0.",
+    "source_sha256": "5ea08d59f882f017ac1f5af2f2da943c62d040d3e8015fdfac627949eaf9b47e",
+    "components": {
+      "cash_dividend": {
+        "annual_value": 10.21,
+        "preserve_periods": [
+          "H2"
+        ],
+        "display_tolerance": 0.005
+      },
+      "stock_dividend": {
+        "annual_value": 0,
+        "preserve_periods": [
+          "H2"
+        ]
+      }
+    }
+  },
+  "2474:2022": {
+    "stock_id": "2474",
+    "year": 2022,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.catcher-group.com/tw/investor_shareholders_di.aspx",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Issuer annual table confirms 2022 cash 10, paid in 2023; cache labels this H2.",
+    "source_sha256": "5ea08d59f882f017ac1f5af2f2da943c62d040d3e8015fdfac627949eaf9b47e",
+    "components": {
+      "cash_dividend": {
+        "annual_value": 10,
+        "preserve_periods": [
+          "H2"
+        ],
+        "display_tolerance": 0.005
+      },
+      "stock_dividend": {
+        "annual_value": 0,
+        "preserve_periods": [
+          "H2"
+        ]
+      }
+    }
+  },
+  "2301:2025": {
+    "stock_id": "2301",
+    "year": 2025,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2301_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Explicit zero Q1; not returned by FinMind.",
+    "source_sha256": "1f3a5e35d06c162ee13b5d645907175de754c1e2667f46f0556eb3b1ee665a81",
+    "page": 5,
+    "periods": {
+      "Q1": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      },
+      "Q3": {
+        "cash_dividend": 0,
+        "stock_dividend": 0
+      }
+    }
+  },
+  "2753:2025": {
+    "stock_id": "2753",
+    "year": 2025,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2753_ch.pdf",
+    "checked_at": "2026-10-18T09:08:10+00:00",
+    "verification_notes": "Cash H1=4,H2=7.5; official H2 includes stock=0.5. FinMind stores that stock event as annual A, with cash=0. Do not discard stock or double count cash.",
+    "source_sha256": "7fb539435158e105148853411953323121bf257bb65b2583037494c06bc15b10",
+    "page": 5,
+    "components": {
+      "cash_dividend": {
+        "annual_value": 11.5
+      },
+      "stock_dividend": {
+        "annual_value": 0.5
+      }
+    },
+    "official_periods": {
+      "H1": {
+        "cash_dividend": 4,
+        "stock_dividend": 0
+      },
+      "H2": {
+        "cash_dividend": 7.5,
+        "stock_dividend": 0.5
+      }
+    }
+  },
+  "2408:2025": {
+    "stock_id": "2408",
+    "year": 2025,
+    "year_basis": "earnings_attribution",
+    "source": "https://www.twse.com.tw/pdf/ch/2408_ch.pdf",
+    "page": 5,
+    "checked_at": "2026-10-18T09:15:33+00:00",
+    "source_sha256": "3793bbb711694609b5816912107e64f3af7e4c45cb2365d9f749536312f37978",
+    "review_required_components": [
+      "cash_dividend"
+    ],
+    "official_reference": {
+      "cash_dividend": 1.5
+    },
+    "cached_reference": {
+      "cash_dividend": 1.34714912
+    },
+    "review_note": "Official annual cash 1.5 vs FinMind 1.34714912; adjustment/revision basis unresolved. Preserve observed cache value; do not certify annual completeness."
+  }
+}
