@@ -5,11 +5,15 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import subprocess
+from unittest.mock import patch
+from contextlib import nullcontext
 
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from actions_daily import merge_csv, merge_progress, refresh_snapshot
+from history_batch import publish_history
 
 
 class ActionsDailyTests(unittest.TestCase):
@@ -62,6 +66,52 @@ class ActionsDailyTests(unittest.TestCase):
                 for key in ("annual_eps_2025", "annual_ocf_2025", "cash_dividend_latest",
                             "revenue_yoy", "eps_yoy", "payout_ratio"):
                     self.assertEqual(old[key], new[key])
+
+    def test_hourly_history_publish_merges_concurrent_daily_commit(self):
+        with self.temporary_directory() as folder:
+            base = Path(folder)
+            remote, local, daily = (base / part for part in ("remote.git", "local", "daily"))
+            def run(where, *args):
+                result = subprocess.run(["git", *args], cwd=where,
+                                        text=True, capture_output=True)
+                if result.returncode:
+                    raise AssertionError(f"git {args[0]} failed: {result.stderr}")
+                return result.stdout.strip()
+            run(base, "init", "--bare", str(remote))
+            run(base, "clone", str(remote), str(local))
+            for repo in (local,):
+                run(repo, "config", "user.name", "test")
+                run(repo, "config", "user.email", "test@example.invalid")
+            (local / "docs/data").mkdir(parents=True)
+            (local / "data/state").mkdir(parents=True)
+            (local / "docs/data/latest.json").write_text("base", encoding="utf-8")
+            (local / "data/state/history_progress.json").write_text("base", encoding="utf-8")
+            run(local, "add", ".")
+            run(local, "commit", "-m", "base")
+            run(local, "branch", "-M", "main")
+            run(local, "push", "-u", "origin", "main")
+            run(base, "clone", "-b", "main", str(remote), str(daily))
+            run(daily, "config", "user.name", "test")
+            run(daily, "config", "user.email", "test@example.invalid")
+            (daily / "docs/data/latest.json").write_text("daily", encoding="utf-8")
+            (daily / "data/prices").mkdir(parents=True)
+            (daily / "data/prices/2026.csv").write_text("official prices", encoding="utf-8")
+            run(daily, "add", ".")
+            run(daily, "commit", "-m", "daily")
+            run(daily, "push", "origin", "main")
+            (local / "docs/data/latest.json").write_text("history", encoding="utf-8")
+            (local / "data/state/history_progress.json").write_text("new progress", encoding="utf-8")
+            def rebuild(*_args, **_kwargs):
+                (local / "docs/data/latest.json").write_text("merged snapshot", encoding="utf-8")
+            with patch("finmind_client.ApiBudget._lock", return_value=nullcontext()), \
+                 patch("calculate_factors.calculate_factors", return_value=object()), \
+                 patch("calculate_factors.save_factors"), \
+                 patch("build_pages.build_pages", side_effect=rebuild):
+                publish_history(local)
+            self.assertEqual((local / "data/prices/2026.csv").read_text(), "official prices")
+            self.assertEqual((local / "data/state/history_progress.json").read_text(), "new progress")
+            self.assertEqual((local / "docs/data/latest.json").read_text(), "merged snapshot")
+            self.assertEqual(run(local, "rev-parse", "HEAD"), run(local, "rev-parse", "origin/main"))
 
 
 if __name__ == "__main__":

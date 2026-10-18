@@ -45,6 +45,10 @@ jobs:
           python -m unittest discover -s tests -p 'test_institutional.py'
       - name: Merge onto newest main and publish
         run: python src/actions_daily.py publish
+      - name: Include any newer financial snapshot before deployment
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
       - name: Upload current site as Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -213,5 +213,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=("probe", "publish", "snapshot"))
     args = parser.parse_args()
-    print(json.dumps(official_probe() if args.mode == "probe" else
-                     publish() if args.mode == "publish" else refresh_snapshot(), ensure_ascii=False))
+    result = (official_probe() if args.mode == "probe" else
+              publish() if args.mode == "publish" else refresh_snapshot())
+    print(json.dumps(result, ensure_ascii=False))
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+            summary.write(f"### {args.mode}\n\n```json\n"
+                          f"{json.dumps(result, ensure_ascii=False, indent=2)}\n```\n\n")

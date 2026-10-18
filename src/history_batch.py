@@ -308,7 +308,7 @@ def _run_history_batch(api_budget=360, max_stocks=100, root=PROJECT_ROOT, client
     return state
 
 def publish_history(root=PROJECT_ROOT):
-    """Commit only generated batch files; refuse unrelated staged changes."""
+    """Publish history without losing a concurrent GitHub daily-data commit."""
     root = Path(root)
     # Hourly publication is data-only. Unreviewed local parser changes and
     # evidence registries must be committed explicitly by the operator.
@@ -323,5 +323,33 @@ def publish_history(root=PROJECT_ROOT):
     git("add", "--", *existing)
     if not git("diff", "--cached", "--name-only"): return None
     git("commit", "-m", "Update annual financial and dividend history batch")
-    git("push", "origin", "main")
-    return git("rev-parse", "HEAD")
+    for _ in range(4):
+        pushed = subprocess.run(["git", "push", "origin", "main"], cwd=root,
+                                capture_output=True, text=True)
+        if pushed.returncode == 0:
+            return git("rev-parse", "HEAD")
+        if "non-fast-forward" not in pushed.stderr and "fetch first" not in pushed.stderr:
+            raise RuntimeError(f"History push failed: {pushed.stderr.strip()}")
+        git("fetch", "origin", "main")
+        # Merge, never rebase or force. Only the generated snapshot may be
+        # resolved automatically; a source-data conflict requires review.
+        merged = subprocess.run(["git", "merge", "--no-commit", "--no-ff", "origin/main"],
+                                cwd=root, capture_output=True, text=True)
+        conflicts = set(git("diff", "--name-only", "--diff-filter=U").splitlines())
+        if conflicts - {"docs/data/latest.json"} or (merged.returncode and not conflicts):
+            raise RuntimeError(f"History merge needs review: {sorted(conflicts)}")
+        from build_pages import build_pages
+        from calculate_factors import calculate_factors, save_factors
+        with ApiBudget(path=root / "data/.history_batch_guard.json")._lock():
+            frame = calculate_factors(
+                stocks_path=root / "data/market/stocks.csv",
+                prices_dir=root / "data/prices",
+                revenue_dir=root / "data/revenue",
+                financials_dir=root / "data/financials",
+                valuation_dir=root / "data/valuation",
+                dividends_dir=root / "data/dividends")
+            save_factors(frame, root=root)
+            build_pages(root=root)
+        git("add", "--", "docs/data/latest.json")
+        git("commit", "-m", "Merge daily data with updated history snapshot")
+    raise RuntimeError("History push conflicted with repeated concurrent commits")
