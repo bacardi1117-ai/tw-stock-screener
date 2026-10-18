@@ -1,10 +1,10 @@
-import {parsePriceFile, runBacktest} from './backtest_engine.mjs';
+import {parsePriceFile, runBacktest} from './backtest_engine.mjs?v=year-history-3';
 
 let manifest = null;
 
 async function getManifest() {
   if (manifest) return manifest;
-  const response = await fetch(new URL('./data/backtest/manifest.json', import.meta.url));
+  const response = await fetch(new URL('./data/backtest/manifest.json', import.meta.url), {cache:'no-cache'});
   if (!response.ok) throw new Error(`無法載入回測資料清單（HTTP ${response.status}）`);
   const found = await response.json();
   if (found.schema_version !== 1 || found.volume_unit !== 'shares' ||
@@ -35,7 +35,9 @@ self.onmessage = async event => {
       self.postMessage({type: 'progress', message: `載入 ${item.year} 年行情…`});
       const compressed = item.compressed_file && typeof DecompressionStream === 'function';
       const file = compressed ? item.compressed_file : item.file;
-      const response = await fetch(new URL(`./data/backtest/${file}`, import.meta.url));
+      const fileUrl = new URL(`./data/backtest/${file}`, import.meta.url);
+      if (item.sha256) fileUrl.searchParams.set('v', item.sha256);
+      const response = await fetch(fileUrl);
       if (!response.ok) throw new Error(`無法載入 ${item.year} 年行情（HTTP ${response.status}）`);
       const text = compressed ? await new Response(response.body.pipeThrough(
         new DecompressionStream('gzip'))).text() : await response.text();

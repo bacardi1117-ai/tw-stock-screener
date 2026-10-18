@@ -1,4 +1,4 @@
-import {DEFAULT_BACKTEST, MISSING_DATA_REASONS, skippedDetailsToCsv, tradesToCsv} from './backtest_engine.mjs';
+import {DEFAULT_BACKTEST, MISSING_DATA_REASONS, skippedDetailsToCsv, tradesToCsv} from './backtest_engine.mjs?v=year-history-3';
 import {resolveBacktestSettings} from './backtest_settings.mjs';
 
 const $ = id => document.getElementById(id);
@@ -215,7 +215,7 @@ function start() {
   $('resultSection').hidden = true;
   status('準備行情…');
   setBusy(true);
-  try { worker ??= new Worker(new URL('./backtest_worker.mjs', import.meta.url), {type:'module'}); }
+  try { worker ??= new Worker(new URL('./backtest_worker.mjs?v=year-history-3', import.meta.url), {type:'module'}); }
   catch { status('無法啟動背景回測，請確認瀏覽器支援 Web Worker',true);setBusy(false);return; }
   worker.onmessage = event => {
     const message = event.data;
