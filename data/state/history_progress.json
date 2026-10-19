@@ -4160,12 +4160,37 @@
       "status": "failed",
       "last_attempt_at": "2026-10-18T13:37:09+00:00",
       "failure_reason": "no_data"
+    },
+    "6223": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-19T13:55:18+00:00",
+      "failure_reason": "network_error"
+    },
+    "6224": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-19T13:55:19+00:00",
+      "failure_reason": "network_error"
+    },
+    "6225": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-19T13:55:21+00:00",
+      "failure_reason": "network_error"
+    },
+    "6227": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-19T13:55:23+00:00",
+      "failure_reason": "network_error"
+    },
+    "6230": {
+      "status": "retryable",
+      "last_attempt_at": "2026-10-19T13:55:24+00:00",
+      "failure_reason": "network_error"
     }
   },
-  "last_run_api_calls": 180,
-  "attempted": 60,
-  "completed": 43,
-  "failed": 17,
+  "last_run_api_calls": 15,
+  "attempted": 5,
+  "completed": 0,
+  "failed": 0,
   "http_429": false,
   "http_403": false,
   "timeout": false,
@@ -4571,7 +4596,12 @@
     "2061",
     "2066",
     "2070",
-    "2072"
+    "2072",
+    "6223",
+    "6224",
+    "6225",
+    "6227",
+    "6230"
   ],
   "failed_stock_ids": [
     "2206",
@@ -4725,14 +4755,14 @@
   ],
   "completed_count": 332,
   "eligible_count": 899,
-  "updated_at": "2026-10-18T13:37:10+00:00",
+  "updated_at": "2026-10-19T13:55:26+00:00",
   "remaining_count": 567,
-  "last_attempted_stock_id": "6218",
-  "stop_reason": "batch_limit",
-  "last_http_status": 200,
-  "retryable": 0,
+  "last_attempted_stock_id": "6230",
+  "stop_reason": "consecutive_network_errors",
+  "last_http_status": null,
+  "retryable": 5,
   "failed_count": 148,
-  "retryable_count": 68,
+  "retryable_count": 73,
   "interrupted": true,
   "last_fetch_finished_at": "2026-10-18T08:18:11+00:00",
   "last_cache_repair": {
