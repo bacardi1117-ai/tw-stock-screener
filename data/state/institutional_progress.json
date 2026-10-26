@@ -249,6 +249,36 @@
       "status": "saved",
       "rows": 767,
       "updated_at": "2026-10-18T20:53:22+08:00"
+    },
+    "2026-10-20:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "updated_at": "2026-10-26T21:42:37+08:00"
+    },
+    "2026-10-21:TWSE": {
+      "status": "saved",
+      "rows": 1077,
+      "updated_at": "2026-10-26T21:42:39+08:00"
+    },
+    "2026-10-22:TWSE": {
+      "status": "saved",
+      "rows": 1070,
+      "updated_at": "2026-10-26T21:42:40+08:00"
+    },
+    "2026-10-20:TPEx": {
+      "status": "saved",
+      "rows": 761,
+      "updated_at": "2026-10-26T21:42:44+08:00"
+    },
+    "2026-10-21:TPEx": {
+      "status": "saved",
+      "rows": 782,
+      "updated_at": "2026-10-26T21:42:46+08:00"
+    },
+    "2026-10-22:TPEx": {
+      "status": "saved",
+      "rows": 786,
+      "updated_at": "2026-10-26T21:42:48+08:00"
     }
   }
 }
