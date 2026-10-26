@@ -224,3 +224,14 @@ and recent-year checks; the fixed regression fixture is included in `tests/fixtu
 上市資料來自 TWSE T86 JSON；上櫃資料來自 TPEx 三大法人日報 CSV。兩者都取「外資及陸資（不含外資自營商）」與「投信」的買賣超**股數**，正值為買超、負值為賣超。TPEx CSV 的完整欄名可區分重複的「買賣超股數」欄。逐日資料存於 `data/institutional/YYYY.csv`，日期／市場狀態存於 `data/state/institutional_progress.json`。官方列明確回傳 0 才記 0；缺列、缺欄位或請求失敗保留空值。
 
 策略 D 以各股票所屬市場最近 20 個行情交易日的外資及陸資加投信買賣超總和，以及最近 10 個交易日的投信總和判斷。任何應有日期缺資料都不向前遞補，並在網站顯示資料截止日及第一個不足原因。門檻仍由原有 `config/strategies.json` 決定。價格與法人檔案合併、因素及網站快照重建使用財報批次的共用鎖。
+
+### 獨立策略：EPS 成長＋低本益比＋回測月線
+
+入口為 `docs/eps-value.html`，保留原 A～E 與 QGM。所有門檻、條件開關與排序可在網頁調整，設定獨立存於瀏覽器，不修改共用策略設定。
+
+- 預設比較最新連續兩個完整年度基本 EPS，兩年皆正且成長至少 10%。僅官方已驗證年度值且合併／個體口徑明確一致才參與判斷；既有季度加總或缺少口徑證據的資料僅供顯示，標示無法判斷，不替代年度 EPS。
+- PER 使用現有交易所資料中、行情日期以前最新的正值，預設 `0 < PER <= 15`，保留其自己的日期。它不是用此頁年度 EPS 重算的比率。
+- 月線預設 20 個交易日；乖離率為 `(收盤價 / 月線 - 1) × 100%`，預設 -3%～+3%。前 5 個交易日中至少一天收盤達該日月線的 103%；可關閉。月線高於 5 個交易日前的條件預設關閉。缺少交易日收盤價不跳過、不補 0。
+- `src/eps_value_data.py` 只讀取現有年度 EPS 證據、年度財報、行情及估值 CSV，產生 `docs/data/eps_value.json`；不發出資料抓取請求。每日 `actions_daily.refresh_snapshot` 與財報 `build_pages` 都會重建此檔，瀏覽器載入後依目前設定重新計算。財報發布遇到並行更新時，兩個網站快照一起重建，保留來源資料與進度。
+- 單獨重建資料：`python -c "import sys; sys.path.insert(0, 'src'); from eps_value_data import write_payload; write_payload('.')"`。
+- 本頁是目前選股功能，未提供本策略歷史回測。資料不足時顯示原因，符合數量可能為 0，不代表所有股票均已完成年度口徑驗證。

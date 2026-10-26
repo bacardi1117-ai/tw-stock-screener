@@ -126,6 +126,8 @@ def _clean(value):
 def refresh_snapshot(root=PROJECT_ROOT):
     """Overlay current quotes and Strategy D onto the newest remote snapshot."""
     root = Path(root)
+    from eps_value_data import write_payload
+
     snapshot = root / SNAPSHOT_PATH
     records = json.loads(snapshot.read_text(encoding="utf-8"))
     price_files = sorted((root / "data/prices").glob("[0-9][0-9][0-9][0-9].csv"))
@@ -164,6 +166,7 @@ def refresh_snapshot(root=PROJECT_ROOT):
         row.update(evaluate_all(row, config))
     snapshot.write_text(json.dumps(records, ensure_ascii=False, allow_nan=False,
                                    separators=(",", ":")), encoding="utf-8")
+    write_payload(root)
     return {"stocks": len(records),
             "institutional_complete": sum(row["strategy_d_data_completeness"] == 100 for row in records),
             "strategy_d_pass": sum(row["strategy_d"] == "pass" for row in records),
@@ -194,6 +197,7 @@ def publish(max_attempts=4):
         if changed:
             metrics = refresh_snapshot()
             changed.append(SNAPSHOT_PATH)
+            changed.append("docs/data/eps_value.json")
         else:
             metrics = {"message": "No source data changed; no commit"}
         git("add", "--", *([*changed] if changed else [SNAPSHOT_PATH]))

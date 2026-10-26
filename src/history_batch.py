@@ -312,7 +312,7 @@ def publish_history(root=PROJECT_ROOT):
     root = Path(root)
     # Hourly publication is data-only. Unreviewed local parser changes and
     # evidence registries must be committed explicitly by the operator.
-    paths = ["docs/data/latest.json", "data/state/history_progress.json",
+    paths = ["docs/data/latest.json", "docs/data/eps_value.json", "data/state/history_progress.json",
              "data/annual_financials/history.csv", "data/dividends/history.csv"]
     def git(*args):
         return subprocess.run(["git", *args], cwd=root, check=True, capture_output=True, text=True).stdout.strip()
@@ -336,7 +336,7 @@ def publish_history(root=PROJECT_ROOT):
         merged = subprocess.run(["git", "merge", "--no-commit", "--no-ff", "origin/main"],
                                 cwd=root, capture_output=True, text=True)
         conflicts = set(git("diff", "--name-only", "--diff-filter=U").splitlines())
-        if conflicts - {"docs/data/latest.json"} or (merged.returncode and not conflicts):
+        if conflicts - {"docs/data/latest.json", "docs/data/eps_value.json"} or (merged.returncode and not conflicts):
             raise RuntimeError(f"History merge needs review: {sorted(conflicts)}")
         from build_pages import build_pages
         from calculate_factors import calculate_factors, save_factors
@@ -350,6 +350,6 @@ def publish_history(root=PROJECT_ROOT):
                 dividends_dir=root / "data/dividends")
             save_factors(frame, root=root)
             build_pages(root=root)
-        git("add", "--", "docs/data/latest.json")
+        git("add", "--", "docs/data/latest.json", "docs/data/eps_value.json")
         git("commit", "-m", "Merge daily data with updated history snapshot")
     raise RuntimeError("History push conflicted with repeated concurrent commits")

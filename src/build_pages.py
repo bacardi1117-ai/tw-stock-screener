@@ -7,6 +7,7 @@ import shutil
 import pandas as pd
 
 from config import PROJECT_ROOT
+from eps_value_data import write_payload as write_eps_value_payload
 from strategy_engine import evaluate_frame
 
 
@@ -60,4 +61,5 @@ def build_pages(root=PROJECT_ROOT):
     with data_path.open("w", encoding="utf-8") as target:
         json.dump(records, target, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
     shutil.copyfile(root / "config" / "strategies.json", config_path)
+    write_eps_value_payload(root)
     return data_path, config_path, len(evaluated)

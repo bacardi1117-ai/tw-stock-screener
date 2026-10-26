@@ -51,13 +51,21 @@ class ActionsDailyTests(unittest.TestCase):
             temp = Path(folder)
             for name in ("data/prices/2025.csv", "data/prices/2026.csv",
                          "data/institutional/2026.csv", "data/state/institutional_progress.json",
+                         "data/state/history_progress.json", "data/state/fundamentals_progress.json",
                          "docs/data/latest.json", "config/strategies.json"):
                 target = temp / name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((root / name).read_bytes())
             before = json.loads((temp / "docs/data/latest.json").read_text(encoding="utf-8"))
+            progress_before = {name: (temp / f"data/state/{name}_progress.json").read_bytes()
+                               for name in ("history", "fundamentals", "institutional")}
             metrics = refresh_snapshot(temp)
             after = json.loads((temp / "docs/data/latest.json").read_text(encoding="utf-8"))
+            eps_payload = json.loads((temp / "docs/data/eps_value.json").read_text(encoding="utf-8"))
+            self.assertIn("2330", eps_payload["stocks"])
+            self.assertEqual(eps_payload["dates"][-1], metrics["latest_price_date"])
+            for name, original in progress_before.items():
+                self.assertEqual((temp / f"data/state/{name}_progress.json").read_bytes(), original)
             self.assertEqual(len(after), len(before))
             self.assertEqual(metrics["strategy_d_pass"],
                              sum(row["strategy_d"] == "pass" for row in before))
@@ -85,6 +93,7 @@ class ActionsDailyTests(unittest.TestCase):
             (local / "docs/data").mkdir(parents=True)
             (local / "data/state").mkdir(parents=True)
             (local / "docs/data/latest.json").write_text("base", encoding="utf-8")
+            (local / "docs/data/eps_value.json").write_text("base", encoding="utf-8")
             (local / "data/state/history_progress.json").write_text("base", encoding="utf-8")
             run(local, "add", ".")
             run(local, "commit", "-m", "base")
@@ -94,15 +103,18 @@ class ActionsDailyTests(unittest.TestCase):
             run(daily, "config", "user.name", "test")
             run(daily, "config", "user.email", "test@example.invalid")
             (daily / "docs/data/latest.json").write_text("daily", encoding="utf-8")
+            (daily / "docs/data/eps_value.json").write_text("daily", encoding="utf-8")
             (daily / "data/prices").mkdir(parents=True)
             (daily / "data/prices/2026.csv").write_text("official prices", encoding="utf-8")
             run(daily, "add", ".")
             run(daily, "commit", "-m", "daily")
             run(daily, "push", "origin", "main")
             (local / "docs/data/latest.json").write_text("history", encoding="utf-8")
+            (local / "docs/data/eps_value.json").write_text("history", encoding="utf-8")
             (local / "data/state/history_progress.json").write_text("new progress", encoding="utf-8")
             def rebuild(*_args, **_kwargs):
                 (local / "docs/data/latest.json").write_text("merged snapshot", encoding="utf-8")
+                (local / "docs/data/eps_value.json").write_text("merged strategy data", encoding="utf-8")
             with patch("finmind_client.ApiBudget._lock", return_value=nullcontext()), \
                  patch("calculate_factors.calculate_factors", return_value=object()), \
                  patch("calculate_factors.save_factors"), \
@@ -111,6 +123,7 @@ class ActionsDailyTests(unittest.TestCase):
             self.assertEqual((local / "data/prices/2026.csv").read_text(), "official prices")
             self.assertEqual((local / "data/state/history_progress.json").read_text(), "new progress")
             self.assertEqual((local / "docs/data/latest.json").read_text(), "merged snapshot")
+            self.assertEqual((local / "docs/data/eps_value.json").read_text(), "merged strategy data")
             self.assertEqual(run(local, "rev-parse", "HEAD"), run(local, "rev-parse", "origin/main"))
 
 

@@ -23,4 +23,4 @@ jobs:
       - name: Python strategy and data tests
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Browser logic tests
-        run: node --test tests/test_frontend.mjs
+        run: node --test tests/test_frontend.mjs tests/test_backtest.mjs tests/test_backtest_defaults.mjs tests/test_eps_value_engine.mjs
