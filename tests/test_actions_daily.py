@@ -67,8 +67,16 @@ class ActionsDailyTests(unittest.TestCase):
             for name, original in progress_before.items():
                 self.assertEqual((temp / f"data/state/{name}_progress.json").read_bytes(), original)
             self.assertEqual(len(after), len(before))
+            # New daily quotes can legitimately change Strategy D membership.
+            # Compare the reported count with the rebuilt snapshot, not yesterday.
             self.assertEqual(metrics["strategy_d_pass"],
-                             sum(row["strategy_d"] == "pass" for row in before))
+                             sum(row["strategy_d"] == "pass" for row in after))
+            prices = pd.concat([pd.read_csv(temp / name, dtype={"stock_id": str})
+                                for name in ("data/prices/2025.csv", "data/prices/2026.csv")])
+            tsmc = prices[prices.stock_id == "2330"].sort_values("date").iloc[-1]
+            rebuilt = next(row for row in after if row["stock_id"] == "2330")
+            self.assertEqual(rebuilt["latest_date"], tsmc["date"])
+            self.assertEqual(rebuilt["close"], tsmc["close"])
             for old, new in zip(before, after):
                 self.assertEqual(old["stock_id"], new["stock_id"])
                 for key in ("annual_eps_2025", "annual_ocf_2025", "cash_dividend_latest",
